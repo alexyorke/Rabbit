@@ -13,13 +13,22 @@ namespace Rabbit
     public class Auth
     {
 
+        public Client client { get; internal set; }
 
-        public object LogIn(string email, string password)
+        public Client LogIn(string email, string password)
         {
-            // Returns a valid client connection.
+            
+            // Clean the email from any whitespace.
+            // Any userids, tokens, emails or usernames
+            // do not contain any whitespace.
+
+            email = Regex.Replace(email, @"\s+", "");
+
             var AccountType = "regular";
 
-            if ((password == null) && email.Length > 100)
+            if ((password == null) &&
+                email.Length > 100 &&
+                Regex.IsMatch(email, @"\A\b[0-9a-zA-Z]+\b\Z"))
             {
                 // Facebook login if "password" is over 100 characters, contains only A-Z,a-z and 0-9 and yeah.
                 // there is no email supplied (null)
@@ -49,15 +58,8 @@ namespace Rabbit
             }
 
 
-            var client = new PlayerIOClient.PlayerIO.Connect();
             switch (AccountType)
             {
-
-                case "regular":
-                    {
-                        client = PlayerIO.QuickConnect.SimpleConnect("everybody-edits-su9rn58o40itdbnw69plyw", email, password);
-                        break;
-                    }
                 case "facebook":
                     {
                         client = PlayerIO.QuickConnect.FacebookOAuthConnect("everybody-edits-su9rn58o40itdbnw69plyw", password, null);
@@ -73,6 +75,11 @@ namespace Rabbit
                         // Armour games.
                         break;
                     }
+                default: {
+                        client = PlayerIO.QuickConnect.SimpleConnect("everybody-edits-su9rn58o40itdbnw69plyw", email, password);
+                        break;
+                    
+                }
             }
 
             var ee_conn = client.Multiplayer.CreateJoinRoom("WORLDID", "Everybodyedits" + client.BigDB.Load("config", "config")["version"], true, new Dictionary<string, string>(), new Dictionary<string, string>());
