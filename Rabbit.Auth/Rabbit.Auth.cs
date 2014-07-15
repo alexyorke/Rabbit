@@ -15,9 +15,8 @@ namespace Rabbit
 
         public Client client { get; internal set; }
 
-        public Client LogIn(string email, string password)
+        public Connection LogIn(string email, string password)
         {
-            
             // Clean the email from any whitespace.
             // Any userids, tokens, emails or usernames
             // do not contain any whitespace.
@@ -43,7 +42,7 @@ namespace Rabbit
                 // token thing is 64 characeters in hex
                 // and all of the letters are lowercase
                 // then it's Kongregate
-                AccountType = "Kongregate";
+                AccountType = "kongregate";
             }
 
             // 32 (length) in hex for both user id and auth token
@@ -62,17 +61,17 @@ namespace Rabbit
             {
                 case "facebook":
                     {
-                        client = PlayerIO.QuickConnect.FacebookOAuthConnect("everybody-edits-su9rn58o40itdbnw69plyw", password, null);
+                        client = Facebook.Authenticate(password);
                         break;
                     }
                 case "kongregate":
                     {
-                        client = PlayerIO.QuickConnect.KongregateConnect("everybody-edits-su9rn58o40itdbnw69plyw", email, password);
+                        client = Kongregate.Authenticate(email, password);
                         break;
                     }
                 case "ArmourGames":
                     {
-                        // Armour games.
+                        client = ArmorGames.Authenticate(email, password);
                         break;
                     }
                 default: {
@@ -90,6 +89,8 @@ namespace Rabbit
             ee_conn.Send("init2");
 
             return ee_conn;
+
+         
 
         }
     }

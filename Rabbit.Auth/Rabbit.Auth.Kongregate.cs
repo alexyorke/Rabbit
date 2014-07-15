@@ -9,11 +9,11 @@ using Rabbit.Auth;
 
 namespace Rabbit
 {
-    public static class Facebook : Auth
+    public static class Kongregate : Auth
     {
-        public static Client Authenticate(string token)
+        public static Client Authenticate(string email, string password)
         {
-            return PlayerIO.QuickConnect.FacebookOAuthConnect("everybody-edits-su9rn58o40itdbnw69plyw", token, null);
+            return PlayerIO.QuickConnect.KongregateConnect("everybody-edits-su9rn58o40itdbnw69plyw", email, password);
         }
     }
 
