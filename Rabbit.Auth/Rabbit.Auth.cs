@@ -26,7 +26,7 @@ namespace Rabbit
 
             var AccountType = "regular";
 
-            if ((password == null) &&
+            if (((password == null)||(password == "")) &&
                 email.Length > 100 &&
                 Regex.IsMatch(email, @"\A\b[0-9a-zA-Z]+\b\Z"))
             {
