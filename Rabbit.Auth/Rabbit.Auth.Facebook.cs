@@ -5,11 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using PlayerIOClient;
 using System.Text.RegularExpressions;
-using Rabbit.Auth;
 
 namespace Rabbit
 {
-    public static class Facebook : Auth
+    public static class Facebook
     {
         public static Client Authenticate(string token)
         {

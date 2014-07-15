@@ -5,11 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using PlayerIOClient;
 using System.Text.RegularExpressions;
-using Rabbit.Auth;
 
 namespace Rabbit
 {
-    public static class Kongregate : Auth
+    public static class Kongregate
     {
         public static Client Authenticate(string email, string password)
         {

@@ -71,7 +71,8 @@ namespace Rabbit
                     }
                 case "ArmourGames":
                     {
-                        client = ArmorGames.Authenticate(email, password);
+                        // broken auth
+                        //client = ArmorGames.Authenticate(email, password);
                         break;
                     }
                 default: {
