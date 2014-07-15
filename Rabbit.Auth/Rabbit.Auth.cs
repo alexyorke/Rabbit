@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PlayerIOClient;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace Rabbit
 {
@@ -15,7 +16,7 @@ namespace Rabbit
 
         public Client client { get; internal set; }
 
-        public Connection LogIn(string email, string password)
+        public PlayerIOClient.Connection LogIn(string email, string password, string world_id)
         {
             // Clean the email from any whitespace.
             // Any userids, tokens, emails or usernames
@@ -82,13 +83,16 @@ namespace Rabbit
                 }
             }
 
-            var ee_conn = client.Multiplayer.CreateJoinRoom("WORLDID", "Everybodyedits" + client.BigDB.Load("config", "config")["version"], true, new Dictionary<string, string>(), new Dictionary<string, string>());
+            var ee_conn = client.Multiplayer.CreateJoinRoom(world_id, "Everybodyedits" + client.BigDB.Load("config", "config")["version"], true, new Dictionary<string, string>(), new Dictionary<string, string>());
 
             //ee_conn.OnMessage += new MessageReceivedEventHandler(connection_OnMessage);
 
             ee_conn.Send("init");
             ee_conn.Send("init2");
 
+            Thread.Sleep(2000);
+
+            ee_conn.Send("say", "This is a test message.");
             return ee_conn;
 
          
