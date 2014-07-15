@@ -16,7 +16,8 @@ namespace Rabbit
 
         public Client client { get; internal set; }
 
-        public PlayerIOClient.Connection LogIn(string email, string password, string world_id)
+        public Connection ee_conn { get; set; }
+        public PlayerIOClient.Connection LogIn(string email, string password, string world_id, bool createRoom = true)
         {
             // Clean the email from any whitespace.
             // Any userids, tokens, emails or usernames
@@ -83,8 +84,16 @@ namespace Rabbit
                 }
             }
 
-            var ee_conn = client.Multiplayer.CreateJoinRoom(world_id, "Everybodyedits" + client.BigDB.Load("config", "config")["version"], true, new Dictionary<string, string>(), new Dictionary<string, string>());
-
+            if (createRoom)
+            {
+                ee_conn = client.Multiplayer.CreateJoinRoom(world_id, "Everybodyedits" + client.BigDB.Load("config", "config")["version"], true, new Dictionary<string, string>(), new Dictionary<string, string>());
+            }
+            else
+            {
+                ee_conn = client.Multiplayer.JoinRoom(
+                            world_id,
+                            new Dictionary<string, string>());
+            }
             //ee_conn.OnMessage += new MessageReceivedEventHandler(connection_OnMessage);
 
             // These are disabled because the client may be interested
