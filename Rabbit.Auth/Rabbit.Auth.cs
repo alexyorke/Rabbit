@@ -87,12 +87,12 @@ namespace Rabbit
 
             //ee_conn.OnMessage += new MessageReceivedEventHandler(connection_OnMessage);
 
-            ee_conn.Send("init");
-            ee_conn.Send("init2");
+            // These are disabled because the client may be interested
+            // in the world initialization results.
 
-            Thread.Sleep(2000);
+            //ee_conn.Send("init");
+            //ee_conn.Send("init2");
 
-            ee_conn.Send("say", "This is a test message.");
             return ee_conn;
 
          
