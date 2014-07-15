@@ -1,9 +1,12 @@
-﻿using System;
+﻿// A lot of this code is based on the open-source project Skylight.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PlayerIOClient;
+using System.Text.RegularExpressions;
 
 namespace Rabbit
 {
@@ -11,47 +14,77 @@ namespace Rabbit
     {
 
 
-        public void LogIn(string email, string password)
+        public object LogIn(string email, string password)
         {
             // Returns a valid client connection.
             var AccountType = "regular";
-            if (password == null)
+
+            if ((password == null) && email.Length > 100)
             {
+                // Facebook login if "password" is over 100 characters, contains only A-Z,a-z and 0-9 and yeah.
+                // there is no email supplied (null)
                 AccountType = "facebook";
             }
 
+            if (Regex.IsMatch(email, @"^\d+$") &&
+                Regex.IsMatch(password, @"\A\b[0-9a-f]+\b\Z") &&
+                password.Length == 64) // http://stackoverflow.com/questions/894263
+            {
+                // user id is a number
+                // token thing is 64 characeters in hex
+                // and all of the letters are lowercase
+                // then it's Kongregate
+                AccountType = "Kongregate";
+            }
+
+            // 32 (length) in hex for both user id and auth token
+            // for ArmourGames
+
+            if (Regex.IsMatch(password, @"\A\b[0-9a-f]+\b\Z") &&
+                Regex.IsMatch(password, @"\A\b[0-9a-f]+\b\Z") &&
+                password.Length == 32 &&
+                email.Length == 32)
+            {
+                AccountType = "ArmourGames";
+            }
+
+
+            var client = new PlayerIOClient.PlayerIO.Connect();
             switch (AccountType)
             {
 
                 case "regular":
                     {
-                        var client = PlayerIO.QuickConnect.SimpleConnect("everybody-edits-su9rn58o40itdbnw69plyw", email, password);
+                        client = PlayerIO.QuickConnect.SimpleConnect("everybody-edits-su9rn58o40itdbnw69plyw", email, password);
                         break;
                     }
                 case "facebook":
                     {
-                        var client = PlayerIO.QuickConnect.FacebookOAuthConnect("everybody-edits-su9rn58o40itdbnw69plyw", password, null);
+                        client = PlayerIO.QuickConnect.FacebookOAuthConnect("everybody-edits-su9rn58o40itdbnw69plyw", password, null);
+                        break;
                     }
-
-                    var ee_conn = client.Multiplayer.CreateJoinRoom("WORLDID", "Everybodyedits" + client.BigDB.Load("config", "config")["version"], true, new Dictionary<string, string>(), new Dictionary<string, string>());
-                    //ee_conn.OnMessage += new MessageReceivedEventHandler(connection_OnMessage);
-                    ee_conn.Send("init");
-                    ee_conn.Send("init2");
-                // Facebook login if "password" is over 100 characters, contains only A-Z,a-z and 0-9 and yeah.
-                // there is no email supplied (null)
-
-                // user id is a number
-                    // token thing is 64 characeters in hex.
-                /*
-                case AccountType.Kongregate:
-                    this.Client = PlayerIO.QuickConnect.KongregateConnect(Utilities.GameID, this.emailOrToken, this.passwordOrToken);
-                    break;
-                 * 
-                // 32 (length) in hex for both user id and auth token.
-                case AccountType.ArmorGames:
-                    ArmorGamesConnect();
-                    break;*/
+                case "kongregate":
+                    {
+                        client = PlayerIO.QuickConnect.KongregateConnect("everybody-edits-su9rn58o40itdbnw69plyw", email, password);
+                        break;
+                    }
+                case "ArmourGames":
+                    {
+                        // Armour games.
+                        break;
+                    }
             }
+
+            var ee_conn = client.Multiplayer.CreateJoinRoom("WORLDID", "Everybodyedits" + client.BigDB.Load("config", "config")["version"], true, new Dictionary<string, string>(), new Dictionary<string, string>());
+
+            //ee_conn.OnMessage += new MessageReceivedEventHandler(connection_OnMessage);
+
+            ee_conn.Send("init");
+            ee_conn.Send("init2");
+
+            return ee_conn;
+
         }
     }
 }
+
