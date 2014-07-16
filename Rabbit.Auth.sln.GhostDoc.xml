@@ -6,6 +6,7 @@
     </IgnoreExtensions>
     <IgnoreFiles>
       <IgnoreFile>.\Rabbit.Auth\Rabbit.Auth.cs</IgnoreFile>
+      <IgnoreFile>.\Rabbit.Auth\Rabbit.Auth.Kongregate.cs</IgnoreFile>
     </IgnoreFiles>
   </SpellChecker>
 <HelpConfigurations selected="HelpFile">
