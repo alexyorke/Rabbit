@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="Rabbit.Auth.cs" company="TakoMan02">
-//     Copyright TakoMan02
+// <copyright file="Rabbit.Auth.cs" company="Decagon">
+//     Copyright Decagon
 // </copyright>
 //-----------------------------------------------------------------------
 
