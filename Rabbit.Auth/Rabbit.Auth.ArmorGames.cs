@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------
-// <copyright file="Rabbit.Auth.ArmorGames.cs" company="TakoMan02">
-//     Copyright TakoMan02
+// <copyright file="Rabbit.Auth.ArmorGames.cs" company="Decagon">
+//     Copyright Decagon
 // </copyright>
 //-----------------------------------------------------------------------
 
