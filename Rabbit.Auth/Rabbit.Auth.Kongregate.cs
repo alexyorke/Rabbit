@@ -9,5 +9,4 @@ namespace Rabbit
             return PlayerIO.QuickConnect.KongregateConnect("everybody-edits-su9rn58o40itdbnw69plyw", email, password);
         }
     }
-
 }

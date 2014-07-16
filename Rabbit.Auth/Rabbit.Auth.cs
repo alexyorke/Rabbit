@@ -5,35 +5,35 @@
 //-----------------------------------------------------------------------
 
 using System.Collections.Generic;
-using PlayerIOClient;
 using System.Text.RegularExpressions;
+using PlayerIOClient;
 
 namespace Rabbit
 {
     /// <summary>
-    /// Authentication core.
+    ///     Authentication core.
     /// </summary>
     public class Auth
     {
-/// <summary>
-/// Gets the Client for the main authentication system.
-/// </summary>
+        /// <summary>
+        ///     Gets the Client for the main authentication system.
+        /// </summary>
         public Client Client { get; internal set; }
 
         /// <summary>
-        /// Gets the main everybody edits conncetion to the server.
+        ///     Gets the main everybody edits conncetion to the server.
         /// </summary>
         public Connection EeConn { get; set; }
 
         /// <summary>
-        /// Connects to the PlayerIO service using the provided credentials.
+        ///     Connects to the PlayerIO service using the provided credentials.
         /// </summary>
         /// <param name="email">Email address</param>
         /// <param name="password">Password or token</param>
         /// <param name="world_id">The room id of the world to join</param>
         /// <param name="createRoom">Whether or not to create a room or join an existing one.</param>
         /// <returns>A valid connection object.</returns>
-        public PlayerIOClient.Connection LogIn(string email, string password, string world_id, bool createRoom = true)
+        public Connection LogIn(string email, string password, string world_id, bool createRoom = true)
         {
             // Clean the email from any whitespace.
             // Any userids, tokens, emails or usernames
@@ -41,9 +41,9 @@ namespace Rabbit
 
             email = Regex.Replace(email, @"\s+", "");
 
-            var AccountType = "regular";
+            string AccountType = "regular";
 
-            if (((password == null)||(password == "")) &&
+            if (((password == null) || (password == "")) &&
                 email.Length > 100 &&
                 Regex.IsMatch(email, @"\A\b[0-9a-zA-Z]+\b\Z"))
             {
@@ -77,42 +77,42 @@ namespace Rabbit
             switch (AccountType)
             {
                 case "facebook":
-                    {
-                        Client = Facebook.Authenticate(password);
-                        break;
-
-                    }
+                {
+                    Client = Facebook.Authenticate(password);
+                    break;
+                }
                 case "kongregate":
-                    {
-                        Client = Kongregate.Authenticate(email, password);
-                        break;
-
-                    }
+                {
+                    Client = Kongregate.Authenticate(email, password);
+                    break;
+                }
                 case "ArmourGames":
-                    {
-                        Client = ArmorGames.Authenticate(email, password);
-                        break;
-
-                    }
-                default: {
-                        Client = PlayerIO.QuickConnect.SimpleConnect("everybody-edits-su9rn58o40itdbnw69plyw", email, password);
-                        break;
+                {
+                    Client = ArmorGames.Authenticate(email, password);
+                    break;
+                }
+                default:
+                {
+                    Client = PlayerIO.QuickConnect.SimpleConnect("everybody-edits-su9rn58o40itdbnw69plyw", email,
+                        password);
+                    break;
                 }
             }
 
             if (createRoom)
             {
-                EeConn = Client.Multiplayer.CreateJoinRoom(world_id, "Everybodyedits" + Client.BigDB.Load("config", "config")["version"], true, new Dictionary<string, string>(), new Dictionary<string, string>());
+                EeConn = Client.Multiplayer.CreateJoinRoom(world_id,
+                    "Everybodyedits" + Client.BigDB.Load("config", "config")["version"], true,
+                    new Dictionary<string, string>(), new Dictionary<string, string>());
             }
             else
             {
                 EeConn = Client.Multiplayer.JoinRoom(
-                            world_id,
-                            new Dictionary<string, string>());
+                    world_id,
+                    new Dictionary<string, string>());
             }
 
             return EeConn;
-
         }
     }
 }

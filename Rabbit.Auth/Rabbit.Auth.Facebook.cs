@@ -9,5 +9,4 @@ namespace Rabbit
             return PlayerIO.QuickConnect.FacebookOAuthConnect("everybody-edits-su9rn58o40itdbnw69plyw", token, null);
         }
     }
-
 }
