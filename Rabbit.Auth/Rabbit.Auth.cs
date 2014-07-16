@@ -1,4 +1,8 @@
-﻿// A lot of this code is based on the open-source project Skylight.
+﻿//-----------------------------------------------------------------------
+// <copyright file="Rabbit.Auth.cs" company="TakoMan02">
+//     Copyright TakoMan02
+// </copyright>
+//-----------------------------------------------------------------------
 
 using System.Collections.Generic;
 using PlayerIOClient;
@@ -6,12 +10,29 @@ using System.Text.RegularExpressions;
 
 namespace Rabbit
 {
+    /// <summary>
+    /// Authentication core.
+    /// </summary>
     public class Auth
     {
+/// <summary>
+/// Gets the Client for the main authentication system.
+/// </summary>
+        public Client Client { get; internal set; }
 
-        public Client client { get; internal set; }
+        /// <summary>
+        /// Gets the main everybody edits conncetion to the server.
+        /// </summary>
+        public Connection EeConn { get; set; }
 
-        public Connection ee_conn { get; set; }
+        /// <summary>
+        /// Connects to the PlayerIO service using the provided credentials.
+        /// </summary>
+        /// <param name="email">Email address</param>
+        /// <param name="password">Password or token</param>
+        /// <param name="world_id">The room id of the world to join</param>
+        /// <param name="createRoom">Whether or not to create a room or join an existing one.</param>
+        /// <returns>A valid connection object.</returns>
         public PlayerIOClient.Connection LogIn(string email, string password, string world_id, bool createRoom = true)
         {
             // Clean the email from any whitespace.
@@ -53,55 +74,45 @@ namespace Rabbit
                 AccountType = "ArmourGames";
             }
 
-
             switch (AccountType)
             {
                 case "facebook":
                     {
-                        client = Facebook.Authenticate(password);
+                        Client = Facebook.Authenticate(password);
                         break;
+
                     }
                 case "kongregate":
                     {
-                        client = Kongregate.Authenticate(email, password);
+                        Client = Kongregate.Authenticate(email, password);
                         break;
+
                     }
                 case "ArmourGames":
                     {
-                        // broken auth
-                        client = ArmorGames.Authenticate(email, password);
+                        Client = ArmorGames.Authenticate(email, password);
                         break;
+
                     }
                 default: {
-                        client = PlayerIO.QuickConnect.SimpleConnect("everybody-edits-su9rn58o40itdbnw69plyw", email, password);
+                        Client = PlayerIO.QuickConnect.SimpleConnect("everybody-edits-su9rn58o40itdbnw69plyw", email, password);
                         break;
-                    
                 }
             }
 
             if (createRoom)
             {
-                ee_conn = client.Multiplayer.CreateJoinRoom(world_id, "Everybodyedits" + client.BigDB.Load("config", "config")["version"], true, new Dictionary<string, string>(), new Dictionary<string, string>());
+                EeConn = Client.Multiplayer.CreateJoinRoom(world_id, "Everybodyedits" + Client.BigDB.Load("config", "config")["version"], true, new Dictionary<string, string>(), new Dictionary<string, string>());
             }
             else
             {
-                ee_conn = client.Multiplayer.JoinRoom(
+                EeConn = Client.Multiplayer.JoinRoom(
                             world_id,
                             new Dictionary<string, string>());
             }
-            //ee_conn.OnMessage += new MessageReceivedEventHandler(connection_OnMessage);
 
-            // These are disabled because the client may be interested
-            // in the world initialization results.
-
-            //ee_conn.Send("init");
-            //ee_conn.Send("init2");
-
-            return ee_conn;
-
-         
+            return EeConn;
 
         }
     }
 }
-
