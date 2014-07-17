@@ -7,6 +7,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using PlayerIOClient;
+using Rabbit.Rabbit.Auth;
 
 namespace Rabbit
 {
@@ -30,10 +31,10 @@ namespace Rabbit
         /// </summary>
         /// <param name="email">Email address</param>
         /// <param name="password">Password or token</param>
-        /// <param name="world_id">The room id of the world to join</param>
+        /// <param name="worldId">The room id of the world to join</param>
         /// <param name="createRoom">Whether or not to create a room or join an existing one.</param>
         /// <returns>A valid connection object.</returns>
-        public Connection LogIn(string email, string password, string world_id, bool createRoom = true)
+        public Connection LogIn(string email, string password, string worldId, bool createRoom = true)
         {
             // Clean the email from any whitespace.
             // Any userids, tokens, emails or usernames
@@ -41,40 +42,40 @@ namespace Rabbit
 
             email = Regex.Replace(email, @"\s+", "");
 
-            string AccountType = "regular";
+            string accountType = "regular";
 
-            if (((password == null) || (password == "")) &&
+            if (string.IsNullOrEmpty(password) &&
                 email.Length > 100 &&
                 Regex.IsMatch(email, @"\A\b[0-9a-zA-Z]+\b\Z"))
             {
                 // Facebook login if "password" is over 100 characters, contains only A-Z,a-z and 0-9 and yeah.
                 // there is no email supplied (null)
-                AccountType = "facebook";
+                accountType = "facebook";
             }
 
-            if (Regex.IsMatch(email, @"^\d+$") &&
-                Regex.IsMatch(password, @"\A\b[0-9a-f]+\b\Z") &&
-                password.Length == 64) // http://stackoverflow.com/questions/894263
+            if (password != null && (Regex.IsMatch(email, @"^\d+$") &&
+                                     Regex.IsMatch(password, @"\A\b[0-9a-f]+\b\Z") &&
+                                     password.Length == 64)) // http://stackoverflow.com/questions/894263
             {
                 // user id is a number
                 // token thing is 64 characeters in hex
                 // and all of the letters are lowercase
                 // then it's Kongregate
-                AccountType = "kongregate";
+                accountType = "kongregate";
             }
 
             // 32 (length) in hex for both user id and auth token
             // for ArmourGames
 
-            if (Regex.IsMatch(password, @"\A\b[0-9a-f]+\b\Z") &&
-                Regex.IsMatch(password, @"\A\b[0-9a-f]+\b\Z") &&
-                password.Length == 32 &&
-                email.Length == 32)
+            if (password != null && (Regex.IsMatch(password, @"\A\b[0-9a-f]+\b\Z") &&
+                                     Regex.IsMatch(password, @"\A\b[0-9a-f]+\b\Z") &&
+                                     password.Length == 32 &&
+                                     email.Length == 32))
             {
-                AccountType = "ArmourGames";
+                accountType = "ArmourGames";
             }
 
-            switch (AccountType)
+            switch (accountType)
             {
                 case "facebook":
                 {
@@ -101,14 +102,14 @@ namespace Rabbit
 
             if (createRoom)
             {
-                EeConn = Client.Multiplayer.CreateJoinRoom(world_id,
+                EeConn = Client.Multiplayer.CreateJoinRoom(worldId,
                     "Everybodyedits" + Client.BigDB.Load("config", "config")["version"], true,
                     new Dictionary<string, string>(), new Dictionary<string, string>());
             }
             else
             {
                 EeConn = Client.Multiplayer.JoinRoom(
-                    world_id,
+                    worldId,
                     new Dictionary<string, string>());
             }
 

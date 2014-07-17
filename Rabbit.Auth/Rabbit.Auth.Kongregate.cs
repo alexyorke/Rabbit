@@ -1,6 +1,6 @@
 using PlayerIOClient;
 
-namespace Rabbit
+namespace Rabbit.Rabbit.Auth
 {
     public static class Kongregate
     {
