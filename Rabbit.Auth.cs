@@ -34,7 +34,7 @@ namespace Rabbit
         /// <param name="worldId">The room id of the world to join</param>
         /// <param name="createRoom">Whether or not to create a room or join an existing one.</param>
         /// <returns>A valid connection object.</returns>
-        public Connection LogIn(string email, string password, string worldId, bool createRoom = true)
+        public Connection LogIn(string email, string password, string worldId, bool createRoom = false)
         {
             // Clean the email from any whitespace.
             // Any userids, tokens, emails or usernames
