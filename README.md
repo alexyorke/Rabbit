@@ -7,3 +7,13 @@ This framework is meant to be integrated into another library (so that features 
 
 The authentication type is handled automatically. Developers are now **not** required to create seperate tabs or UI's for different authentication mechanisms. Just type it in the credentials, and Rabbit does the rest.
 
+
+Use Rabbit like this:
+
+`using Rabbit;`
+`var rabbitAuth = new Rabbit.Auth();`
+
+`var Connection = rabbitAuth.LogIn(EmailOrToken, PasswordOrToken, RoomID);`
+
+
+Now, Connection is a valid PlayerIOClient connection.
