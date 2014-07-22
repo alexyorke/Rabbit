@@ -2,7 +2,7 @@
 {
     enum AuthType
     {
-        Regular = 0,
+        Regular,
         Facebook,
         Kongregate,
         ArmorGames
