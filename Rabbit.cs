@@ -38,24 +38,11 @@ namespace Rabbit
         /// <returns>A valid connection object.</returns>
         public Connection LogIn(string email, string password, string worldId, bool createRoom = false)
         {
-            // Clean the email from any whitespace.
-            // Any userids, tokens, emails or usernames
-            // do not contain any whitespace.
+            // Clean the email (or token) from whitespace
 
             email = Regex.Replace(email, @"\s+", "");
 
-            var authType = AuthType.Regular;
-
-            if (IsAuthTypeFacebook(email, password) != AuthType.Unknown)
-            {
-                authType = AuthType.Facebook;
-            } else if (IsAuthTypeKong(email, password) != AuthType.Unknown)
-            {
-                authType = AuthType.Kongregate;
-            } else if (IsAuthTypeArmorGames(email, password) != AuthType.Unknown)
-            {
-                authType = AuthType.ArmorGames;
-            };
+            var authType = GetAuthType(email, password);
 
             switch (authType)
             {
@@ -98,7 +85,8 @@ namespace Rabbit
             return EeConn;
         }
 
-        public static AuthType IsAuthTypeArmorGames(string email, string password)
+
+        public static AuthType GetAuthType(string email, string password)
         {
             // 32 (length) in hex for both user id and auth token
             // for ArmourGames
@@ -109,17 +97,9 @@ namespace Rabbit
             {
                 return AuthType.ArmorGames;
             }
-            else
-            {
-                return AuthType.Unknown;
-            }
-        }
-
-        public static AuthType IsAuthTypeKong(string email, string password)
-        {
             if (password != null && (Regex.IsMatch(email, @"^\d+$") &&
                                      Regex.IsMatch(password, @"\A\b[0-9a-f]+\b\Z") &&
-                                     password.Length == 64)) // http://stackoverflow.com/questions/894263
+                                     password.Length == 64))
             {
                 // user id is a number
                 // token thing is 64 characeters in hex
@@ -127,15 +107,6 @@ namespace Rabbit
                 // then it's Kongregate
                 return AuthType.Kongregate;
             }
-            else
-            {
-                return AuthType.Unknown;
-            }
-            
-        }
-
-        public static AuthType IsAuthTypeFacebook(string email, string password)
-        {
             if (string.IsNullOrEmpty(password) &&
                 email.Length > 100 &&
                 Regex.IsMatch(email, @"\A\b[0-9a-zA-Z]+\b\Z"))
@@ -144,10 +115,8 @@ namespace Rabbit
                 // there is no email supplied (null)
                 return AuthType.Facebook;
             }
-            else
-            {
-                return AuthType.Unknown;
-            }
+            // if it doesn't match anything then just assume regular
+            return AuthType.Regular;
         }
     }
 }
