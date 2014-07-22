@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
-using Rabbit;
 using Rabbit.Auth;
+
 
 namespace Rabbit.Tests
 {
