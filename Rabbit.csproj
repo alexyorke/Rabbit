@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PlayerIOClient">
-      <HintPath>..\..\..\Desktop\PlayerIOClient.dll</HintPath>
+      <HintPath>Lib\PlayerIOClient.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
