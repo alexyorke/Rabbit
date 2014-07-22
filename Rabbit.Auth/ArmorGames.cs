@@ -27,7 +27,7 @@ namespace Rabbit.Auth
         /// <returns>A valid client object.</returns>
         public static Client Authenticate(string email, string password)
         {
-            Connection c =
+            var c =
                 PlayerIO.QuickConnect.SimpleConnect("everybody-edits-su9rn58o40itdbnw69plyw", "guest", "guest")
                     .Multiplayer.JoinRoom(string.Empty, null);
 

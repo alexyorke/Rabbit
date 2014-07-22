@@ -42,7 +42,7 @@ namespace Rabbit
 
             email = Regex.Replace(email, @"\s+", "");
 
-            AuthType authType = AuthType.Regular;
+            var authType = AuthType.Regular;
 
             if (string.IsNullOrEmpty(password) &&
                 email.Length > 100 &&
