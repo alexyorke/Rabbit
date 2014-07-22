@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabbit", "Rabbit.csproj", "{AE39FF3C-A0EF-4B94-AB16-0D778D6F6A59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{60EBB059-BE2A-4525-9BC0-02588682D0BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabbit.Tests", "Rabbit.Tests\Rabbit.Tests.csproj", "{84F9A1D0-B9E8-4779-94D1-1C97B7151368}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{AE39FF3C-A0EF-4B94-AB16-0D778D6F6A59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE39FF3C-A0EF-4B94-AB16-0D778D6F6A59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE39FF3C-A0EF-4B94-AB16-0D778D6F6A59}.Release|Any CPU.Build.0 = Release|Any CPU
-		{60EBB059-BE2A-4525-9BC0-02588682D0BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{60EBB059-BE2A-4525-9BC0-02588682D0BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{60EBB059-BE2A-4525-9BC0-02588682D0BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{60EBB059-BE2A-4525-9BC0-02588682D0BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84F9A1D0-B9E8-4779-94D1-1C97B7151368}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84F9A1D0-B9E8-4779-94D1-1C97B7151368}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84F9A1D0-B9E8-4779-94D1-1C97B7151368}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84F9A1D0-B9E8-4779-94D1-1C97B7151368}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
