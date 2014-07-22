@@ -17,7 +17,7 @@ namespace Rabbit.Auth
         /// <summary>
         ///     sets the client that is used throughout the Bot.
         /// </summary>
-        public static Client Client { get; set; }
+        private static Client Client { get; set; }
 
         /// <summary>
         ///     Authenticates the user using ArmorGames authentication.
@@ -27,7 +27,7 @@ namespace Rabbit.Auth
         /// <returns>A valid client object.</returns>
         public static Client Authenticate(string email, string password)
         {
-            var c =
+            Connection c =
                 PlayerIO.QuickConnect.SimpleConnect(Rabbit.GameId, "guest", "guest")
                     .Multiplayer.JoinRoom(string.Empty, null);
 

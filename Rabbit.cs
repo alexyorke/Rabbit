@@ -17,6 +17,8 @@ namespace Rabbit
     /// </summary>
     public class Rabbit
     {
+        public const string GameId = "everybody-edits-su9rn58o40itdbnw69plyw";
+
         /// <summary>
         ///     Gets the Client for the main authentication system.
         /// </summary>
@@ -26,8 +28,6 @@ namespace Rabbit
         ///     Gets the main everybody edits conncetion to the server.
         /// </summary>
         private Connection EeConn { get; set; }
-
-        public const string GameId = "everybody-edits-su9rn58o40itdbnw69plyw";
 
         /// <summary>
         ///     Connects to the PlayerIO service using the provided credentials.
@@ -43,7 +43,7 @@ namespace Rabbit
 
             email = Regex.Replace(email, @"\s+", "");
 
-            var authType = GetAuthType(email, password);
+            AuthType authType = GetAuthType(email, password);
 
             switch (authType)
             {
