@@ -87,7 +87,7 @@ namespace Rabbit
         }
 
 
-        public static AuthType GetAuthType(string email, string password)
+        public static AuthType GetAuthType(string email, string password = null)
         {
             // A password is needed for every authentication type
             if (password == null)
