@@ -19,12 +19,12 @@ namespace Rabbit
         /// <summary>
         ///     Gets the Client for the main authentication system.
         /// </summary>
-        public Client Client { get; internal set; }
+        private Client Client { get; set; }
 
         /// <summary>
         ///     Gets the main everybody edits conncetion to the server.
         /// </summary>
-        public Connection EeConn { get; set; }
+        private Connection EeConn { get; set; }
 
         public const string GameId = "everybody-edits-su9rn58o40itdbnw69plyw";
 
