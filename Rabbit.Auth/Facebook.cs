@@ -1,6 +1,6 @@
 using PlayerIOClient;
 
-namespace Rabbit.Rabbit.Auth
+namespace Rabbit.Auth
 {
     public static class Facebook
     {

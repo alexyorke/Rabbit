@@ -7,14 +7,14 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using PlayerIOClient;
-using Rabbit.Rabbit.Auth;
+using Rabbit.Auth;
 
 namespace Rabbit
 {
     /// <summary>
     ///     Authentication core.
     /// </summary>
-    public class Auth
+    public class Rabbit
     {
         /// <summary>
         ///     Gets the Client for the main authentication system.
@@ -42,7 +42,7 @@ namespace Rabbit
 
             email = Regex.Replace(email, @"\s+", "");
 
-            string accountType = "regular";
+            AuthType authType = AuthType.Regular;
 
             if (string.IsNullOrEmpty(password) &&
                 email.Length > 100 &&
@@ -50,7 +50,7 @@ namespace Rabbit
             {
                 // Facebook login if "password" is over 100 characters, contains only A-Z,a-z and 0-9 and yeah.
                 // there is no email supplied (null)
-                accountType = "facebook";
+                authType = AuthType.Facebook;
             }
 
             if (password != null && (Regex.IsMatch(email, @"^\d+$") &&
@@ -61,7 +61,7 @@ namespace Rabbit
                 // token thing is 64 characeters in hex
                 // and all of the letters are lowercase
                 // then it's Kongregate
-                accountType = "kongregate";
+                authType = AuthType.Kongregate;
             }
 
             // 32 (length) in hex for both user id and auth token
@@ -72,22 +72,22 @@ namespace Rabbit
                                      password.Length == 32 &&
                                      email.Length == 32))
             {
-                accountType = "ArmourGames";
+                authType = AuthType.ArmorGames;
             }
 
-            switch (accountType)
+            switch (authType)
             {
-                case "facebook":
+                case AuthType.Facebook:
                 {
                     Client = Facebook.Authenticate(password);
                     break;
                 }
-                case "kongregate":
+                case AuthType.Kongregate:
                 {
                     Client = Kongregate.Authenticate(email, password);
                     break;
                 }
-                case "ArmourGames":
+                case AuthType.ArmorGames:
                 {
                     Client = ArmorGames.Authenticate(email, password);
                     break;

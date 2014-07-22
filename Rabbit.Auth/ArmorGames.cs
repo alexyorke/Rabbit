@@ -7,7 +7,7 @@
 using System;
 using PlayerIOClient;
 
-namespace Rabbit.Rabbit.Auth
+namespace Rabbit.Auth
 {
     /// <summary>
     ///     ArmorGames authentication class.
