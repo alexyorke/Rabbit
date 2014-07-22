@@ -98,7 +98,7 @@ namespace Rabbit
             return EeConn;
         }
 
-        private static AuthType IsAuthTypeArmorGames(string email, string password)
+        public static AuthType IsAuthTypeArmorGames(string email, string password)
         {
             // 32 (length) in hex for both user id and auth token
             // for ArmourGames
@@ -115,7 +115,7 @@ namespace Rabbit
             }
         }
 
-        private static AuthType IsAuthTypeKong(string email, string password)
+        public static AuthType IsAuthTypeKong(string email, string password)
         {
             if (password != null && (Regex.IsMatch(email, @"^\d+$") &&
                                      Regex.IsMatch(password, @"\A\b[0-9a-f]+\b\Z") &&
@@ -134,7 +134,7 @@ namespace Rabbit
             
         }
 
-        private static AuthType IsAuthTypeFacebook(string email, string password)
+        public static AuthType IsAuthTypeFacebook(string email, string password)
         {
             if (string.IsNullOrEmpty(password) &&
                 email.Length > 100 &&
