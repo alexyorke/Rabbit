@@ -5,6 +5,8 @@
         Regular,
         Facebook,
         Kongregate,
-        ArmorGames
+        ArmorGames,
+        Unknown // used when the given auth service was incorrect for the
+                // type of credentials supplied.
     }
 }

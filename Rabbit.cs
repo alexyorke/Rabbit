@@ -46,36 +46,16 @@ namespace Rabbit
 
             var authType = AuthType.Regular;
 
-            if (string.IsNullOrEmpty(password) &&
-                email.Length > 100 &&
-                Regex.IsMatch(email, @"\A\b[0-9a-zA-Z]+\b\Z"))
+            if (IsAuthTypeFacebook(email, password) != AuthType.Unknown)
             {
-                // Facebook login if "password" is over 100 characters, contains only A-Z,a-z and 0-9 and yeah.
-                // there is no email supplied (null)
                 authType = AuthType.Facebook;
-            }
-
-            if (password != null && (Regex.IsMatch(email, @"^\d+$") &&
-                                     Regex.IsMatch(password, @"\A\b[0-9a-f]+\b\Z") &&
-                                     password.Length == 64)) // http://stackoverflow.com/questions/894263
+            } else if (IsAuthTypeKong(email, password) != AuthType.Unknown)
             {
-                // user id is a number
-                // token thing is 64 characeters in hex
-                // and all of the letters are lowercase
-                // then it's Kongregate
                 authType = AuthType.Kongregate;
-            }
-
-            // 32 (length) in hex for both user id and auth token
-            // for ArmourGames
-
-            if (password != null && (Regex.IsMatch(password, @"\A\b[0-9a-f]+\b\Z") &&
-                                     Regex.IsMatch(password, @"\A\b[0-9a-f]+\b\Z") &&
-                                     password.Length == 32 &&
-                                     email.Length == 32))
+            } else if (IsAuthTypeArmorGames(email, password) != AuthType.Unknown)
             {
                 authType = AuthType.ArmorGames;
-            }
+            };
 
             switch (authType)
             {
@@ -116,6 +96,58 @@ namespace Rabbit
             }
 
             return EeConn;
+        }
+
+        private static AuthType IsAuthTypeArmorGames(string email, string password)
+        {
+            // 32 (length) in hex for both user id and auth token
+            // for ArmourGames
+            if (password != null && (Regex.IsMatch(password, @"\A\b[0-9a-f]+\b\Z") &&
+                                     Regex.IsMatch(password, @"\A\b[0-9a-f]+\b\Z") &&
+                                     password.Length == 32 &&
+                                     email.Length == 32))
+            {
+                return AuthType.ArmorGames;
+            }
+            else
+            {
+                return AuthType.Unknown;
+            }
+        }
+
+        private static AuthType IsAuthTypeKong(string email, string password)
+        {
+            if (password != null && (Regex.IsMatch(email, @"^\d+$") &&
+                                     Regex.IsMatch(password, @"\A\b[0-9a-f]+\b\Z") &&
+                                     password.Length == 64)) // http://stackoverflow.com/questions/894263
+            {
+                // user id is a number
+                // token thing is 64 characeters in hex
+                // and all of the letters are lowercase
+                // then it's Kongregate
+                return AuthType.Kongregate;
+            }
+            else
+            {
+                return AuthType.Unknown;
+            }
+            
+        }
+
+        private static AuthType IsAuthTypeFacebook(string email, string password)
+        {
+            if (string.IsNullOrEmpty(password) &&
+                email.Length > 100 &&
+                Regex.IsMatch(email, @"\A\b[0-9a-zA-Z]+\b\Z"))
+            {
+                // Facebook login if "password" is over 100 characters, contains only A-Z,a-z and 0-9 and yeah.
+                // there is no email supplied (null)
+                return AuthType.Facebook;
+            }
+            else
+            {
+                return AuthType.Unknown;
+            }
         }
     }
 }
