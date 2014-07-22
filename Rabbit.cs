@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using PlayerIOClient;
 using Rabbit.Auth;
@@ -25,6 +26,8 @@ namespace Rabbit
         ///     Gets the main everybody edits conncetion to the server.
         /// </summary>
         public Connection EeConn { get; set; }
+
+        public const string GameId = "everybody-edits-su9rn58o40itdbnw69plyw";
 
         /// <summary>
         ///     Connects to the PlayerIO service using the provided credentials.
@@ -94,7 +97,7 @@ namespace Rabbit
                 }
                 default:
                 {
-                    Client = PlayerIO.QuickConnect.SimpleConnect("everybody-edits-su9rn58o40itdbnw69plyw", email,
+                    Client = PlayerIO.QuickConnect.SimpleConnect(GameId, email,
                         password);
                     break;
                 }

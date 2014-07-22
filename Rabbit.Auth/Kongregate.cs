@@ -6,7 +6,7 @@ namespace Rabbit.Auth
     {
         public static Client Authenticate(string email, string password)
         {
-            return PlayerIO.QuickConnect.KongregateConnect("everybody-edits-su9rn58o40itdbnw69plyw", email, password);
+            return PlayerIO.QuickConnect.KongregateConnect(Rabbit.GameId, email, password);
         }
     }
 }

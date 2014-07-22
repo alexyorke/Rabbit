@@ -6,7 +6,7 @@ namespace Rabbit.Auth
     {
         public static Client Authenticate(string token)
         {
-            return PlayerIO.QuickConnect.FacebookOAuthConnect("everybody-edits-su9rn58o40itdbnw69plyw", token, null);
+            return PlayerIO.QuickConnect.FacebookOAuthConnect(Rabbit.GameId, token, null);
         }
     }
 }
