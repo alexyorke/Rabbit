@@ -96,8 +96,7 @@ namespace Rabbit
             }
 
             // ArmorGames: Both UserID and password are 32 char hexadecimal lowercase strings
-            if (password != null &&
-                email != null &&
+            if (email != null &&
                 Regex.IsMatch(password, @"^[0-9a-f]{32}$") &&
                 Regex.IsMatch(email, @"^[0-9a-f]{32}$"))
             {
@@ -107,8 +106,7 @@ namespace Rabbit
             // Kongregate: 
             // UserID is a number
             // Password is a 64 char hexadecimal lowercase string
-            if (password != null &&
-                email != null &&
+            if (email != null &&
                 Regex.IsMatch(email, @"^\d+$") &&
                 Regex.IsMatch(password, @"^[0-9a-f]{64}$"))
             {
