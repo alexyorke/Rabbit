@@ -88,33 +88,32 @@ namespace Rabbit
 
         public static AuthType GetAuthType(string email, string password)
         {
-            // 32 (length) in hex for both user id and auth token
-            // for ArmourGames
-            if (password != null && (Regex.IsMatch(password, @"\A\b[0-9a-f]+\b\Z") &&
-                                     Regex.IsMatch(password, @"\A\b[0-9a-f]+\b\Z") &&
-                                     password.Length == 32 &&
-                                     email.Length == 32))
+            // ArmorGames: Both UserID and password are 32 char hexadecimal lowercase strings
+            if (password != null &&
+                Regex.IsMatch(password, @"^[0-9a-f]{32}$") &&
+                Regex.IsMatch(email, @"^[0-9a-f]{32}$"))
             {
                 return AuthType.ArmorGames;
             }
-            if (password != null && (Regex.IsMatch(email, @"^\d+$") &&
-                                     Regex.IsMatch(password, @"\A\b[0-9a-f]+\b\Z") &&
-                                     password.Length == 64))
+
+            // Kongregate: 
+            // UserID is a number
+            // Password is a 64 char hexadecimal lowercase string
+            if (password != null &&
+                Regex.IsMatch(email, @"^\d+$") &&
+                Regex.IsMatch(password, @"^[0-9a-f]{64}$"))
             {
-                // user id is a number
-                // token thing is 64 characeters in hex
-                // and all of the letters are lowercase
-                // then it's Kongregate
                 return AuthType.Kongregate;
             }
-            if (string.IsNullOrEmpty(password) &&
-                email.Length > 100 &&
-                Regex.IsMatch(email, @"\A\b[0-9a-zA-Z]+\b\Z"))
+
+            // Facebook: password is a 100 char alphanumerical string
+            // there is no UserID supplied
+            if (string.IsNullOrEmpty(email) &&
+                Regex.IsMatch(password, @"^[0-9a-z]{100,}$", RegexOptions.IgnoreCase))
             {
-                // Facebook login if "password" is over 100 characters, contains only A-Z,a-z and 0-9 and yeah.
-                // there is no email supplied (null)
                 return AuthType.Facebook;
             }
+
             // if it doesn't match anything then just assume regular
             return AuthType.Regular;
         }
