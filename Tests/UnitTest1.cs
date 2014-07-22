@@ -9,7 +9,7 @@ namespace Tests
         [TestMethod]
         public void TestMethod1()
         {
-            Assert.AreEqual(Rabbit.Rabbit.IsAuthTypeArmorGames("somethinginvalid@example.com","awrongpassword"), Rabbit.Auth.AuthType.Unknown);
+            Assert.AreEqual(Rabbit.Rabbit.GetAuthType("somethingemail@example.com","apasswordorsomething"), Rabbit.Auth.AuthType.Regular);
         }
     }
 }
