@@ -9,9 +9,8 @@ This framework allows developers to have one unified authentication UI and one a
 Rabbit currently supports ArmorGames, MouseBreaker, Facebook and default authentication mechanisms.
 
 
-Use Rabbit like this:
+Add Rabbit to your project:
 
-`using Rabbit;`
 `var rabbitAuth = new Rabbit.Rabbit();`
 
 `var Connection = rabbitAuth.LogIn(EmailOrToken, PasswordOrToken, RoomID);`
