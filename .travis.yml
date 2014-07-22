@@ -4,4 +4,5 @@ install:
   - sudo apt-get install mono-devel mono-gmcs nunit-console
 script:
   - xbuild Rabbit.csproj
+  - xbuild Rabbit.Tests/Rabbit.Tests.csproj
   - nunit-console Rabbit.Tests/bin/Debug/Rabbit.Tests.dll
