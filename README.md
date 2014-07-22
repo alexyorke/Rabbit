@@ -12,7 +12,7 @@ Rabbit currently supports ArmorGames, MouseBreaker, Facebook and default authent
 Use Rabbit like this:
 
 `using Rabbit;`
-`var rabbitAuth = new Rabbit.Auth();`
+`var rabbitAuth = new Rabbit.Rabbit();`
 
 `var Connection = rabbitAuth.LogIn(EmailOrToken, PasswordOrToken, RoomID);`
 
