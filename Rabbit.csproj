@@ -47,11 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rabbit.Auth.cs" />
-    <Compile Include="Rabbit.Auth\Rabbit.Auth.ArmorGames.cs" />
-    <Compile Include="Rabbit.Auth\Rabbit.Auth.Facebook.cs" />
-    <Compile Include="Rabbit.Auth\Rabbit.Auth.Kongregate.cs" />
-    <Compile Include="Rabbit.Core\Rabbit.Core.cs" />
+    <Compile Include="Rabbit.Auth\AuthType.cs" />
+    <Compile Include="Rabbit.cs" />
+    <Compile Include="Rabbit.Auth\ArmorGames.cs" />
+    <Compile Include="Rabbit.Auth\Facebook.cs" />
+    <Compile Include="Rabbit.Auth\Kongregate.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
