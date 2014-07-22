@@ -4,9 +4,9 @@ Rabbit
 [![Build Status](https://travis-ci.org/Decagon/Rabbit.svg?branch=master)](https://travis-ci.org/Decagon/Rabbit)
 
 
-This framework is meant to be integrated into another library (so that features such as login don't have to be constantly reimplemented) and is able to adjust the delay between requests to the server, depending on the user's geographical location. Trying to figure out what delay you should use between requests? Rabbit knows.
+This framework allows developers to have one unified authentication UI and one authentication method to authenticate multiple types of users. The authentication type is handled automatically, and a valid PlayerIOClient object is returned.
 
-The authentication type is handled automatically. Developers are now **not** required to create seperate tabs or UI's for different authentication mechanisms. Just type it in the credentials, and Rabbit does the rest.
+Rabbit currently supports ArmorGames, MouseBreaker, Facebook and default authentication mechanisms.
 
 
 Use Rabbit like this:
@@ -18,3 +18,5 @@ Use Rabbit like this:
 
 
 Now, Connection is a valid PlayerIOClient connection.
+
+Rabbit is going to know what to set the mysterious block delay to, depending on your geographical region and internet speed so that you, as a developer, do not need to ask the user or make a guess.
