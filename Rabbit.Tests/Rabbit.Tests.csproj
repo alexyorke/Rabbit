@@ -40,7 +40,7 @@
       <HintPath>..\Lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="Rabbit">
-      <HintPath>..\bin\Release\Rabbit.dll</HintPath>
+      <HintPath>..\bin\Debug\Rabbit.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
