@@ -137,8 +137,20 @@ namespace Rabbit
                 return AuthType.Facebook;
             }
 
-            // if it doesn't match anything then just assume regular
-            return AuthType.Regular;
+            if (!string.IsNullOrEmpty(email) &&
+                !string.IsNullOrEmpty(password) &&
+                IsValidEmail(email))
+            {
+                return AuthType.Regular;
+            }
+
+            throw new Exception("Unrecognized authentication type.");
+        }
+
+        static bool IsValidEmail(string strIn) // http://stackoverflow.com/questions/5342375/
+        {
+            // Return true if strIn is in valid e-mail format.
+            return Regex.IsMatch(strIn, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
         }
     }
 }
