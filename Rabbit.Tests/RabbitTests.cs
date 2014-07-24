@@ -27,6 +27,24 @@ namespace Rabbit.Tests
         }
 
         [Test]
+        public void InvalidAuthenticationTest()
+        {
+            ArgumentException expectedException = null;
+
+            try
+            {
+                var authResult = Rabbit.GetAuthType("test", "password");
+            }
+
+            catch (ArgumentException ex)
+            {
+                expectedException = ex;
+            }
+
+            Assert.IsNotNull(expectedException);
+        }
+
+        [Test]
         public void RegularAuthenticationTest()
         {
             var authResult = Rabbit.GetAuthType("test@email.com", "testpassword");
