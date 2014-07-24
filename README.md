@@ -1,7 +1,7 @@
 Rabbit
 ======
 
-[![Build Status](https://travis-ci.org/Decagon/Rabbit.svg?branch=master)](https://travis-ci.org/Decagon/Rabbit)
+[![Build status](https://ci.appveyor.com/api/projects/status/6fxlb8bkqp18cg3c/branch/master)](https://ci.appveyor.com/project/Decagon/rabbit/branch/master)
 
 
 This framework allows developers to have one unified authentication UI and one authentication method to authenticate multiple types of users. The authentication type is handled automatically, and a valid PlayerIOClient object is returned.
