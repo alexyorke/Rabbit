@@ -145,7 +145,7 @@ namespace Rabbit
                 return AuthType.Regular;
             }
 
-            throw new AuthenticationException("Invalid authentication type.");
+            throw new ArgumentException("Invalid authentication type.");
         }
 
         static bool IsValidEmail(string strIn) // http://stackoverflow.com/questions/5342375/
