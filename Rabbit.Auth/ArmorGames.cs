@@ -1,26 +1,21 @@
-//-----------------------------------------------------------------------
-// <copyright file="Rabbit.Auth.ArmorGames.cs" company="Decagon">
-//     Copyright Decagon
-// </copyright>
-//-----------------------------------------------------------------------
-
 using System;
 using PlayerIOClient;
 
 namespace Rabbit.Auth
 {
     /// <summary>
-    ///     ArmorGames authentication class.
+    /// ArmorGames authentication class.
     /// </summary>
     public static class ArmorGames
     {
         /// <summary>
-        ///     sets the client that is used throughout the Bot.
+        /// sets the client that is used throughout the Bot.
         /// </summary>
+        /// <value>The client.</value>
         private static Client Client { get; set; }
 
         /// <summary>
-        ///     Authenticates the user using ArmorGames authentication.
+        /// Authenticates the user using ArmorGames authentication.
         /// </summary>
         /// <param name="email">The user id of the user.</param>
         /// <param name="password">The user token.</param>
