@@ -37,7 +37,7 @@ namespace Rabbit
 
             email = Regex.Replace(email, @"\s+", "");
 
-            AuthType authType = GetAuthType(email, password);
+            var authType = GetAuthType(email, password);
 
             switch (authType)
             {
