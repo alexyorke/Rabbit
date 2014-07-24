@@ -50,7 +50,7 @@ namespace Rabbit
         /// <param name="worldId">The room id of the world to join</param>
         /// <param name="createRoom">Whether or not to create a room or join an existing one.</param>
         /// <returns>A valid connection object.</returns>
-        public Connection LogIn(string email, string password, string worldId, bool createRoom = false)
+        public Connection LogIn(string email, string password, string worldId, bool createRoom = true)
         {
             // Clean the email (or token) from whitespace
             email = Regex.Replace(email, @"\s+", "");
