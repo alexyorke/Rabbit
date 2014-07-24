@@ -13,6 +13,7 @@
 // ***********************************************************************
 using System;
 using System.Collections.Generic;
+using System.Security.Authentication;
 using System.Text.RegularExpressions;
 using PlayerIOClient;
 using Rabbit.Auth;
@@ -144,7 +145,7 @@ namespace Rabbit
                 return AuthType.Regular;
             }
 
-            throw new Exception("Unrecognized authentication type.");
+            throw new AuthenticationException("Invalid authentication type.");
         }
 
         static bool IsValidEmail(string strIn) // http://stackoverflow.com/questions/5342375/
