@@ -1,15 +1,29 @@
-using System;
-using PlayerIOClient;
+// ***********************************************************************
+// Assembly         : Rabbit
+// Author           : Decagon
+// Created          : 07-22-2014
+//
+// Last Modified By : Decagon
+// Last Modified On : 07-24-2014
+// ***********************************************************************
+// <copyright file="ArmorGames.cs" company="">
+//     Copyright 2014 (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Rabbit.Auth
 {
+    using System;
+    using PlayerIOClient;
+
     /// <summary>
     /// ArmorGames authentication class.
     /// </summary>
     public static class ArmorGames
     {
         /// <summary>
-        /// sets the client that is used throughout the Bot.
+        /// Sets the client that is used throughout the Bot.
         /// </summary>
         /// <value>The client.</value>
         private static Client Client { get; set; }
@@ -37,6 +51,7 @@ namespace Rabbit.Auth
                 {
                     throw new Exception("Could not log into ArmorGames.");
                 }
+
                 Client = PlayerIO.Connect(
                     "everybody-edits-su9rn58o40itdbnw69plyw",
                     "secure",
