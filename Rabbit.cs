@@ -108,7 +108,7 @@ namespace Rabbit
         /// <param name="password">The password.</param>
         /// <returns>AuthType.</returns>
         /// <exception cref="System.ArgumentNullException">password;Password cannot be null</exception>
-        private static AuthType GetAuthType(string email, string password)
+        public static AuthType GetAuthType(string email, string password)
         {
 
             // ArmorGames: Both UserID and password are 32 char hexadecimal lowercase strings
