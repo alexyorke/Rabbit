@@ -15,7 +15,7 @@ namespace Rabbit.Tests
 
             try
             {
-                var authResult = Rabbit.GetAuthType(null, null);
+                Rabbit.GetAuthType(null, null);
             }
 
             catch (ArgumentNullException ex)
@@ -33,7 +33,7 @@ namespace Rabbit.Tests
 
             try
             {
-                var authResult = Rabbit.GetAuthType("test", "password");
+                Rabbit.GetAuthType("test", "password");
             }
 
             catch (ArgumentException ex)
