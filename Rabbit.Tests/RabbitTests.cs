@@ -1,13 +1,30 @@
-﻿using System;
-using NUnit.Framework;
-using Rabbit.Auth;
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="RabbitTests.cs" company="None">
+//   Copyright 2014 (c).
+// </copyright>
+// <summary>
+//   Defines the RabbitTests type.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Rabbit.Tests
 {
+    using System;
+    using System.Diagnostics.CodeAnalysis;
+
+    using NUnit.Framework;
+
+    using global::Rabbit.Auth;
+
+    /// <summary>
+    /// The rabbit tests.
+    /// </summary>
     [TestFixture]
     public class RabbitTests
     {
+        /// <summary>
+        /// The null authentication test.
+        /// </summary>
         [Test]
         public void NullAuthenticationTest()
         {
@@ -17,7 +34,6 @@ namespace Rabbit.Tests
             {
                 Rabbit.GetAuthType(null, null);
             }
-
             catch (ArgumentNullException ex)
             {
                 expectedException = ex;
@@ -26,6 +42,9 @@ namespace Rabbit.Tests
             Assert.IsNotNull(expectedException);
         }
 
+        /// <summary>
+        /// The invalid authentication test.
+        /// </summary>
         [Test]
         public void InvalidAuthenticationTest()
         {
@@ -35,7 +54,6 @@ namespace Rabbit.Tests
             {
                 Rabbit.GetAuthType("test", "password");
             }
-
             catch (ArgumentException ex)
             {
                 expectedException = ex;
@@ -44,6 +62,9 @@ namespace Rabbit.Tests
             Assert.IsNotNull(expectedException);
         }
 
+        /// <summary>
+        /// The regular authentication test.
+        /// </summary>
         [Test]
         public void RegularAuthenticationTest()
         {
@@ -52,6 +73,9 @@ namespace Rabbit.Tests
             Assert.AreEqual(AuthType.Regular, authResult);
         }
 
+        /// <summary>
+        /// The facebook authentication test.
+        /// </summary>
         [Test]
         public void FacebookAuthenticationTest()
         {
@@ -60,7 +84,11 @@ namespace Rabbit.Tests
             Assert.AreEqual(AuthType.Facebook, authResult);
         }
 
+        /// <summary>
+        /// The kongregate authentication test.
+        /// </summary>
         [Test]
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here because it is a name of a company.")]
         public void KongregateAuthenticationTest()
         {
             var authResult = Rabbit.GetAuthType("123456", "969ad76abf19b5c3e5917321e659abe6d8d6f3aba73e5158863c3b4159c00366");
@@ -68,6 +96,9 @@ namespace Rabbit.Tests
             Assert.AreEqual(AuthType.Kongregate, authResult);
         }
 
+        /// <summary>
+        /// The armor games authentication test.
+        /// </summary>
         [Test]
         public void ArmorGamesAuthenticationTest()
         {

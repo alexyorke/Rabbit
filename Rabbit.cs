@@ -6,19 +6,22 @@
 // Last Modified By : Decagon
 // Last Modified On : 07-24-2014
 // ***********************************************************************
-// <copyright file="Rabbit.cs" company="">
+// <copyright file="Rabbit.cs" company="None">
 //     Copyright 2014 (c) . All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using PlayerIOClient;
-using Rabbit.Auth;
 
 namespace Rabbit
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text.RegularExpressions;
+
+    using PlayerIOClient;
+
+    using global::Rabbit.Auth;
+
     /// <summary>
     /// Authentication core.
     /// </summary>
@@ -30,87 +33,26 @@ namespace Rabbit
         public const string GameId = "everybody-edits-su9rn58o40itdbnw69plyw";
 
         /// <summary>
-        /// Gets the Client for the main authentication system.
+        /// Gets or sets the Client for the main authentication system.
         /// </summary>
         /// <value>The client.</value>
         private Client Client { get; set; }
 
         /// <summary>
-        /// Gets the main everybody edits conncetion to the server.
+        /// Gets or sets the PlayerIO connection to the server.
         /// </summary>
-        /// <value>The ee connection.</value>
+        /// <value>The everybody edits connection.</value>
         private Connection EeConn { get; set; }
-
-        /// <summary>
-        /// Connects to the PlayerIO service using the provided credentials.
-        /// </summary>
-        /// <param name="email">Email address</param>
-        /// <param name="password">Password or token</param>
-        /// <param name="worldId">The room id of the world to join</param>
-        /// <param name="createRoom">Whether or not to create a room or join an existing one.</param>
-        /// <returns>A valid connection object.</returns>
-        public Connection LogIn(string email, string password, string worldId, bool createRoom = true)
-        {
-            // Clean the email (or token) from whitespace
-            email = Regex.Replace(email, @"\s+", "");
-
-            var authType = GetAuthType(email, password);
-
-            switch (authType)
-            {
-                case AuthType.Facebook:
-                {
-                    Client = Facebook.Authenticate(password);
-                    break;
-                }
-
-                case AuthType.Kongregate:
-                {
-                    Client = Kongregate.Authenticate(email, password);
-                    break;
-                }
-
-                case AuthType.ArmorGames:
-                {
-                    Client = ArmorGames.Authenticate(email, password);
-                    break;
-                }
-
-                default:
-                {
-                    Client = PlayerIO.QuickConnect.SimpleConnect(GameId, email,
-                        password);
-                    break;
-                }
-            }
-
-            if (createRoom)
-            {
-                EeConn = Client.Multiplayer.CreateJoinRoom(worldId,
-                    "Everybodyedits" + Client.BigDB.Load("config", "config")["version"], true,
-                    new Dictionary<string, string>(), new Dictionary<string, string>());
-            }
-            else
-            {
-                EeConn = Client.Multiplayer.JoinRoom(
-                    worldId,
-                    new Dictionary<string, string>());
-            }
-
-            return EeConn;
-        }
-
 
         /// <summary>
         /// Gets the type of the authentication.
         /// </summary>
         /// <param name="email">The email.</param>
         /// <param name="password">The password.</param>
-        /// <returns>AuthType.</returns>
+        /// <returns>The authentication type.</returns>
         /// <exception cref="System.ArgumentNullException">password;Password cannot be null</exception>
         public static AuthType GetAuthType(string email, string password)
         {
-
             // ArmorGames: Both UserID and password are 32 char hexadecimal lowercase strings
             if (!string.IsNullOrEmpty(email) &&
                 Regex.IsMatch(password, @"^[0-9a-f]{32}$") &&
@@ -147,7 +89,77 @@ namespace Rabbit
             throw new ArgumentException("Invalid authentication type.");
         }
 
-        static bool IsValidEmail(string strIn) // http://stackoverflow.com/questions/5342375/
+        /// <summary>
+        /// Connects to the PlayerIO service using the provided credentials.
+        /// </summary>
+        /// <param name="email">Email address</param>
+        /// <param name="password">Password or token</param>
+        /// <param name="worldId">The room id of the world to join</param>
+        /// <param name="createRoom">Whether or not to create a room or join an existing one.</param>
+        /// <returns>A valid connection object.</returns>
+        public Connection LogIn(string email, string password, string worldId, bool createRoom = true)
+        {
+            // Clean the email (or token) from whitespace
+            email = Regex.Replace(email, @"\s+", string.Empty);
+
+            var authType = GetAuthType(email, password);
+
+            switch (authType)
+            {
+                case AuthType.Facebook:
+                {
+                    Client = Facebook.Authenticate(password);
+                    break;
+                }
+
+                case AuthType.Kongregate:
+                {
+                    Client = Kongregate.Authenticate(email, password);
+                    break;
+                }
+
+                case AuthType.ArmorGames:
+                {
+                    Client = ArmorGames.Authenticate(email, password);
+                    break;
+                }
+
+                default:
+                    {
+                        Client = PlayerIO.QuickConnect.SimpleConnect(GameId, email, password);
+                        break;
+                }
+            }
+
+            if (createRoom)
+            {
+                this.EeConn = Client.Multiplayer.CreateJoinRoom(
+                    worldId,
+                    "Everybodyedits" + Client.BigDB.Load("config", "config")["version"],
+                    true,
+                    new Dictionary<string, string>(),
+                    new Dictionary<string, string>());
+            }
+            else
+            {
+                this.EeConn = Client.Multiplayer.JoinRoom(
+                    worldId,
+                    new Dictionary<string, string>());
+            }
+
+            return this.EeConn;
+        }
+
+        /// <summary>
+        /// Check if the email is valid.
+        /// </summary>
+        /// <param name="strIn">
+        /// The string (email).
+        /// </param>
+        /// <returns>
+        /// Whether or not the email is valid.
+        /// </returns>
+        internal static bool IsValidEmail(string strIn) // http://stackoverflow.com/questions/5342375/
         {
             // Return true if strIn is in valid e-mail format.
             return Regex.IsMatch(strIn, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");

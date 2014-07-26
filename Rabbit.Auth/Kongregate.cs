@@ -6,7 +6,7 @@
 // Last Modified By : Decagon
 // Last Modified On : 07-24-2014
 // ***********************************************************************
-// <copyright file="Kongregate.cs" company="">
+// <copyright file="Kongregate.cs" company="None">
 //     Copyright 2014 (c) . All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -14,11 +14,14 @@
 
 namespace Rabbit.Auth
 {
+    using System.Diagnostics.CodeAnalysis;
+
     using PlayerIOClient;
 
     /// <summary>
     /// Class Kongregate.
     /// </summary>
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here because it is a name of a company.")]
     public static class Kongregate
     {
         /// <summary>
