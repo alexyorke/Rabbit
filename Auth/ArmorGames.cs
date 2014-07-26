@@ -15,6 +15,7 @@
 namespace Rabbit.Auth
 {
     using System;
+
     using PlayerIOClient;
 
     /// <summary>
