@@ -11,12 +11,14 @@ Rabbit currently supports ArmorGames, MouseBreaker*, Facebook and default authen
 
 Add Rabbit to your project:
 
-    using Rabbit;
-    var rabbitAuth = new Rabbit.Rabbit();
-    var Connection = rabbitAuth.LogIn(EmailOrToken, PasswordOrToken, RoomID);
+```csharp
+using Rabbit;
+var rabbitAuth = new Rabbit.Rabbit();
+var Connection = rabbitAuth.LogIn(EmailOrToken, PasswordOrToken, RoomID);
+```
 
 Now, Connection is a valid PlayerIOClient connection. Remember to initialize it!
 
 Rabbit is going to know what to set the mysterious block delay to, depending on your geographical region and internet speed so that you, as a developer, do not need to ask the user or make a guess.
 
-* the MouseBreaker authentication pattern is very similar to ArmorGames and so may be difficult to deciper between them automatically.
+***Note:*** the MouseBreaker authentication pattern is very similar to ArmorGames and so may be difficult to deciper between them automatically.
