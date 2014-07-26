@@ -6,7 +6,7 @@
 // Last Modified By : Decagon
 // Last Modified On : 07-24-2014
 // ***********************************************************************
-// <copyright file="AuthType.cs" company="">
+// <copyright file="AuthType.cs" company="None">
 //     Copyright 2014 (c) . All rights reserved.
 // </copyright>
 // <summary></summary>

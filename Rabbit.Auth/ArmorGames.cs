@@ -23,7 +23,7 @@ namespace Rabbit.Auth
     public static class ArmorGames
     {
         /// <summary>
-        /// Sets the client that is used throughout the Bot.
+        /// Gets or sets the client that is used throughout the Bot.
         /// </summary>
         /// <value>The client.</value>
         private static Client Client { get; set; }
