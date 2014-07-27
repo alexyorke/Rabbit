@@ -48,13 +48,13 @@ namespace Rabbit.Tests
         [Test]
         public void InvalidAuthenticationTest()
         {
-            ArgumentException expectedException = null;
+            InvalidOperationException expectedException = null;
 
             try
             {
                 Rabbit.GetAuthType("test", "password");
             }
-            catch (ArgumentException ex)
+            catch (InvalidOperationException ex)
             {
                 expectedException = ex;
             }
