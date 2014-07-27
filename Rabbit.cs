@@ -50,7 +50,7 @@ namespace Rabbit
         /// <param name="email">The email.</param>
         /// <param name="password">The password.</param>
         /// <returns>The authentication type.</returns>
-        /// <exception cref="System.ArgumentNullException">password;Password cannot be null</exception>
+        /// <exception cref="System.InvalidOperationException">Invalid authentication type.</exception>
         public static AuthType GetAuthType(string email, string password)
         {
             // ArmorGames: Both UserID and password are 32 char hexadecimal lowercase strings
@@ -86,7 +86,7 @@ namespace Rabbit
                 return AuthType.Regular;
             }
 
-            throw new ArgumentException("Invalid authentication type.");
+            throw new InvalidOperationException("Invalid authentication type.");
         }
 
         /// <summary>
@@ -97,6 +97,7 @@ namespace Rabbit
         /// <param name="worldId">The room id of the world to join</param>
         /// <param name="createRoom">Whether or not to create a room or join an existing one.</param>
         /// <returns>A valid connection object.</returns>
+        /// <exception cref="System.InvalidOperationException">Invalid authentication type.</exception>
         public Connection LogIn(string email, string password, string worldId, bool createRoom = true)
         {
             // Clean the email (or token) from whitespace
