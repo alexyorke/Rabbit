@@ -3,8 +3,8 @@
 // Author           : Decagon
 // Created          : 07-22-2014
 //
-// Last Modified By : Decagon
-// Last Modified On : 07-24-2014
+// Last Modified By : Sepehr
+// Last Modified On : 07-27-2014
 // ***********************************************************************
 // <copyright file="Rabbit.cs" company="None">
 //     Copyright 2014 (c) . All rights reserved.
@@ -50,7 +50,7 @@ namespace Rabbit
         /// <param name="email">The email.</param>
         /// <param name="password">The password.</param>
         /// <returns>The authentication type.</returns>
-        /// <exception cref="System.ArgumentNullException">password;Password cannot be null</exception>
+        /// <exception cref="System.InvalidOperationException">Invalid authentication type.</exception>
         public static AuthType GetAuthType(string email, string password)
         {
             // ArmorGames: Both UserID and password are 32 char hexadecimal lowercase strings
@@ -86,7 +86,7 @@ namespace Rabbit
                 return AuthType.Regular;
             }
 
-            throw new ArgumentException("Invalid authentication type.");
+            throw new InvalidOperationException("Invalid authentication type.");
         }
 
         /// <summary>
@@ -97,6 +97,7 @@ namespace Rabbit
         /// <param name="worldId">The room id of the world to join</param>
         /// <param name="createRoom">Whether or not to create a room or join an existing one.</param>
         /// <returns>A valid connection object.</returns>
+        /// <exception cref="System.InvalidOperationException">Invalid authentication type.</exception>
         public Connection LogIn(string email, string password, string worldId, bool createRoom = true)
         {
             // Clean the email (or token) from whitespace
@@ -133,18 +134,22 @@ namespace Rabbit
 
             if (createRoom)
             {
+                var roomPrefix = worldId.StartsWith("BW") 
+                    ? "Beta"
+                    : "Everybodyedits";
+
                 this.EeConn = Client.Multiplayer.CreateJoinRoom(
                     worldId,
-                    "Everybodyedits" + Client.BigDB.Load("config", "config")["version"],
+                    roomPrefix + Client.BigDB.Load("config", "config")["version"],
                     true,
-                    new Dictionary<string, string>(),
-                    new Dictionary<string, string>());
+                    null,
+                    null);
             }
             else
             {
                 this.EeConn = Client.Multiplayer.JoinRoom(
                     worldId,
-                    new Dictionary<string, string>());
+                    null);
             }
 
             return this.EeConn;
