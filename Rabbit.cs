@@ -141,14 +141,14 @@ namespace Rabbit
                     worldId,
                     roomPrefix + Client.BigDB.Load("config", "config")["version"],
                     true,
-                    new Dictionary<string, string>(),
-                    new Dictionary<string, string>());
+                    null,
+                    null);
             }
             else
             {
                 this.EeConn = Client.Multiplayer.JoinRoom(
                     worldId,
-                    new Dictionary<string, string>());
+                    null);
             }
 
             return this.EeConn;
