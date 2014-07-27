@@ -3,8 +3,8 @@
 // Author           : Decagon
 // Created          : 07-22-2014
 //
-// Last Modified By : Decagon
-// Last Modified On : 07-24-2014
+// Last Modified By : Sepehr
+// Last Modified On : 07-27-2014
 // ***********************************************************************
 // <copyright file="Rabbit.cs" company="None">
 //     Copyright 2014 (c) . All rights reserved.
@@ -133,9 +133,13 @@ namespace Rabbit
 
             if (createRoom)
             {
+                var roomPrefix = worldId.StartsWith("BW") 
+                    ? "Beta"
+                    : "Everybodyedits";
+
                 this.EeConn = Client.Multiplayer.CreateJoinRoom(
                     worldId,
-                    "Everybodyedits" + Client.BigDB.Load("config", "config")["version"],
+                    roomPrefix + Client.BigDB.Load("config", "config")["version"],
                     true,
                     new Dictionary<string, string>(),
                     new Dictionary<string, string>());
