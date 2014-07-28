@@ -13,8 +13,7 @@ Add Rabbit to your project:
 
 ```csharp
 using Rabbit;
-var rabbitAuth = new Rabbit.Rabbit();
-var Connection = rabbitAuth.LogIn(EmailOrToken, PasswordOrToken, RoomID);
+var Connection = new Rabbit.Rabbit().LogIn(EmailOrToken, PasswordOrToken, RoomID);
 ```
 
 Now, Connection is a valid PlayerIOClient connection. Remember to initialize it!
