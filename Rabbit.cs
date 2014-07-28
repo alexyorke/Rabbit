@@ -91,18 +91,37 @@ namespace Rabbit
         /// <summary>
         /// Connects to the PlayerIO service using the provided credentials.
         /// </summary>
-        /// <param name="email">Email address</param>
-        /// <param name="password">Password or token</param>
-        /// <param name="worldId">The room id of the world to join</param>
-        /// <param name="createRoom">Whether or not to create a room or join an existing one.</param>
-        /// <returns>A valid connection object.</returns>
-        /// <exception cref="System.InvalidOperationException">Invalid authentication type.</exception>
-        public Connection LogIn(string email, string password, string worldId, bool createRoom = true)
+        /// <param name="email">
+        /// Email address
+        /// </param>
+        /// <param name="password">
+        /// Password or token
+        /// </param>
+        /// <param name="worldId">
+        /// The room id of the world to join
+        /// </param>
+        /// <param name="createRoom">
+        /// Whether or not to create a room or join an existing one.
+        /// </param>
+        /// <param name="authType">
+        /// The auth Type.
+        /// </param>
+        /// <returns>
+        /// A valid connection object.
+        /// </returns>
+        /// <exception cref="System.InvalidOperationException">
+        /// Invalid authentication type.
+        /// </exception>
+        public Connection LogIn(string email, string password, string worldId, bool createRoom = true, AuthType authType = AuthType.Unknown)
         {
             // Clean the email (or token) from whitespace
             email = Regex.Replace(email, @"\s+", string.Empty);
 
-            var authType = GetAuthType(email, password);
+            // backwards compatibility
+            if (authType == AuthType.Unknown)
+            {
+                authType = GetAuthType(email, password);
+            }
 
             switch (authType)
             {

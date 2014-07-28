@@ -40,6 +40,13 @@ namespace Rabbit.Auth
         /// <summary>
         /// The armor games authentication token and password
         /// </summary>
-        ArmorGames
+        ArmorGames,
+
+        /// <summary>
+        /// The "default" auth type if you want Rabbit to guess which one to use.
+        /// Also used to force authentication (for backwards compatibility with older
+        /// systems and authentication types).
+        /// </summary>
+        Unknown
     }
 }
