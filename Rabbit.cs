@@ -2,9 +2,6 @@
 // Assembly         : Rabbit
 // Author           : Decagon
 // Created          : 07-22-2014
-//
-// Last Modified By : Sepehr
-// Last Modified On : 07-27-2014
 // ***********************************************************************
 // <copyright file="Rabbit.cs" company="None">
 //     Copyright 2014 (c) . All rights reserved.
@@ -104,7 +101,7 @@ namespace Rabbit
         /// Whether or not to create a room or join an existing one.
         /// </param>
         /// <param name="authType">
-        /// The auth Type.
+        /// The authentication type.
         /// </param>
         /// <returns>
         /// A valid connection object.
