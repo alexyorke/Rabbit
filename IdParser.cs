@@ -36,7 +36,7 @@ namespace Rabbit
                 return id;
             }
 
-            if (Regex.IsMatch(id, "[htp:/w.evrybodis.comga]{0,36}[a-zA-Z0-9_-]{13}"))
+            if (Regex.IsMatch(id, "[htp:/w.evrybodis.comga]{0,36}[a-zA-Z0-9_-]{9,14}"))
             {
                 try
                 {
