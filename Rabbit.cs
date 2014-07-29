@@ -49,6 +49,7 @@ namespace Rabbit
         /// <exception cref="System.InvalidOperationException">Invalid authentication type.</exception>
         public static AuthType GetAuthType(string email, string password)
         {
+
             // ArmorGames: Both UserID and password are 32 char hexadecimal lowercase strings
             if (!string.IsNullOrEmpty(email) &&
                 Regex.IsMatch(password, @"^[0-9a-f]{32}$") &&
@@ -84,6 +85,8 @@ namespace Rabbit
 
             throw new InvalidOperationException("Invalid authentication type.");
         }
+
+        // TODO: support SecureStrings and reverse password and email parameters.
 
         /// <summary>
         /// Connects to the PlayerIO service using the provided credentials.
