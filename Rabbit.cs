@@ -112,7 +112,7 @@ namespace Rabbit
         /// <exception cref="System.InvalidOperationException">
         /// Invalid authentication type.
         /// </exception>
-        public Connection LogIn(string email, string password, string worldId, bool createRoom = true, AuthType authType = AuthType.Unknown)
+        public Connection LogIn(string email, string worldId, string password = null, bool createRoom = true, AuthType authType = AuthType.Unknown)
         {
             // Clean the email (or token) from whitespace
             email = Regex.Replace(email, @"\s+", string.Empty);
