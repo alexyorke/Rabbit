@@ -45,12 +45,19 @@ namespace Rabbit
                 var domain = string.Join(".", hostParts.Skip(Math.Max(0, hostParts.Length - 2)).Take(2).ToArray());
 
                 // include a common mispelling of "com"
-                if (domain == "everybodyedits.com" || domain == "everybodyedits.cm")
+                if (domain != "everybodyedits.com" && domain != "everybodyedits.cm")
                 {
-                    return Convert.ToString(parsedUrl.Segments.Last());
+                    throw new UriFormatException();
                 }
 
-                throw new UriFormatException();
+                var urlId = Convert.ToString(parsedUrl.Segments.Last());
+
+                if (Regex.IsMatch(urlId, @"^[a-zA-Z0-9_-]+$") && (urlId.Length <= 14) && (9 <= urlId.Length))
+                {
+                    return urlId;
+                }
+
+                throw new UriFormatException("The url was correct, but the room id was invalid.");
             }
             catch (UriFormatException)
             {
