@@ -117,6 +117,9 @@ namespace Rabbit
             // Clean the email (or token) from whitespace
             email = Regex.Replace(email, @"\s+", string.Empty);
 
+            // Parse the world id (if it exists in another format)
+            worldId = IdParser.Parse(worldId);
+
             // backwards compatibility
             if (authType == AuthType.Unknown)
             {
