@@ -38,14 +38,14 @@ namespace Rabbit
 
             try
             {
-                // From http://stackoverflow.com/questions/16473838/
+                // From http://stackoverflow.com/questions/16473838/ (some parts were changed)
                 var parsedUrl = new Uri(id);
 
                 var hostParts = parsedUrl.Host.Split('.');
                 var domain = string.Join(".", hostParts.Skip(Math.Max(0, hostParts.Length - 2)).Take(2).ToArray());
 
-                // include a common mispelling of "com"
-                if (domain != "everybodyedits.com" && domain != "everybodyedits.cm")
+                // include a common mispellings
+                if (domain != "everybodyedits.com" && domain != "everybodyedits" && domain != "everybodyedits.cm" && domain != "everybodyedits2.com")
                 {
                     throw new UriFormatException();
                 }
