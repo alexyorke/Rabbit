@@ -31,7 +31,7 @@ namespace Rabbit
         /// Occurs when the room id is not formatted in a proper url or is not between
         /// 9 and 14 characters or contains non-alphanumeric symbols.
         /// </exception>
-        public string Parse(string id)
+        public static string Parse(string id)
         {
             // This method is based on TakoMan02's Skylight parse url method
             // available on GitHub.

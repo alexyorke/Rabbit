@@ -94,11 +94,11 @@ namespace Rabbit
         /// <param name="email">
         /// Email address
         /// </param>
-        /// <param name="password">
-        /// Password or token
-        /// </param>
         /// <param name="worldId">
         /// The room id of the world to join
+        /// </param>
+        /// <param name="password">
+        /// Password or token
         /// </param>
         /// <param name="createRoom">
         /// Whether or not to create a room or join an existing one.
