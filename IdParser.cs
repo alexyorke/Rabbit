@@ -36,22 +36,26 @@ namespace Rabbit
                 return id;
             }
 
-            if (Regex.IsMatch(id, "[htp:/w.evrybodis.comga]{0,36}[a-zA-Z0-9_-]{9,14}"))
+            try
             {
-                try
-                {
-                    var parsedUrl = new Uri(id);
-                    var finalUrl = Convert.ToString(parsedUrl.Segments.Last());
+                // From http://stackoverflow.com/questions/16473838/
+                var parsedUrl = new Uri(id);
 
-                    return finalUrl;
-                }
-                catch (UriFormatException)
+                var hostParts = parsedUrl.Host.Split('.');
+                var domain = string.Join(".", hostParts.Skip(Math.Max(0, hostParts.Length - 2)).Take(2).ToArray());
+
+                // include a common mispelling of "com"
+                if (domain == "everybodyedits.com" || domain == "everybodyedits.cm")
                 {
-                    throw new FormatException("The room id format was not recognized.");
+                    return Convert.ToString(parsedUrl.Segments.Last());
                 }
+
+                throw new UriFormatException();
             }
-
-            return null;
+            catch (UriFormatException)
+            {
+                throw new FormatException("The room id url was not recognized. Make sure that the url is valid.");
+            }
         }
     }
 }
