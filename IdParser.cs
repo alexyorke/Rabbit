@@ -1,10 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="IdParser.cs" company="None">
+//   
+// </copyright>
+// <summary>
+//   The id parser.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Rabbit
 {
+    using System;
+    using System.Linq;
     using System.Text.RegularExpressions;
 
     /// <summary>
