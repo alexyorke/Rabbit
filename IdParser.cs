@@ -37,7 +37,7 @@ namespace Rabbit
             // available on GitHub.
             id = id.Trim();
 
-            if (this.IsValidStrictRoomId(id))
+            if (IsValidStrictRoomId(id))
             {
                 return id;
             }
@@ -58,7 +58,7 @@ namespace Rabbit
 
                 var urlId = Convert.ToString(parsedUrl.Segments.Last());
 
-                if (this.IsValidStrictRoomId(urlId))
+                if (IsValidStrictRoomId(urlId))
                 {
                     return urlId;
                 }
@@ -80,7 +80,7 @@ namespace Rabbit
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        internal bool IsValidStrictRoomId(string id)
+        internal static bool IsValidStrictRoomId(string id)
         {
             return Regex.IsMatch(id, @"^[a-zA-Z0-9_-]+$") && (id.Length <= 14) && (9 <= id.Length);
         }
