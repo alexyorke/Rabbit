@@ -24,6 +24,11 @@ namespace Rabbit
     public class Rabbit
     {
         /// <summary>
+        /// The stored server version.
+        /// </summary>
+        public const int StoredVersion = 179;
+
+        /// <summary>
         /// The game identifier
         /// </summary>
         public const string GameId = "everybody-edits-su9rn58o40itdbnw69plyw";
@@ -159,12 +164,23 @@ namespace Rabbit
                     ? "Beta"
                     : "Everybodyedits";
 
+                var serverVersion = Client.BigDB.Load("config", "config")["version"];
                 this.EeConn = Client.Multiplayer.CreateJoinRoom(
                     worldId,
-                    roomPrefix + Client.BigDB.Load("config", "config")["version"],
+                    roomPrefix + serverVersion,
                     true,
                     null,
                     null);
+
+                if (Convert.ToInt32(serverVersion) <= StoredVersion)
+                {
+                    return this.EeConn;
+                }
+
+                const string ErrorMsg = "Rabbit: WARNING the server version is greater than the version Rabbit is compatible with." +
+                                        " Consider updating Rabbit to the latest version at https://github.com/Decagon/Rabbit/releases";
+                Console.WriteLine(ErrorMsg);
+                System.Diagnostics.Debug.Write(ErrorMsg);
             }
             else
             {
