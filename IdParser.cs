@@ -31,7 +31,7 @@ namespace Rabbit
             // available on GitHub.
             id = id.Trim();
 
-            if (Regex.IsMatch(id, @"^[a-zA-Z0-9_-]+$") && (id.Length <= 14) && (9 <= id.Length))
+            if (this.isValidStrictRoomId(id))
             {
                 return id;
             }
@@ -52,7 +52,7 @@ namespace Rabbit
 
                 var urlId = Convert.ToString(parsedUrl.Segments.Last());
 
-                if (Regex.IsMatch(urlId, @"^[a-zA-Z0-9_-]+$") && (urlId.Length <= 14) && (9 <= urlId.Length))
+                if (this.isValidStrictRoomId(urlId))
                 {
                     return urlId;
                 }
@@ -63,6 +63,11 @@ namespace Rabbit
             {
                 throw new FormatException("The room id url was not recognized. Make sure that the url is valid.");
             }
+        }
+
+        internal bool isValidStrictRoomId(string urlId)
+        {
+            return Regex.IsMatch(urlId, @"^[a-zA-Z0-9_-]+$") && (urlId.Length <= 14) && (9 <= urlId.Length);
         }
     }
 }
