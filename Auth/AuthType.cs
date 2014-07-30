@@ -44,6 +44,12 @@ namespace Rabbit.Auth
         /// Also used to force authentication (for backwards compatibility with older
         /// systems and authentication types).
         /// </summary>
-        Unknown
+        Unknown,
+
+        /// <summary>
+        /// The username authentication type. This means that the user supplied a username
+        /// which must be converted into a user id, then parsed.
+        /// </summary>
+        Username
     }
 }

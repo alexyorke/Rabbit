@@ -81,10 +81,9 @@ namespace Rabbit
             }
 
             if (!string.IsNullOrEmpty(email) &&
-                !string.IsNullOrEmpty(password) &&
-                IsValidEmail(email))
+                !string.IsNullOrEmpty(password))
             {
-                return AuthType.Regular;
+                return IsValidEmail(email) ? AuthType.Regular : AuthType.Username;
             }
 
             throw new InvalidOperationException("Invalid authentication type.");
