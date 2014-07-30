@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="IdParser.cs" company="None">
-//   
+//   Copyright 2014.
 // </copyright>
 // <summary>
 //   The id parser.
@@ -16,7 +16,7 @@ namespace Rabbit
     /// <summary>
     /// The id parser.
     /// </summary>
-    class IdParser
+    public static class IdParser
     {
         /// <summary>
         /// The parser.

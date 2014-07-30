@@ -24,14 +24,14 @@ namespace Rabbit
     public class Rabbit
     {
         /// <summary>
-        /// The stored server version.
-        /// </summary>
-        public const int StoredVersion = 179;
-
-        /// <summary>
         /// The game identifier
         /// </summary>
         public const string GameId = "everybody-edits-su9rn58o40itdbnw69plyw";
+
+        /// <summary>
+        /// The stored server version.
+        /// </summary>
+        private const int StoredVersion = 179;
 
         /// <summary>
         /// Gets or sets the Client for the main authentication system.
@@ -54,7 +54,6 @@ namespace Rabbit
         /// <exception cref="System.InvalidOperationException">Invalid authentication type.</exception>
         public static AuthType GetAuthType(string email, string password)
         {
-
             // ArmorGames: Both UserID and password are 32 char hexadecimal lowercase strings
             if (!string.IsNullOrEmpty(email) &&
                 Regex.IsMatch(password, @"^[0-9a-f]{32}$") &&
@@ -201,7 +200,7 @@ namespace Rabbit
         /// <returns>
         /// Whether or not the email is valid.
         /// </returns>
-        internal static bool IsValidEmail(string strIn) // http://stackoverflow.com/questions/5342375/
+        private static bool IsValidEmail(string strIn) // http://stackoverflow.com/questions/5342375/
         {
             // Return true if strIn is in valid e-mail format.
             return Regex.IsMatch(strIn, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
