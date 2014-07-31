@@ -92,7 +92,7 @@ namespace Rabbit
             throw new InvalidOperationException(GenerateErrorMessage(email, password));
         }
 
-        // TODO: support SecureStrings and reverse password and email parameters.
+        // TODO: reverse password and email parameters.
 
         /// <summary>
         /// Connects to the PlayerIO service using the provided credentials.
