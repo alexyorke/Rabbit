@@ -20,4 +20,4 @@ Now, Connection is a valid PlayerIOClient connection. Remember to initialize it!
 
 Rabbit is going to know what to set the mysterious block delay to, depending on your geographical region and internet speed so that you, as a developer, do not need to ask the user or make a guess. Furthermore, Rabbit springs to action when the client disconnects and automatically cleans up the session.
 
-***Note:*** the MouseBreaker authentication pattern is very similar to ArmorGames and so may be difficult to deciper between them automatically. Also the disconnect cleanup feature has not been implemented, yet.
+***Note:*** the MouseBreaker authentication pattern is very similar to ArmorGames and so may be difficult to deciper between them automatically. Moreover there are much more ArmorGames accounts than MouseBreaker accounts. The disconnect-cleanup feature has not been implemented, yet.
