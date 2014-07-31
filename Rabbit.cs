@@ -86,7 +86,10 @@ namespace Rabbit
                 return IsValidEmail(email) ? AuthType.Regular : AuthType.Username;
             }
 
-            throw new InvalidOperationException("Invalid authentication type.");
+            // Try to help the user if they entered in invalid data.
+            // Guess what possible authentication type they might be trying to
+            // use and tell them that there is a proper way to format it.
+            throw new InvalidOperationException(GenerateErrorMessage(email, password));
         }
 
         // TODO: support SecureStrings and reverse password and email parameters.
@@ -209,6 +212,83 @@ namespace Rabbit
         {
             // Return true if strIn is in valid e-mail format.
             return Regex.IsMatch(strIn, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
+        }
+
+        /// <summary>
+        /// The generate error message.
+        /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        /// <param name="password">
+        /// The password.
+        /// </param>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
+        private static string GenerateErrorMessage(string email, string password)
+        {
+            var msg = "";
+            if (string.IsNullOrEmpty(email))
+            {
+                msg = msg + "Since an email, username or token was not provided, Facebook authentication " +
+                    " is the only option. ";
+                if (password.Length < 100)
+                {
+                    msg = msg + "The token should not be less than 100 characters.";
+                }
+
+                if (password.Length > 200)
+                {
+                    msg = msg + "The token should not be greater than 200 characters.";
+                }
+
+                if (!Regex.IsMatch(password, @"^[0-9a-z]$", RegexOptions.IgnoreCase))
+                {
+                    msg = msg + "The token should not contain non-alphanumeric characters.";
+                }
+            }
+            else
+            {
+                if (Regex.IsMatch(password, @"^[0-9a-f]$") && Regex.IsMatch(email, @"^[0-9a-f]$"))
+                {
+                    msg = msg + "Since a token was provided for the username and password " +
+                        "it was assumed that the authentication type was ArmorGames. However, ";
+                    if (email.Length > 32)
+                    {
+                        msg = msg + " the username token was greater than 32 characters. ";
+                    }
+
+                    if (email.Length < 32)
+                    {
+                        msg = msg + " the username token was shorter than 32 characters. ";
+                    }
+
+                    if (password.Length > 32)
+                    {
+                        msg = msg + " the password token was greater than 32 characters. ";
+                    }
+
+                    if (password.Length < 32)
+                    {
+                        msg = msg + " the password token was less than 32 characters. ";
+                    }
+                }
+
+                    msg = msg + "Since a username was provided, the regular authentication was used. However, ";
+                    if (email.Length > 21)
+                    {
+                        msg = msg + " the username was longer than 20 characters.";
+                    }
+
+                    if (email.Length <= 3)
+                    {
+                        msg = msg + " the username was shorter than 3 characters.";
+                    }
+                }
+            
+
+            return msg;
         }
     }
 }
