@@ -6,18 +6,18 @@ Rabbit
 
 This framework allows developers to have one unified authentication UI and one authentication method to authenticate multiple types of users. The authentication type is handled automatically, and a valid PlayerIOClient object is returned.
 
-Rabbit currently supports ArmorGames, MouseBreaker*, Facebook and default authentication mechanisms.
+Rabbit currently supports ArmorGames, Kongregate, MouseBreaker*, Facebook and default (username or email) authentication mechanisms.
 
 
-Add Rabbit to your project:
+Add Rabbit to your C# project:
 
 ```csharp
 using Rabbit;
 var Connection = new Rabbit.Rabbit().LogIn(EmailOrToken, PasswordOrToken, RoomID);
 ```
 
-Now, Connection is a valid PlayerIOClient connection. Remember to initialize it!
+Connection is a valid PlayerIOClient connection.
 
-Rabbit is going to know what to set the mysterious block delay to, depending on your geographical region and internet speed so that you, as a developer, do not need to ask the user or make a guess. Furthermore, Rabbit springs to action when the client disconnects and automatically cleans up the session.
+Furthermore, Rabbit springs to action when the client disconnects and automatically cleans up the session*.
 
-***Note:*** the MouseBreaker authentication pattern is very similar to ArmorGames and so may be difficult to deciper between them automatically. Moreover there are much more ArmorGames accounts than MouseBreaker accounts. The disconnect-cleanup feature has not been implemented, yet.
+***Note:*** the MouseBreaker authentication pattern is very similar to ArmorGames and so may be difficult to deciper between them automatically. Moreover there are much more ArmorGames accounts than MouseBreaker accounts. The disconnect-cleanup feature has not been implemented, yet. Rabbit may be able to suggest a delay time depending on the user's geographical region.
