@@ -149,6 +149,12 @@ namespace Rabbit
                     break;
                 }
 
+                case AuthType.Username:
+                    {
+                        Client = Username.Authenticate(email, password);
+                    break;
+                }
+
                 default:
                     {
                         Client = PlayerIO.QuickConnect.SimpleConnect(GameId, email, password);

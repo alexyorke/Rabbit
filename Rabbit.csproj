@@ -57,6 +57,7 @@
     <Compile Include="Auth\AuthType.cs" />
     <Compile Include="Auth\Facebook.cs" />
     <Compile Include="Auth\Kongregate.cs" />
+    <Compile Include="Auth\Username.cs" />
     <Compile Include="IdParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rabbit.cs" />
