@@ -43,26 +43,6 @@ namespace Rabbit.Tests
         }
 
         /// <summary>
-        /// The invalid authentication test.
-        /// </summary>
-        [Test]
-        public void InvalidAuthenticationTest()
-        {
-            InvalidOperationException expectedException = null;
-
-            try
-            {
-                Rabbit.GetAuthType("test", "password");
-            }
-            catch (InvalidOperationException ex)
-            {
-                expectedException = ex;
-            }
-
-            Assert.IsNotNull(expectedException);
-        }
-
-        /// <summary>
         /// The regular authentication test.
         /// </summary>
         [Test]
