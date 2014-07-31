@@ -4,7 +4,7 @@ Rabbit
 [![Build status](https://ci.appveyor.com/api/projects/status/6fxlb8bkqp18cg3c/branch/master)](https://ci.appveyor.com/project/Decagon/rabbit/branch/master)
 
 
-This framework allows developers to have one unified authentication UI and one authentication method to authenticate multiple types of users. The authentication type is handled automatically, and a valid PlayerIOClient object is returned.
+This framework allows developers to have one unified authentication UI and one authentication method to authenticate multiple types of users. The authentication type is handled automatically.
 
 Rabbit currently supports ArmorGames, Kongregate, MouseBreaker*, Facebook and default (username or email) authentication mechanisms.
 
@@ -13,10 +13,10 @@ Add Rabbit to your C# project:
 
 ```csharp
 using Rabbit;
-var Connection = new Rabbit.Rabbit().LogIn(EmailOrToken, PasswordOrToken, RoomID);
+var Connection = new Rabbit.Rabbit().LogIn(EmailOrToken, RoomID, Password = null, createRoom = true);
 ```
 
-Connection is a valid PlayerIOClient connection.
+Connection is a valid PlayerIOClient connection. The password and createRoom parameters are optional.
 
 Furthermore, Rabbit springs to action when the client disconnects and automatically cleans up the session*.
 
