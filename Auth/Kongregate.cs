@@ -29,7 +29,7 @@ namespace Rabbit.Auth
         /// <returns>A valid PlayerIOClient instance.</returns>
         public static Client Authenticate(string email, string password)
         {
-            return PlayerIO.QuickConnect.KongregateConnect(Rabbit.GameId, email, password);
+            return PlayerIO.QuickConnect.KongregateConnect(RabbitAuth.GameId, email, password);
         }
     }
 }

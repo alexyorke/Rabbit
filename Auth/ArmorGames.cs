@@ -35,7 +35,7 @@ namespace Rabbit.Auth
         public static Client Authenticate(string email, string password)
         {
             var c =
-                PlayerIO.QuickConnect.SimpleConnect(Rabbit.GameId, "guest", "guest")
+                PlayerIO.QuickConnect.SimpleConnect(RabbitAuth.GameId, "guest", "guest")
                     .Multiplayer.JoinRoom(string.Empty, null);
 
             c.OnMessage += (sender, message) =>

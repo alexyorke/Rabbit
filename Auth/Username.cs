@@ -39,7 +39,7 @@ namespace Rabbit.Auth
 
             if (userId.StartsWith("simple"))
             {
-                return PlayerIO.QuickConnect.SimpleConnect(Rabbit.GameId, userId.Substring(6, userId.Length - 6), password);
+                return PlayerIO.QuickConnect.SimpleConnect(RabbitAuth.GameId, userId.Substring(6, userId.Length - 6), password);
             }
 
             throw new AuthenticationException("Unknown username.");

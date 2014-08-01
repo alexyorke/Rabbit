@@ -3,7 +3,7 @@
 // Author           : Decagon
 // Created          : 07-22-2014
 // ***********************************************************************
-// <copyright file="Rabbit.cs" company="None">
+// <copyright file="RabbitAuth.cs" company="None">
 //     Copyright 2014 (c) . All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -24,7 +24,7 @@ namespace Rabbit
     /// <summary>
     /// Authentication core.
     /// </summary>
-    public class Rabbit
+    public class RabbitAuth
     {
         /// <summary>
         /// The game identifier
@@ -123,7 +123,7 @@ namespace Rabbit
         /// <exception cref="System.InvalidOperationException">
         /// Invalid authentication type.
         /// </exception>
-        public Connection RabbitAuth(string email, string worldId, string password = null, bool createRoom = true, AuthType authType = AuthType.Unknown)
+        public Connection LogIn(string email, string worldId, string password = null, bool createRoom = true, AuthType authType = AuthType.Unknown)
         {
             if (UnstableNetwork)
             {

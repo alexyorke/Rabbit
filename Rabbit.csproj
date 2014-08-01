@@ -61,7 +61,7 @@
     <Compile Include="IdParser.cs" />
     <Compile Include="InternetStabilityTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rabbit.cs" />
+    <Compile Include="RabbitAuth.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Rabbit_key.snk" />
