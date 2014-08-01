@@ -13,9 +13,9 @@ Add Rabbit to your C# project:
 
 ```csharp
 using Rabbit;
-var conn = new Rabbit.LogIn (UserEmail,
-                             UserRoomID,
-                             UserPassword)
+var conn = new Rabbit.RabbitAuth (UserEmail,
+                                  UserRoomID,
+                                  UserPassword)
 ```
 
 Connection is a valid PlayerIOClient connection. The password, createRoom and AuthType parameters are optional.
