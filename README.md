@@ -13,7 +13,7 @@ Add Rabbit to your C# project:
 
 ```csharp
 using Rabbit;
-var Connection = new Rabbit.Rabbit().LogIn(EmailOrToken, RoomID, Password = null, createRoom = true);
+var Connection = new Rabbit.LogIn(EmailOrToken, RoomID, Password = null, createRoom = true);
 ```
 
 Connection is a valid PlayerIOClient connection. The password and createRoom parameters are optional.
