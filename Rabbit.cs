@@ -43,7 +43,14 @@ namespace Rabbit
         /// <value>The everybody edits connection.</value>
         private static Connection EeConn { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the network is unstable.
+        /// By default it is false. If true, multiple tries will be used to
+        /// try to check if the network is available. This will increase the
+        /// connection setup time.
+        /// </summary>
         public static bool UnstableNetwork { get; set; }
+        
 
         /// <summary>
         /// Gets the type of the authentication.
@@ -135,6 +142,7 @@ namespace Rabbit
                     }
                 }
             }
+
             // Clean the email (or token) from whitespace
             email = Regex.Replace(email, @"\s+", string.Empty);
 
@@ -218,7 +226,6 @@ namespace Rabbit
             // Return true if strIn is in valid e-mail format.
             return Regex.IsMatch(strIn, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
         }
-
         
         /// <summary>
         /// The generate error message.
@@ -234,7 +241,7 @@ namespace Rabbit
         /// </returns>
         private static string GenerateErrorMessage(string email, string password)
         {
-            var msg = "";
+            var msg = string.Empty;
             if (string.IsNullOrEmpty(email))
             {
                 msg = msg + "Since an email, username or token was not provided, Facebook authentication " +
@@ -293,7 +300,6 @@ namespace Rabbit
                     }
                 }
             
-
             return msg;
         }
     }
