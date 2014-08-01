@@ -20,7 +20,7 @@ var conn = new Rabbit() {Email      = UserEmail,
                          AuthType   = AuthType.Unknown};
 ```
 
-Connection is a valid PlayerIOClient connection. The password and createRoom parameters are optional.
+Connection is a valid PlayerIOClient connection. The password, createRoom and AuthType parameters are optional.
 
 Furthermore, Rabbit springs to action when the client disconnects and automatically cleans up the session*.
 
