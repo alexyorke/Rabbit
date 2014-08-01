@@ -37,13 +37,13 @@ namespace Rabbit
         /// Gets or sets the Client for the main authentication system.
         /// </summary>
         /// <value>The client.</value>
-        private Client Client { get; set; }
+        private static Client Client { get; set; }
 
         /// <summary>
         /// Gets or sets the PlayerIO connection to the server.
         /// </summary>
         /// <value>The everybody edits connection.</value>
-        private Connection EeConn { get; set; }
+        private static Connection EeConn { get; set; }
 
         /// <summary>
         /// Gets the type of the authentication.
@@ -118,7 +118,7 @@ namespace Rabbit
         /// <exception cref="System.InvalidOperationException">
         /// Invalid authentication type.
         /// </exception>
-        public Connection LogIn(string email, string worldId, string password = null, bool createRoom = true, AuthType authType = AuthType.Unknown)
+        public static Connection LogIn(string email, string worldId, string password = null, bool createRoom = true, AuthType authType = AuthType.Unknown)
         {
             // Clean the email (or token) from whitespace
             email = Regex.Replace(email, @"\s+", string.Empty);
@@ -172,7 +172,7 @@ namespace Rabbit
                     : "Everybodyedits";
 
                 var serverVersion = Client.BigDB.Load("config", "config")["version"];
-                this.EeConn = Client.Multiplayer.CreateJoinRoom(
+                EeConn = Client.Multiplayer.CreateJoinRoom(
                     worldId,
                     roomPrefix + serverVersion,
                     true,
@@ -181,7 +181,7 @@ namespace Rabbit
 
                 if (Convert.ToInt32(serverVersion) <= StoredVersion)
                 {
-                    return this.EeConn;
+                    return EeConn;
                 }
 
                 const string ErrorMsg = "Rabbit: WARNING the server version is greater than the version Rabbit is compatible with." +
@@ -191,12 +191,12 @@ namespace Rabbit
             }
             else
             {
-                this.EeConn = Client.Multiplayer.JoinRoom(
+                EeConn = Client.Multiplayer.JoinRoom(
                     worldId,
                     null);
             }
 
-            return this.EeConn;
+            return EeConn;
         }
 
         /// <summary>
