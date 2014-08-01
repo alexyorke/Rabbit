@@ -28,8 +28,8 @@ namespace Rabbit.Tests
         [Test]
         public void ValidRoomIDTest()
         {
-            Assert.AreEqual(IdParser.IsValidStrictRoomId("PWmSQ3dUeya0I"), true);
-            Assert.AreEqual(IdParser.Parse("PWmSQ3dUeya0I"), "PWmSQ3dUeya0I");
+            Assert.AreEqual(IdParser.IsValidStrictRoomId("PWtest12345"), true);
+            Assert.AreEqual(IdParser.Parse("PWtest12345"), "PWtest12345");
         }
     }
 }
