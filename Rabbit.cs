@@ -32,11 +32,6 @@ namespace Rabbit
         public const string GameId = "everybody-edits-su9rn58o40itdbnw69plyw";
 
         /// <summary>
-        /// The stored server version.
-        /// </summary>
-        private const int StoredVersion = 179;
-
-        /// <summary>
         /// Gets or sets the Client for the main authentication system.
         /// </summary>
         /// <value>The client.</value>
@@ -198,16 +193,6 @@ namespace Rabbit
                     true,
                     null,
                     null);
-
-                if (Convert.ToInt32(serverVersion) <= StoredVersion)
-                {
-                    return EeConn;
-                }
-
-                const string ErrorMsg = "Rabbit: WARNING the server version is greater than the version Rabbit is compatible with." +
-                                        " Consider updating Rabbit to the latest version at https://github.com/Decagon/Rabbit/releases";
-                Console.WriteLine(ErrorMsg);
-                System.Diagnostics.Debug.Write(ErrorMsg);
             }
             else
             {
