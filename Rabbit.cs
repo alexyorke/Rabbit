@@ -24,7 +24,7 @@ namespace Rabbit
     /// <summary>
     /// Authentication core.
     /// </summary>
-    public class Rabbit
+    public static class Rabbit
     {
         /// <summary>
         /// The game identifier
@@ -47,6 +47,8 @@ namespace Rabbit
         /// </summary>
         /// <value>The everybody edits connection.</value>
         private static Connection EeConn { get; set; }
+
+        public static bool UnstableNetwork { get; set; }
 
         /// <summary>
         /// Gets the type of the authentication.
@@ -121,22 +123,25 @@ namespace Rabbit
         /// <exception cref="System.InvalidOperationException">
         /// Invalid authentication type.
         /// </exception>
-        public static Connection LogIn(string email, string worldId, string password = null, bool createRoom = true, AuthType authType = AuthType.Unknown)
+        public static Connection RabbitAuth(string email, string worldId, string password = null, bool createRoom = true, AuthType authType = AuthType.Unknown)
         {
-            var internetCheckIterations = 0;
-            while (!InternetStabilityTester.IsNetworkAvailable())
+            if (UnstableNetwork)
             {
-                System.Diagnostics.Debug.Write("There isn't a suitable internet connection. Retrying in 2 seconds...");
-                internetCheckIterations++;
-                Thread.Sleep(2000);
-
-                if (internetCheckIterations > 4)
+                var internetCheckIterations = 0;
+                while (!InternetStabilityTester.IsNetworkAvailable())
                 {
-                    // Error code is ERROR_INTERNET_CANNOT_CONNECT
-                    throw new NetworkInformationException(12029);
+                    System.Diagnostics.Debug.Write(
+                        "There isn't a suitable internet connection. Retrying in 2 seconds...");
+                    internetCheckIterations++;
+                    Thread.Sleep(2000);
+
+                    if (internetCheckIterations > 4)
+                    {
+                        // Error code is ERROR_INTERNET_CANNOT_CONNECT
+                        throw new NetworkInformationException(12029);
+                    }
                 }
             }
-
             // Clean the email (or token) from whitespace
             email = Regex.Replace(email, @"\s+", string.Empty);
 
@@ -231,6 +236,7 @@ namespace Rabbit
             return Regex.IsMatch(strIn, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
         }
 
+        
         /// <summary>
         /// The generate error message.
         /// </summary>

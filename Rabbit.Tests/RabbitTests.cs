@@ -86,5 +86,12 @@ namespace Rabbit.Tests
 
             Assert.AreEqual(AuthType.ArmorGames, authResult);
         }
+
+        [Test]
+        public void RoomIDTest()
+        {
+            Assert.AreEqual(IdParser.IsValidStrictRoomId("PWmSQ3dUeya0I"), true);
+            Assert.AreEqual(IdParser.Parse("PWmSQ3dUeya0I"), "PWmSQ3dUeya0I");
+        }
     }
 }

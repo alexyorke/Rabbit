@@ -80,7 +80,7 @@ namespace Rabbit
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        internal static bool IsValidStrictRoomId(string id)
+        public static bool IsValidStrictRoomId(string id)
         {
             return Regex.IsMatch(id, @"^[a-zA-Z0-9_-]+$") && (id.Length <= 14) && (9 <= id.Length);
         }
