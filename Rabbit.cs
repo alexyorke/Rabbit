@@ -97,8 +97,6 @@ namespace Rabbit
             throw new InvalidOperationException(GenerateErrorMessage(email, password));
         }
 
-        // TODO: reverse password and email parameters.
-
         /// <summary>
         /// Connects to the PlayerIO service using the provided credentials.
         /// </summary>
