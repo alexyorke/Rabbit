@@ -12,7 +12,10 @@
 namespace Rabbit
 {
     using System;
+    using System.ComponentModel;
+    using System.Net.NetworkInformation;
     using System.Text.RegularExpressions;
+    using System.Threading;
 
     using PlayerIOClient;
 
@@ -120,6 +123,20 @@ namespace Rabbit
         /// </exception>
         public static Connection LogIn(string email, string worldId, string password = null, bool createRoom = true, AuthType authType = AuthType.Unknown)
         {
+            var internetCheckIterations = 0;
+            while (!InternetStabilityTester.IsNetworkAvailable())
+            {
+                System.Diagnostics.Debug.Write("There isn't a suitable internet connection. Retrying in 2 seconds...");
+                internetCheckIterations++;
+                Thread.Sleep(2000);
+
+                if (internetCheckIterations > 4)
+                {
+                    // Error code is ERROR_INTERNET_CANNOT_CONNECT
+                    throw new NetworkInformationException(12029);
+                }
+            }
+
             // Clean the email (or token) from whitespace
             email = Regex.Replace(email, @"\s+", string.Empty);
 
