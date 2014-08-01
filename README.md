@@ -13,7 +13,7 @@ Add Rabbit to your C# project:
 
 ```csharp
 using Rabbit;
-var conn = new Rabbit() {Email      = UserEmail,
+var conn = new Rabbit.LogIn {Email      = UserEmail,
                          RoomID     = UserRoomID,
                          Password   = UserPassword,
                          CreateRoom = true,
