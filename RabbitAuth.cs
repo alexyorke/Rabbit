@@ -93,6 +93,11 @@ namespace Rabbit
                 return IsValidEmail(email) ? AuthType.Regular : AuthType.Username;
             }
 
+            if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(password))
+            {
+                throw new InvalidOperationException("The email/token and password fields cannot be both blank.");
+            }
+
             // Try to help the user if they entered in invalid data.
             // Guess what possible authentication type they might be trying to
             // use and tell them that there is a proper way to format it.
@@ -208,6 +213,7 @@ namespace Rabbit
                     worldId,
                     null);
             }
+
             EeConn.OnMessage += this.OnMessageHandler;
             EeConn.OnDisconnect += this.cleanUpHandler;
             return EeConn;
