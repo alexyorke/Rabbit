@@ -208,8 +208,28 @@ namespace Rabbit
                     worldId,
                     null);
             }
-
+            EeConn.OnMessage += this.OnMessageHandler;
+            EeConn.OnDisconnect += this.cleanUpHandler;
             return EeConn;
+        }
+
+        /// <summary>
+        /// The clean up handler.
+        /// </summary>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        /// <param name="g">
+        /// The g.
+        /// </param>
+        void cleanUpHandler(object e, string g)
+        {
+            
+        }
+
+        void OnMessageHandler(object e, Message m)
+        {
+            
         }
 
         /// <summary>
