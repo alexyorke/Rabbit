@@ -196,16 +196,22 @@ namespace Rabbit
                     break;
                 }
 
+                case AuthType.Mousebreaker:
+                {
+                    Client = Mousebreaker.Authenticate(email, password);
+                    break;
+                }
+
                 case AuthType.Username:
-                    {
-                        Client = Username.Authenticate(email, password);
+                {
+                    Client = Username.Authenticate(email, password);
                     break;
                 }
 
                 default:
                     {
-                        Client = PlayerIO.QuickConnect.SimpleConnect(GameId, email, password);
-                        break;
+                     Client = PlayerIO.QuickConnect.SimpleConnect(GameId, email, password);
+                     break;
                 }
             }
 
