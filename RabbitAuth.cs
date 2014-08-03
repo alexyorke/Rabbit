@@ -208,7 +208,7 @@ namespace Rabbit
                 }
 
                 default:
-                    {
+                {
                      Client = PlayerIO.QuickConnect.SimpleConnect(GameId, email, password);
                      break;
                 }
@@ -238,6 +238,23 @@ namespace Rabbit
             EeConn.OnMessage += this.OnMessageHandler;
             EeConn.OnDisconnect += this.cleanUpHandler;
             return EeConn;
+        }
+
+        /// <summary>
+        /// The log in function.
+        /// </summary>
+        /// <param name="token">
+        /// The token.
+        /// </param>
+        /// <param name="worldId">
+        /// The world id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Connection"/>.
+        /// </returns>
+        public Connection LogIn(string token, string worldId)
+        {
+            return this.LogIn(token, worldId, null);
         }
 
         /// <summary>
