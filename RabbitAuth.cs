@@ -93,6 +93,22 @@ namespace Rabbit
                 return IsValidEmail(email) ? AuthType.Regular : AuthType.Username;
             }
 
+            // 88 character base 64 string for MouseBreaker authentication.
+            // Only one token.
+            if (!string.IsNullOrEmpty(email) && email.Length == 88)
+            {
+                try
+                {
+                    Convert.FromBase64String(email);
+                    return AuthType.Mousebreaker;
+                }
+                catch
+                {
+                    // safe to ignore the exception because it is not a valid
+                    // base 64 array. Keep going.
+                }
+            }
+
             if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(password))
             {
                 throw new InvalidOperationException("The email/token and password fields cannot be both blank.");
