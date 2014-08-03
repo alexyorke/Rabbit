@@ -32,6 +32,14 @@ namespace Rabbit
         public const string GameId = "everybody-edits-su9rn58o40itdbnw69plyw";
 
         /// <summary>
+        /// Gets or sets a value indicating whether the network is unstable.
+        /// By default it is false. If true, multiple tries will be used to
+        /// try to check if the network is available. This will increase the
+        /// connection setup time.
+        /// </summary>
+        public static bool UnstableNetwork { get; set; }
+
+        /// <summary>
         /// Gets or sets the Client for the main authentication system.
         /// </summary>
         /// <value>The client.</value>
@@ -42,15 +50,6 @@ namespace Rabbit
         /// </summary>
         /// <value>The everybody edits connection.</value>
         private static Connection EeConn { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the network is unstable.
-        /// By default it is false. If true, multiple tries will be used to
-        /// try to check if the network is available. This will increase the
-        /// connection setup time.
-        /// </summary>
-        public static bool UnstableNetwork { get; set; }
-        
 
         /// <summary>
         /// Gets the type of the authentication.
@@ -102,7 +101,7 @@ namespace Rabbit
                     Convert.FromBase64String(email);
                     return AuthType.Mousebreaker;
                 }
-                catch
+                catch (FormatException)
                 {
                     // safe to ignore the exception because it is not a valid
                     // base 64 array. Keep going.
@@ -250,14 +249,12 @@ namespace Rabbit
         /// <param name="g">
         /// The g.
         /// </param>
-        void cleanUpHandler(object e, string g)
+        public void cleanUpHandler(object e, string g)
         {
-            
         }
 
-        void OnMessageHandler(object e, Message m)
+        public void OnMessageHandler(object e, Message m)
         {
-            
         }
 
         /// <summary>
