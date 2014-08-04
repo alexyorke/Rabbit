@@ -18,5 +18,7 @@ var conn = RabbitAuth.LogIn (EmailOrTokenOrUserName, RoomID, Password);
 
 The password parameter is optional if Facebook authentication is used.
 
+Using NuGet? Just download the EE-Rabbit package. Releases are pushed to NuGet and GitHub.
+
 
 ***Note:*** Rabbit may be able to suggest a delay time depending on the user's geographical region.
