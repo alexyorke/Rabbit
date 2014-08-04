@@ -9,10 +9,9 @@ This framework allows developers to have one unified authentication UI and one a
 Rabbit currently supports ArmorGames, Kongregate, MouseBreaker, Facebook and default (username or email) authentication mechanisms. In the future Rabbit is possibly planning to support Yahoo GamesNet.
 
 
-Add Rabbit to your C# project:
+To initialize a new PlayerIO connection, simply type:
 
 ```csharp
-using Rabbit;
 var conn = RabbitAuth.LogIn (EmailOrTokenOrUserName, RoomID, Password);
 ```
 
