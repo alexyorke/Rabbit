@@ -89,7 +89,7 @@ namespace Rabbit
             if (!string.IsNullOrEmpty(email) &&
                 !string.IsNullOrEmpty(password))
             {
-                return IsValidEmail(email) ? AuthType.Regular : AuthType.Username;
+                return IsValidEmail(email) ? AuthType.Regular : AuthType.UserName;
             }
 
             // 88 character base 64 string for MouseBreaker authentication.
@@ -201,7 +201,7 @@ namespace Rabbit
                     break;
                 }
 
-                case AuthType.Username:
+                case AuthType.UserName:
                 {
                     Client = Username.Authenticate(email, password);
                     break;
