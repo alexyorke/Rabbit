@@ -10,6 +10,7 @@
 namespace Rabbit
 {
     using System;
+    using System.Globalization;
     using System.Linq;
     using System.Text.RegularExpressions;
 
@@ -35,6 +36,11 @@ namespace Rabbit
         {
             // This method is based on TakoMan02's Skylight parse url method
             // available on GitHub.
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new ArgumentNullException("The room ID cannot be null.");
+            }
+
             id = id.Trim();
 
             if (IsValidStrictRoomId(id))
@@ -56,7 +62,7 @@ namespace Rabbit
                     throw new UriFormatException();
                 }
 
-                var urlId = Convert.ToString(parsedUrl.Segments.Last());
+                var urlId = Convert.ToString(parsedUrl.Segments.Last(), CultureInfo.CurrentCulture);
 
                 if (IsValidStrictRoomId(urlId))
                 {

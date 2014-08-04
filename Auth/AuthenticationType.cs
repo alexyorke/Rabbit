@@ -16,7 +16,7 @@ namespace Rabbit.Auth
     /// <summary>
     /// Authentication Types
     /// </summary>
-    public enum AuthType
+    public enum AuthenticationType
     {
         /// <summary>
         /// The regular EE way (through the central website)
@@ -55,6 +55,6 @@ namespace Rabbit.Auth
         /// <summary>
         /// The mousebreaker authentication.
         /// </summary>
-        Mousebreaker
+        MouseBreaker
     }
 }

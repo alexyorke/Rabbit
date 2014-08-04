@@ -10,6 +10,7 @@
 // ***********************************************************************
 namespace Rabbit.Auth
 {
+    using System;
     using System.Security.Authentication;
     using PlayerIOClient;
 
@@ -17,13 +18,13 @@ namespace Rabbit.Auth
     /// Class Username.
     /// </summary>
     
-    public static class Username
+    public static class UserName
     {
         /// <summary>
         /// Authenticates using the specified email.
         /// </summary>
-        /// <param name="username">
-        /// The username.
+        /// <param name="userName">
+        /// The user Name.
         /// </param>
         /// <param name="password">
         /// The password.
@@ -31,13 +32,13 @@ namespace Rabbit.Auth
         /// <returns>
         /// A valid PlayerIOClient instance.
         /// </returns>
-        public static Client Authenticate(string username, string password)
+        public static Client Authenticate(string userName, string password)
         {
             var c = PlayerIO.QuickConnect.SimpleConnect("everybody-edits-su9rn58o40itdbnw69plyw", "guest", "guest");
 
-            var userId = c.BigDB.Load("usernames", username)["owner"].ToString();
+            var userId = c.BigDB.Load("usernames", userName)["owner"].ToString();
 
-            if (userId.StartsWith("simple"))
+            if (userId.StartsWith("simple", StringComparison.CurrentCulture))
             {
                 return PlayerIO.QuickConnect.SimpleConnect(RabbitAuth.GameId, userId.Substring(6, userId.Length - 6), password);
             }

@@ -6,18 +6,20 @@
 // ***********************************************************************
 namespace Rabbit.Auth
 {
+    using System;
+    using System.Globalization;
     using System.Security.Authentication;
     using PlayerIOClient;
 
     /// <summary>
     /// Class Mousebreaker.
     /// </summary>
-    public static class Mousebreaker
+    public static class MouseBreaker
     {
         /// <summary>
         /// Authenticates using the specified email.
         /// </summary>
-        /// <param name="username">
+        /// <param name="userName">
         /// The username.
         /// </param>
         /// <param name="password">
@@ -26,13 +28,13 @@ namespace Rabbit.Auth
         /// <returns>
         /// A valid PlayerIOClient instance.
         /// </returns>
-        public static Client Authenticate(string username, string password)
+        public static Client Authenticate(string userName, string password)
         {
             var c = PlayerIO.QuickConnect.SimpleConnect("everybody-edits-su9rn58o40itdbnw69plyw", "guest", "guest");
 
-            var userId = c.BigDB.Load("usernames", username)["owner"].ToString();
+            var userId = c.BigDB.Load("usernames", userName)["owner"].ToString();
 
-            if (userId.StartsWith("mouse"))
+            if (userId.StartsWith("mouse", StringComparison.CurrentCulture))
             {
                 return PlayerIO.QuickConnect.SimpleConnect(RabbitAuth.GameId, userId.Substring(5, userId.Length - 5), password);
             }

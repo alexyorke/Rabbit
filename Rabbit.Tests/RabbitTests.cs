@@ -51,7 +51,7 @@ namespace Rabbit.Tests
         {
             var authResult = RabbitAuth.GetAuthType("test@email.com", "testpassword");
 
-            Assert.AreEqual(AuthType.Regular, authResult);
+            Assert.AreEqual(AuthenticationType.Regular, authResult);
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Rabbit.Tests
         {
             var authResult = RabbitAuth.GetAuthType(null, "TcsL8qdSwvzDqudWGfYEGF5RrBLBSanHW78t5Z87ngKzUDdhCE4Jbtq6Vrwk2vuVS8WW2RYT54hwFxchWywLLvQaUyA2k2fanfAs");
 
-            Assert.AreEqual(AuthType.Facebook, authResult);
+            Assert.AreEqual(AuthenticationType.Facebook, authResult);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Rabbit.Tests
         {
             var authResult = RabbitAuth.GetAuthType("123456", "969ad76abf19b5c3e5917321e659abe6d8d6f3aba73e5158863c3b4159c00366");
 
-            Assert.AreEqual(AuthType.Kongregate, authResult);
+            Assert.AreEqual(AuthenticationType.Kongregate, authResult);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Rabbit.Tests
         {
             var authResult = RabbitAuth.GetAuthType("ee6ab941d09050400c4f916dbb47aad8", "23b9a5088c3c940f82945b6f3df80abc");
 
-            Assert.AreEqual(AuthType.ArmorGames, authResult);
+            Assert.AreEqual(AuthenticationType.ArmorGames, authResult);
         }
     }
 }

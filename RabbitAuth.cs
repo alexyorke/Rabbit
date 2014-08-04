@@ -12,7 +12,6 @@
 namespace Rabbit
 {
     using System;
-    using System.ComponentModel;
     using System.Net.NetworkInformation;
     using System.Text.RegularExpressions;
     using System.Threading;
@@ -27,6 +26,16 @@ namespace Rabbit
     public class RabbitAuth
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="RabbitAuth"/> class.
+        /// </summary>
+        internal RabbitAuth()
+        {
+            UnstableNetwork = false;
+            AuthenticationType = AuthenticationType.Unknown;
+            CreateRoom = true;
+        }
+
+        /// <summary>
         /// The game identifier
         /// </summary>
         public const string GameId = "everybody-edits-su9rn58o40itdbnw69plyw";
@@ -38,6 +47,16 @@ namespace Rabbit
         /// connection setup time.
         /// </summary>
         public static bool UnstableNetwork { get; set; }
+
+        /// <summary>
+        /// Gets or sets the authentication type.
+        /// </summary>
+        public static AuthenticationType AuthenticationType { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to create a multiplayer room.
+        /// </summary>
+        public static bool CreateRoom { get; set; }
 
         /// <summary>
         /// Gets or sets the Client for the main authentication system.
@@ -58,14 +77,14 @@ namespace Rabbit
         /// <param name="password">The password.</param>
         /// <returns>The authentication type.</returns>
         /// <exception cref="System.InvalidOperationException">Invalid authentication type.</exception>
-        public static AuthType GetAuthType(string email, string password)
+        public static AuthenticationType GetAuthType(string email, string password)
         {
             // ArmorGames: Both UserID and password are 32 char hexadecimal lowercase strings
             if (!string.IsNullOrEmpty(email) &&
                 Regex.IsMatch(password, @"^[0-9a-f]{32}$") &&
                 Regex.IsMatch(email, @"^[0-9a-f]{32}$"))
             {
-                return AuthType.ArmorGames;
+                return AuthenticationType.ArmorGames;
             }
 
             // Kongregate: 
@@ -75,7 +94,7 @@ namespace Rabbit
                 Regex.IsMatch(email, @"^\d+$") &&
                 Regex.IsMatch(password, @"^[0-9a-f]{64}$"))
             {
-                return AuthType.Kongregate;
+                return AuthenticationType.Kongregate;
             }
 
             // Facebook: password is a 100 char alphanumerical string
@@ -83,13 +102,13 @@ namespace Rabbit
             if (string.IsNullOrEmpty(email) &&
                 Regex.IsMatch(password, @"^[0-9a-z]{100,}$", RegexOptions.IgnoreCase))
             {
-                return AuthType.Facebook;
+                return AuthenticationType.Facebook;
             }
 
             if (!string.IsNullOrEmpty(email) &&
                 !string.IsNullOrEmpty(password))
             {
-                return IsValidEmail(email) ? AuthType.Regular : AuthType.UserName;
+                return IsValidEmail(email) ? AuthenticationType.Regular : AuthenticationType.UserName;
             }
 
             // 88 character base 64 string for MouseBreaker authentication.
@@ -99,7 +118,7 @@ namespace Rabbit
                 try
                 {
                     Convert.FromBase64String(email);
-                    return AuthType.Mousebreaker;
+                    return AuthenticationType.MouseBreaker;
                 }
                 catch (FormatException)
                 {
@@ -131,19 +150,13 @@ namespace Rabbit
         /// <param name="password">
         /// Password or token
         /// </param>
-        /// <param name="createRoom">
-        /// Whether or not to create a room or join an existing one.
-        /// </param>
-        /// <param name="authType">
-        /// The authentication type.
-        /// </param>
         /// <returns>
         /// A valid connection object.
         /// </returns>
         /// <exception cref="System.InvalidOperationException">
         /// Invalid authentication type.
         /// </exception>
-        public Connection LogIn(string email, string worldId, string password = null, bool createRoom = true, AuthType authType = AuthType.Unknown)
+        public Connection LogOn(string email, string worldId, string password = null)
         {
             if (UnstableNetwork)
             {
@@ -170,40 +183,40 @@ namespace Rabbit
             worldId = IdParser.Parse(worldId);
 
             // backwards compatibility
-            if (authType == AuthType.Unknown)
+            if (AuthenticationType == AuthenticationType.Unknown)
             {
-                authType = GetAuthType(email, password);
+                AuthenticationType = GetAuthType(email, password);
             }
 
-            switch (authType)
+            switch (AuthenticationType)
             {
-                case AuthType.Facebook:
+                case AuthenticationType.Facebook:
                 {
                     Client = Facebook.Authenticate(password);
                     break;
                 }
 
-                case AuthType.Kongregate:
+                case AuthenticationType.Kongregate:
                 {
                     Client = Kongregate.Authenticate(email, password);
                     break;
                 }
 
-                case AuthType.ArmorGames:
+                case AuthenticationType.ArmorGames:
                 {
                     Client = ArmorGames.Authenticate(email, password);
                     break;
                 }
 
-                case AuthType.Mousebreaker:
+                case AuthenticationType.MouseBreaker:
                 {
-                    Client = Mousebreaker.Authenticate(email, password);
+                    Client = MouseBreaker.Authenticate(email, password);
                     break;
                 }
 
-                case AuthType.UserName:
+                case AuthenticationType.UserName:
                 {
-                    Client = Username.Authenticate(email, password);
+                    Client = UserName.Authenticate(email, password);
                     break;
                 }
 
@@ -214,9 +227,9 @@ namespace Rabbit
                 }
             }
 
-            if (createRoom)
+            if (CreateRoom)
             {
-                var roomPrefix = worldId.StartsWith("BW") 
+                var roomPrefix = worldId.StartsWith("BW", StringComparison.CurrentCulture) 
                     ? "Beta"
                     : "Everybodyedits";
 
@@ -236,7 +249,6 @@ namespace Rabbit
             }
 
             EeConn.OnMessage += this.OnMessageHandler;
-            EeConn.OnDisconnect += this.cleanUpHandler;
             return EeConn;
         }
 
@@ -252,25 +264,12 @@ namespace Rabbit
         /// <returns>
         /// The <see cref="Connection"/>.
         /// </returns>
-        public Connection LogIn(string token, string worldId)
+        public Connection LogOn(string token, string worldId)
         {
-            return this.LogIn(token, worldId, null);
+            return this.LogOn(token, worldId, null);
         }
 
-        /// <summary>
-        /// The clean up handler.
-        /// </summary>
-        /// <param name="e">
-        /// The e.
-        /// </param>
-        /// <param name="g">
-        /// The g.
-        /// </param>
-        public void cleanUpHandler(object e, string g)
-        {
-        }
-
-        public void OnMessageHandler(object e, Message m)
+        public void OnMessageHandler(object theEvent, Message message)
         {
         }
 

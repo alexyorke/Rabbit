@@ -4,8 +4,18 @@
     using System;
     using System.Net.NetworkInformation;
 
-    class InternetStabilityTester
+    /// <summary>
+    /// The internet stability tester.
+    /// </summary>
+    internal class InternetStabilityTester
     {
+        /// <summary>
+        /// Prevents a default instance of the <see cref="InternetStabilityTester"/> class from being created.
+        /// </summary>
+        private InternetStabilityTester()
+        {
+        }
+
         /// <summary>
         /// Indicates whether any network connection is available.
         /// Filter connections below a specified speed, as well as virtual network cards.

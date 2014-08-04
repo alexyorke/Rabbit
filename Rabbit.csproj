@@ -54,7 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Auth\ArmorGames.cs" />
-    <Compile Include="Auth\AuthType.cs" />
+    <Compile Include="Auth\AuthenticationType.cs" />
     <Compile Include="Auth\Facebook.cs" />
     <Compile Include="Auth\Kongregate.cs" />
     <Compile Include="Auth\Mousebreaker.cs" />
