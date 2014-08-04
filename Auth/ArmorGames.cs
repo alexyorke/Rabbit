@@ -12,6 +12,7 @@
 namespace Rabbit.Auth
 {
     using System;
+    using System.Security.Authentication;
 
     using PlayerIOClient;
 
@@ -47,7 +48,7 @@ namespace Rabbit.Auth
 
                 if (message.Count == 0)
                 {
-                    throw new Exception("Could not log into ArmorGames.");
+                    throw new AuthenticationException("Could not log into ArmorGames.");
                 }
 
                 Client = PlayerIO.Connect(
