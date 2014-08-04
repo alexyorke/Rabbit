@@ -18,6 +18,4 @@ var conn = RabbitAuth.LogIn (Email, RoomID, Password);
 
 Connection is a valid PlayerIOClient connection. The password, createRoom and AuthType parameters are optional.
 
-Furthermore, Rabbit springs to action when the client disconnects and automatically cleans up the session*.
-
 ***Note:*** the MouseBreaker authentication pattern is very similar to ArmorGames and so may be difficult to deciper between them automatically. Moreover there are much more ArmorGames accounts than MouseBreaker accounts. The disconnect-cleanup feature has not been implemented, yet. Rabbit may be able to suggest a delay time depending on the user's geographical region.
