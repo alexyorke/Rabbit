@@ -13,9 +13,10 @@ Add Rabbit to your C# project:
 
 ```csharp
 using Rabbit;
-var conn = RabbitAuth.LogIn (Email, RoomID, Password);
+var conn = RabbitAuth.LogIn (EmailOrTokenOrUserName, RoomID, Password);
 ```
 
-Connection is a valid PlayerIOClient connection. The password, createRoom and AuthType parameters are optional.
+The password parameter is optional if Facebook authentication is used.
+
 
 ***Note:*** Rabbit may be able to suggest a delay time depending on the user's geographical region.
