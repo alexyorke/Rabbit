@@ -21,3 +21,6 @@ Using NuGet? Just download the EE-Rabbit package. Releases are pushed to NuGet a
 
 
 ***Note:*** Rabbit may be able to suggest a delay time depending on the user's geographical region.
+
+
+Rabbit icon by https://flic.kr/p/cVkan9
