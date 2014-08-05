@@ -28,7 +28,7 @@ namespace Rabbit
         /// <summary>
         /// Initializes a new instance of the <see cref="RabbitAuth"/> class.
         /// </summary>
-        internal RabbitAuth()
+        public RabbitAuth()
         {
             UnstableNetwork = false;
             AuthenticationType = AuthenticationType.Unknown;

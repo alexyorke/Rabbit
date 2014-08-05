@@ -36,7 +36,17 @@ namespace Rabbit.Auth
         {
             var c = PlayerIO.QuickConnect.SimpleConnect("everybody-edits-su9rn58o40itdbnw69plyw", "guest", "guest");
 
-            var userId = c.BigDB.Load("usernames", userName)["owner"].ToString();
+            var userId = "";
+
+            try
+            {
+                userId = c.BigDB.Load("usernames", userName)["owner"].ToString();
+            }
+            catch (NullReferenceException)
+            {
+                // if the username is a user id
+                userId = userName;
+            }
 
             if (userId.StartsWith("simple", StringComparison.CurrentCulture))
             {
