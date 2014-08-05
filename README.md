@@ -6,7 +6,7 @@ Supporting ArmorGames, Kongregate, MouseBreaker, Facebook, username and email au
 To use Rabbit, type:
 
 ```csharp
-var conn = RabbitAuth.LogIn (EmailOrTokenOrUserName, RoomID, Password = null);
+var conn = RabbitAuth.LogOn(EmailOrTokenOrUserName, RoomID, Password = null);
 ```
 
 _The password parameter is optional if Facebook authentication is used._
