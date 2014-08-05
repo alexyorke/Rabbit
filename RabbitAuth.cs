@@ -309,12 +309,12 @@ namespace Rabbit
                     " is the only option. ";
                 if (password.Length < 100)
                 {
-                    msg = msg + "The token should not be less than 100 characters.";
+                    msg = msg + "The token should not be less than 100 characters. ";
                 }
 
                 if (password.Length > 200)
                 {
-                    msg = msg + "The token should not be greater than 200 characters.";
+                    msg = msg + "The token should not be greater than 200 characters. ";
                 }
 
                 if (!Regex.IsMatch(password, @"^[0-9a-z]$", RegexOptions.IgnoreCase))
@@ -327,37 +327,37 @@ namespace Rabbit
                 if (Regex.IsMatch(password, @"^[0-9a-f]$") && Regex.IsMatch(email, @"^[0-9a-f]$"))
                 {
                     msg = msg + "Since a token was provided for the username and password " +
-                        "it was assumed that the authentication type was ArmorGames. However, ";
+                        "it was assumed that the authentication type was ArmorGames. ";
                     if (email.Length > 32)
                     {
-                        msg = msg + " the username token was greater than 32 characters. ";
+                        msg = msg + "The username token was greater than 32 characters. ";
                     }
 
                     if (email.Length < 32)
                     {
-                        msg = msg + " the username token was shorter than 32 characters. ";
+                        msg = msg + "The username token was shorter than 32 characters. ";
                     }
 
                     if (password.Length > 32)
                     {
-                        msg = msg + " the password token was greater than 32 characters. ";
+                        msg = msg + "The password token was greater than 32 characters.";
                     }
 
                     if (password.Length < 32)
                     {
-                        msg = msg + " the password token was less than 32 characters. ";
+                        msg = msg + "The password token was less than 32 characters.";
                     }
                 }
 
-                    msg = msg + "Since a username was provided, the regular authentication was used. However, ";
+                    msg = msg + "Since a username was provided, the regular authentication was used. ";
                     if (email.Length > 21)
                     {
-                        msg = msg + " the username was longer than 20 characters.";
+                        msg = msg + "The username was longer than 20 characters.";
                     }
 
                     if (email.Length <= 3)
                     {
-                        msg = msg + " the username was shorter than 3 characters.";
+                        msg = msg + "The username was shorter than 3 characters.";
                     }
                 }
             
