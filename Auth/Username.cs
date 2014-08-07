@@ -48,9 +48,39 @@ namespace Rabbit.Auth
                 userId = userName;
             }
 
+            int? i = null;
+
             if (userId.StartsWith("simple", StringComparison.CurrentCulture))
             {
-                return PlayerIO.QuickConnect.SimpleConnect(RabbitAuth.GameId, userId.Substring(6, userId.Length - 6), password);
+                i = 6;
+            }
+
+            if (userId.StartsWith("kong", StringComparison.CurrentCulture))
+            {
+                i = 4;
+            }
+
+            if (userId.StartsWith("armor", StringComparison.CurrentCulture))
+            {
+                i = 5;
+            }
+
+            if (userId.StartsWith("mouse", StringComparison.CurrentCulture))
+            {
+                i = 5;
+            }
+
+            if (userId.StartsWith("fb", StringComparison.CurrentCulture))
+            {
+                i = 2;
+            }
+
+            if (i != null)
+            {
+                return PlayerIO.QuickConnect.SimpleConnect(
+                    RabbitAuth.GameId,
+                    userId.Substring((int)i, userId.Length - (int)i), // trim the type from the id
+                    password);
             }
 
             throw new AuthenticationException("Unknown username.");
