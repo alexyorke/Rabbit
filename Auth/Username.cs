@@ -36,7 +36,7 @@ namespace Rabbit.Auth
         {
             var c = PlayerIO.QuickConnect.SimpleConnect("everybody-edits-su9rn58o40itdbnw69plyw", "guest", "guest");
 
-            var userId = "";
+            string userId;
 
             try
             {
@@ -60,12 +60,7 @@ namespace Rabbit.Auth
                 i = 4;
             }
 
-            if (userId.StartsWith("armor", StringComparison.CurrentCulture))
-            {
-                i = 5;
-            }
-
-            if (userId.StartsWith("mouse", StringComparison.CurrentCulture))
+            if (userId.StartsWith("armor", StringComparison.CurrentCulture) || userId.StartsWith("mouse", StringComparison.CurrentCulture))
             {
                 i = 5;
             }
