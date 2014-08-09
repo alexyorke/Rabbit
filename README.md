@@ -6,9 +6,10 @@ Supporting ArmorGames, Kongregate, MouseBreaker, Facebook, username and email au
 To use Rabbit, type:
 
 ```csharp
-var conn = new RabbitAuth().LogOn(EmailOrTokenOrUserName, RoomID, Password = null);
+Connection conn = new RabbitAuth().LogOn(EmailOrTokenOrUserName, RoomID, Password = null);
 ```
 
+Then initialize the connection with `conn.Send("init")` and `conn.Send("init2")`
 _The password parameter is optional if Facebook authentication is used._
 
 Using NuGet? Just download the [EE-Rabbit](http://www.nuget.org/packages/EE-Rabbit/) package.
