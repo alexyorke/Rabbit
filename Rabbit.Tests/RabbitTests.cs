@@ -15,7 +15,7 @@ namespace Rabbit.Tests
     using NUnit.Framework;
 
     using Rabbit;
-    using Rabbit.Auth;
+    using Auth;
 
     /// <summary>
     /// The rabbit tests.

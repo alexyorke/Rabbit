@@ -18,7 +18,7 @@ namespace Rabbit
 
     using PlayerIOClient;
 
-    using global::Rabbit.Auth;
+    using Auth;
 
     /// <summary>
     /// Authentication core.

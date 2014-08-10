@@ -7,7 +7,7 @@ namespace Rabbit.Tests
     public class IdParserTests
     {
         [Test]
-        public void InvalidRoomIDTest()
+        public void InvalidRoomIdTest()
         {
             FormatException expectedException = null;
 
@@ -26,7 +26,7 @@ namespace Rabbit.Tests
         }
 
         [Test]
-        public void ValidRoomIDTest()
+        public void ValidRoomIdTest()
         {
             Assert.AreEqual(IdParser.IsValidStrictRoomId("PWtest12345"), true);
             Assert.AreEqual(IdParser.Parse("PWtest12345"), "PWtest12345");
