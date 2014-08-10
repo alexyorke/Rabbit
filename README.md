@@ -9,7 +9,8 @@ To use Rabbit, type:
 Connection conn = new RabbitAuth().LogOn(EmailOrTokenOrUserName, RoomID, Password = null);
 ```
 
-Then initialize the connection with `conn.Send("init")` and `conn.Send("init2")`
+The [PlayerIOClient (v3.0.10)](https://gamesnet.yahoo.com/download/) is also a dependency (it is not bundled within the Rabbit dll). Then initialize the connection with `conn.Send("init")` and `conn.Send("init2")`.
+
 _The password parameter is optional if Facebook authentication is used._
 
 Using NuGet? Just download the [EE-Rabbit](http://www.nuget.org/packages/EE-Rabbit/) package.
