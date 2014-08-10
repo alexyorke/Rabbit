@@ -46,7 +46,7 @@ namespace Rabbit
         /// try to check if the network is available. This will increase the
         /// connection setup time.
         /// </summary>
-        public static bool UnstableNetwork { get; set; }
+        public bool UnstableNetwork { get; set; }
 
         /// <summary>
         /// Gets or sets the authentication type.
@@ -56,19 +56,19 @@ namespace Rabbit
         /// <summary>
         /// Gets or sets a value indicating whether to create a multiplayer room.
         /// </summary>
-        public static bool CreateRoom { get; set; }
+        public bool CreateRoom { get; set; }
 
         /// <summary>
         /// Gets or sets the Client for the main authentication system.
         /// </summary>
         /// <value>The client.</value>
-        private static Client Client { get; set; }
+        private Client Client { get; set; }
 
         /// <summary>
         /// Gets or sets the PlayerIO connection to the server.
         /// </summary>
         /// <value>The everybody edits connection.</value>
-        private static Connection EeConn { get; set; }
+        private Connection EeConn { get; set; }
 
         /// <summary>
         /// Gets the type of the authentication.
