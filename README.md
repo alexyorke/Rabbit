@@ -15,4 +15,4 @@ Rabbit is available on NuGet under the [EE-Rabbit](http://www.nuget.org/packages
 
 
 
-Rabbit icon by [https://flic.kr/p/cVkan9](https://flic.kr/p/cVkan9)
+Rabbit icon (on NuGet) by [https://flic.kr/p/cVkan9](https://flic.kr/p/cVkan9).
