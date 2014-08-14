@@ -13,6 +13,7 @@ The [PlayerIOClient (v3.0.10)](https://gamesnet.yahoo.com/download/) is also a d
 
 Rabbit is available on NuGet under the [EE-Rabbit](http://www.nuget.org/packages/EE-Rabbit/) package.
 
+Current version: v0.7.4
 
 
 Rabbit icon (on NuGet) by [https://flic.kr/p/cVkan9](https://flic.kr/p/cVkan9).
