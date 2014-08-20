@@ -7,7 +7,6 @@
 //     Copyright 2014 (c) . All rights reserved.
 // </copyright>
 // <summary></summary>
-// ***********************************************************************
 
 namespace Rabbit.Auth
 {
