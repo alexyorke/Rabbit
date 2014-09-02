@@ -1,7 +1,11 @@
 Rabbit [![Build status](https://ci.appveyor.com/api/projects/status/6fxlb8bkqp18cg3c/branch/master)](https://ci.appveyor.com/project/Decagon/rabbit/branch/master)
 ======
 
-Supporting ArmorGames, Kongregate, MouseBreaker, Facebook, username and email authentication mechanisms Rabbit allows [Everybody Edits](http://everybodyedits.com) developers to seamlessly integrate many forms of authentication in one interface. Rabbit detects the type of input and authenticates users to the appropriate service.
+Rabbit is still in beta and has some, well, issues https://github.com/Decagon/Rabbit/issues/23
+
+Please read that document before considering using Rabbit for your project.
+
+Supporting ArmorGames*, Kongregate, MouseBreaker, Facebook, username and email authentication mechanisms Rabbit allows [Everybody Edits](http://everybodyedits.com) developers to seamlessly integrate many forms of authentication in one interface. Rabbit detects the type of input and authenticates users to the appropriate service.
 
 To use Rabbit, type:
 
