@@ -148,7 +148,7 @@ namespace Rabbit
         /// <exception cref="System.InvalidOperationException">
         /// Invalid authentication type.
         /// </exception>
-        public Connection LogOn(string email, string worldId, string password = null)
+        public Connection LogOn(string email, string password, string worldId)
         {
             // Clean the email (or token) from whitespace
             email = Regex.Replace(email, @"\s+", string.Empty);
