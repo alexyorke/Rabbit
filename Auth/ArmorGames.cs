@@ -6,7 +6,7 @@
 // <copyright file="ArmorGames.cs" company="None">
 //     Copyright 2014 (c) . All rights reserved.
 // </copyright>
-// <summary>ArmorGames authentication. </summary>
+// <summary>Armor Games authentication. </summary>
 
 namespace Rabbit.Auth
 {
