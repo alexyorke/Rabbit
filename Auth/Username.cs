@@ -17,13 +17,12 @@ namespace Rabbit.Auth
     /// <summary>
     /// Class Username.
     /// </summary>
-    
-    public static class UserName
+    public static class Username
     {
         /// <summary>
         /// Authenticates using the specified email.
         /// </summary>
-        /// <param name="userName">
+        /// <param name="username">
         /// The user Name.
         /// </param>
         /// <param name="password">
@@ -32,53 +31,28 @@ namespace Rabbit.Auth
         /// <returns>
         /// A valid PlayerIOClient instance.
         /// </returns>
-        public static Client Authenticate(string userName, string password)
+        public static Client Authenticate(string username, string password)
         {
-            var c = PlayerIO.QuickConnect.SimpleConnect(RabbitAuth.GameId, "guest", "guest");
-
             string userId;
-
             try
             {
-                userId = c.BigDB.Load("usernames", userName)["owner"].ToString();
+                var c = PlayerIO.QuickConnect.SimpleConnect(RabbitAuth.GameId, "guest", "guest");
+                userId = c.BigDB.Load("usernames", username).GetString("owner");
             }
-            catch (NullReferenceException)
+            catch
             {
-                // if the username is a user id
-                userId = userName;
+                userId = username;
             }
-
-            int? i = null;
 
             if (userId.StartsWith("simple", StringComparison.CurrentCulture))
             {
-                i = 6;
-            }
-
-            if (userId.StartsWith("kong", StringComparison.CurrentCulture))
-            {
-                i = 4;
-            }
-
-            if (userId.StartsWith("armor", StringComparison.CurrentCulture) || userId.StartsWith("mouse", StringComparison.CurrentCulture))
-            {
-                i = 5;
-            }
-
-            if (userId.StartsWith("fb", StringComparison.CurrentCulture))
-            {
-                i = 2;
-            }
-
-            if (i != null)
-            {
                 return PlayerIO.QuickConnect.SimpleConnect(
                     RabbitAuth.GameId,
-                    userId.Substring((int)i, userId.Length - (int)i), // trim the type from the id
+                    userId.Substring(5),
                     password);
             }
 
-            throw new AuthenticationException("Unknown username.");
+            throw new AuthenticationException("Username login currently only supports everybodyedits.com users.");
         }
     }
 }

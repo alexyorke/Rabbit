@@ -175,7 +175,7 @@ namespace Rabbit
 
                 case AuthenticationType.UserName:
                 {
-                    client = UserName.Authenticate(email, password);
+                    client = Username.Authenticate(email, password);
                     break;
                 }
 

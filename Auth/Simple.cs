@@ -6,6 +6,9 @@ using PlayerIOClient;
 
 namespace Rabbit.Auth
 {
+    /// <summary>
+    /// Class Simple.
+    /// </summary>
     public static class Simple
     {
         /// <summary>
