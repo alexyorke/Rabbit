@@ -16,7 +16,7 @@ namespace Rabbit.Auth
     using PlayerIOClient;
 
     /// <summary>
-    /// ArmorGames authentication class.
+    /// Armor Games authentication class.
     /// </summary>
     public static class ArmorGames
     {
@@ -27,7 +27,7 @@ namespace Rabbit.Auth
         private static Client Client { get; set; }
 
         /// <summary>
-        /// Authenticates the user using ArmorGames authentication.
+        /// Authenticates the user using Armor Games authentication.
         /// </summary>
         /// <param name="email">The user id of the user.</param>
         /// <param name="password">The user token.</param>
