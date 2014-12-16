@@ -47,7 +47,7 @@ namespace Rabbit.Auth
 
                 if (message.Count == 0)
                 {
-                    throw new AuthenticationException("Could not log into Armor Games.");
+                    throw new AuthenticationException("Invalid credentials for Armor Games authentication.");
                 }
 
                 Client = PlayerIO.Connect(
