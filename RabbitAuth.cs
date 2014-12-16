@@ -189,19 +189,20 @@ namespace Rabbit
 
                 default:
                 {
-                     Client = PlayerIO.QuickConnect.SimpleConnect(GameId, email, password);
+                     Client = Simple.Authenticate(email, password);
                      break;
                 }
             }
 
+            Connection eeConn;
             if (CreateRoom)
             {
-                var roomPrefix = worldId.StartsWith("BW", StringComparison.CurrentCulture) 
+                var roomPrefix = worldId.StartsWith("BW", StringComparison.InvariantCulture) 
                     ? "Beta"
                     : "Everybodyedits";
 
                 var serverVersion = Client.BigDB.Load("config", "config")["version"];
-                this.EEConn = Client.Multiplayer.CreateJoinRoom(
+                eeConn = Client.Multiplayer.CreateJoinRoom(
                     worldId,
                     roomPrefix + serverVersion,
                     true,
@@ -210,12 +211,12 @@ namespace Rabbit
             }
             else
             {
-                this.EEConn = Client.Multiplayer.JoinRoom(
+                eeConn = Client.Multiplayer.JoinRoom(
                     worldId,
                     null);
             }
 
-            return this.EEConn;
+            return eeConn;
         }
 
         /// <summary>
