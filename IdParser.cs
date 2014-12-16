@@ -88,7 +88,7 @@ namespace Rabbit
         /// </returns>
         public static bool IsValidStrictRoomId(string id)
         {
-            return Regex.IsMatch(id, @"^[P|B|O]W[a-zA-Z0-9_-]+$");
+            return Regex.IsMatch(id, @"^([P|B|O]W[a-zA-Z0-9_-]+)|\$service-room\$$");
         }
     }
 }
