@@ -36,36 +36,26 @@ namespace Rabbit
         {            
             // This method is based on TakoMan02's Skylight parse url method
             // available on GitHub.
-            id = id.Trim();
-
             if (string.IsNullOrEmpty(id))
                 throw new ArgumentNullException("id", "The room ID cannot be null.");
 
             if (IsValidStrictRoomId(id))
-            {
                 return id;
-            }
 
             try
             {
                 // From http://stackoverflow.com/questions/16473838/ (some parts were changed)
                 var parsedUrl = new Uri(id);
-
                 var hostParts = parsedUrl.Host.Split('.');
                 var domain = string.Join(".", hostParts.Skip(Math.Max(0, hostParts.Length - 2)).Take(2).ToArray());
 
-                // include a common mispellings
-                if (domain != "everybodyedits.com" && domain != "everybodyedits" && domain != "everybodyedits.cm" && domain != "everybodyedits2.com")
-                {
-                    throw new UriFormatException();
-                }
+                if (domain != "everybodyedits.com")
+                    throw new UriFormatException("Unknown url!");
 
                 var urlId = parsedUrl.Segments.Last();
 
                 if (IsValidStrictRoomId(urlId))
-                {
                     return urlId;
-                }
 
                 throw new UriFormatException("The url was correct, but the room id was invalid.");
             }
