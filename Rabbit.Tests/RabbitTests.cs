@@ -29,13 +29,13 @@ namespace Rabbit.Tests
         [Test]
         public void NullAuthenticationTest()
         {
-            ArgumentNullException expectedException = null;
+            InvalidOperationException expectedException = null;
 
             try
             {
                 RabbitAuth.GetAuthType(null, null);
             }
-            catch (ArgumentNullException ex)
+            catch (InvalidOperationException ex)
             {
                 expectedException = ex;
             }
