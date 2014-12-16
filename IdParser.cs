@@ -71,9 +71,9 @@ namespace Rabbit
 
                 throw new UriFormatException("The url was correct, but the room id was invalid.");
             }
-            catch (UriFormatException)
+            catch (UriFormatException ex)
             {
-                throw new FormatException("The room id url was not recognized. Make sure that the url is valid.");
+                throw new FormatException("The room id url was not recognized. Make sure that the url is valid.", ex);
             }
         }
 
