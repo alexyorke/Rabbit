@@ -8,6 +8,9 @@
 // </copyright>
 // <summary>ArmorGames authentication. </summary>
 
+using System.Runtime.InteropServices;
+using System.Threading;
+
 namespace Rabbit.Auth
 {
     using System;
@@ -21,12 +24,6 @@ namespace Rabbit.Auth
     public static class ArmorGames
     {
         /// <summary>
-        /// Gets or sets the client that is used throughout the Bot.
-        /// </summary>
-        /// <value>The client.</value>
-        private static Client Client { get; set; }
-
-        /// <summary>
         /// Authenticates the user using ArmorGames authentication.
         /// </summary>
         /// <param name="email">The user id of the user.</param>
@@ -34,35 +31,48 @@ namespace Rabbit.Auth
         /// <returns>A valid client object.</returns>
         public static Client Authenticate(string email, string password)
         {
-            var c =
-                PlayerIO.QuickConnect.SimpleConnect(RabbitAuth.GameId, "guest", "guest")
-                    .Multiplayer.JoinRoom(string.Empty, null);
+            var resetEvent = new ManualResetEvent(false);
+            var guestClient = PlayerIO.QuickConnect.SimpleConnect(RabbitAuth.GameId, "guest", "guest");
+            var guestConn = guestClient.Multiplayer.JoinRoom(String.Empty, null);
+            Client client = null;
+            Exception exception = null;
 
-            c.OnMessage += (sender, message) =>
+            guestConn.OnMessage += (sender, message) =>
             {
-                if (message.Type != "auth")
+                try
                 {
-                    return;
-                }
+                    if (message.Type != "auth" || message.Count < 2)
+                        throw new AuthenticationException("Could not log into Armor Games.");
 
-                if (message.Count == 0)
+                    client = PlayerIO.Connect(
+                        RabbitAuth.GameId,
+                        "secure",
+                        message.GetString(0),
+                        message.GetString(1),
+                        "armorgames");
+                }
+                catch (Exception ex)
                 {
-                    throw new AuthenticationException("Could not log into Armor Games.");
+                    exception = ex;
                 }
-
-                Client = PlayerIO.Connect(
-                    RabbitAuth.GameId,
-                    "secure",
-                    message.GetString(0),
-                    message.GetString(1),
-                    "armorgames");
-
-                c.Disconnect();
+                finally
+                {
+                    resetEvent.Set();
+                    guestConn.Disconnect();
+                }
             };
 
-            c.Send("auth", email, password);
+            guestConn.OnDisconnect += (sender, message) =>
+            {
+                resetEvent.Set();
+            };
 
-            return Client;
+            guestConn.Send("auth", email, password);
+            resetEvent.WaitOne();
+
+            if (exception != null)
+                throw exception;
+            return client;
         }
     }
 }
