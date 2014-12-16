@@ -16,7 +16,7 @@ The [PlayerIOClient (v3.0.14)](https://gamesnet.yahoo.com/download/) is a depend
 
 ###Bugs
 
-Rabbit is still in beta and has some, well, issues: https://github.com/Decagon/Rabbit/issues/23
+If you find a bug in Rabbit, feel free to let me know in the GitHub issue tracker or, if you don't have an account, by decagongithub@gmail.com
 
 ###NuGet
 Rabbit is available on NuGet: [EE-Rabbit](http://www.nuget.org/packages/EE-Rabbit/).
