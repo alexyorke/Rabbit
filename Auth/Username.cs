@@ -46,10 +46,7 @@ namespace Rabbit.Auth
 
             if (userId.StartsWith("simple", StringComparison.CurrentCulture))
             {
-                return PlayerIO.QuickConnect.SimpleConnect(
-                    RabbitAuth.GameId,
-                    userId.Substring(5),
-                    password);
+                return Simple.Authenticate(userId.Substring(5),password);
             }
 
             throw new AuthenticationException("Username login currently only supports everybodyedits.com users.");
