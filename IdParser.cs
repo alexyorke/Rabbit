@@ -38,7 +38,7 @@ namespace Rabbit
             // available on GitHub.
             if (string.IsNullOrEmpty(id))
             {
-                throw new ArgumentNullException("The room ID cannot be null.");
+                throw new ArgumentNullException("id", "The room ID cannot be null.");
             }
 
             id = id.Trim();
