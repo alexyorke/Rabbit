@@ -55,6 +55,11 @@ namespace Rabbit
         /// <exception cref="System.InvalidOperationException">Invalid authentication type.</exception>
         public static AuthenticationType GetAuthType(string email, string password)
         {
+            if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(password))
+            {
+                throw new InvalidOperationException("The email/token and password fields cannot be both blank.");
+            }
+
             // ArmorGames: Both UserID and password are 32 char hexadecimal lowercase strings
             if (!string.IsNullOrEmpty(email) &&
                 Regex.IsMatch(password, @"^[0-9a-f]{32}$") &&
@@ -81,12 +86,6 @@ namespace Rabbit
                 return AuthenticationType.Facebook;
             }
 
-            if (!string.IsNullOrEmpty(email) &&
-                !string.IsNullOrEmpty(password))
-            {
-                return IsValidEmail(email) ? AuthenticationType.Regular : AuthenticationType.UserName;
-            }
-
             // 88 character base 64 string for MouseBreaker authentication.
             // Only one token.
             if (!string.IsNullOrEmpty(email) && email.Length == 88 && !string.IsNullOrEmpty(password))
@@ -103,9 +102,10 @@ namespace Rabbit
                 }
             }
 
-            if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(password))
+            if (!string.IsNullOrEmpty(email) &&
+                !string.IsNullOrEmpty(password))
             {
-                throw new InvalidOperationException("The email/token and password fields cannot be both blank.");
+                return IsValidEmail(email) ? AuthenticationType.Regular : AuthenticationType.Username;
             }
 
             // Try to help the user if they entered in invalid data.
@@ -173,7 +173,7 @@ namespace Rabbit
                     break;
                 }
 
-                case AuthenticationType.UserName:
+                case AuthenticationType.Username:
                 {
                     client = Username.Authenticate(email, password);
                     break;
