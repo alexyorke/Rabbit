@@ -51,7 +51,7 @@ namespace Rabbit.Auth
                 }
 
                 Client = PlayerIO.Connect(
-                    "everybody-edits-su9rn58o40itdbnw69plyw",
+                    RabbitAuth.GameId,
                     "secure",
                     message.GetString(0),
                     message.GetString(1),

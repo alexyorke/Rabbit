@@ -30,7 +30,7 @@ namespace Rabbit.Auth
         /// </returns>
         public static Client Authenticate(string userName, string password)
         {
-            var c = PlayerIO.QuickConnect.SimpleConnect("everybody-edits-su9rn58o40itdbnw69plyw", "guest", "guest");
+            var c = PlayerIO.QuickConnect.SimpleConnect(RabbitAuth.GameId, "guest", "guest");
 
             var userId = c.BigDB.Load("usernames", userName)["owner"].ToString();
 
