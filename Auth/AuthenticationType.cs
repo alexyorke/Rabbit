@@ -35,7 +35,7 @@ namespace Rabbit.Auth
         Kongregate,
 
         /// <summary>
-        /// The armor games authentication token and password
+        /// The Armor Games authentication token and password
         /// </summary>
         ArmorGames,
 

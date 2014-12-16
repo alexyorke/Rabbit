@@ -1,23 +1,26 @@
 Rabbit [![Build status](https://ci.appveyor.com/api/projects/status/6fxlb8bkqp18cg3c/branch/master)](https://ci.appveyor.com/project/Decagon/rabbit/branch/master)
 ======
 
-Rabbit is still in beta and has some, well, issues https://github.com/Decagon/Rabbit/issues/23
+Rabbit allows [Everybody Edits](http://everybodyedits.com) developers to seamlessly integrate ArmorGames*, Kongregate, MouseBreaker, Facebook, and standard authentication into one login interface. 
 
-Please read that document before considering using Rabbit for your project.
-
-Supporting ArmorGames*, Kongregate, MouseBreaker, Facebook, username and email authentication mechanisms Rabbit allows [Everybody Edits](http://everybodyedits.com) developers to seamlessly integrate many forms of authentication in one interface. Rabbit detects the type of input and authenticates users to the appropriate service.
-
-To use Rabbit, type:
+Want to use Rabbit in your project? It's simple!
 
 ```csharp
 Connection conn = new RabbitAuth().LogOn(EmailOrTokenOrUserName, RoomID, Password);
 ```
+*Note: the password is not required for some authentication types and can be ommitted.*
 
-The [PlayerIOClient (v3.0.10)](https://gamesnet.yahoo.com/download/) is also a dependency (it is not bundled within the Rabbit dll). Then initialize the connection with `conn.Send("init")` and `conn.Send("init2")`.
+Initialize the connection with `conn.Send("init")` and `conn.Send("init2")` (as normal).
 
-Rabbit is available on NuGet under the [EE-Rabbit](http://www.nuget.org/packages/EE-Rabbit/) package.
+The [PlayerIOClient (v3.0.14)](https://gamesnet.yahoo.com/download/) is a dependency. 
 
-Current version: v0.7.5
+###Bugs
+
+Rabbit is still in beta and has some, well, issues: https://github.com/Decagon/Rabbit/issues/23
+
+###NuGet
+Rabbit is available on NuGet: [EE-Rabbit](http://www.nuget.org/packages/EE-Rabbit/).
 
 
-Rabbit icon (on NuGet) by [https://flic.kr/p/cVkan9](https://flic.kr/p/cVkan9).
+###Credits
+Rabbit icon (on NuGet) courtesy of [https://flic.kr/p/cVkan9](https://flic.kr/p/cVkan9).

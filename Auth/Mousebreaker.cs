@@ -39,7 +39,7 @@ namespace Rabbit.Auth
                 return PlayerIO.QuickConnect.SimpleConnect(RabbitAuth.GameId, userId.Substring(5, userId.Length - 5), password);
             }
 
-            throw new AuthenticationException("Unknown username.");
+            throw new AuthenticationException("Invalid credentials for mousebreaker authentication.");
         }
     }
 }

@@ -6,7 +6,7 @@
 // <copyright file="ArmorGames.cs" company="None">
 //     Copyright 2014 (c) . All rights reserved.
 // </copyright>
-// <summary>ArmorGames authentication. </summary>
+// <summary>Armor Games authentication. </summary>
 
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -19,7 +19,7 @@ namespace Rabbit.Auth
     using PlayerIOClient;
 
     /// <summary>
-    /// ArmorGames authentication class.
+    /// Armor Games authentication class.
     /// </summary>
     public static class ArmorGames
     {
