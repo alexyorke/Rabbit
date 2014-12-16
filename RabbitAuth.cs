@@ -12,10 +12,7 @@
 namespace Rabbit
 {
     using System;
-    using System.Net.NetworkInformation;
     using System.Text.RegularExpressions;
-    using System.Threading;
-
     using PlayerIOClient;
 
     using Auth;
@@ -42,7 +39,7 @@ namespace Rabbit
         /// <summary>
         /// Gets or sets the authentication type.
         /// </summary>
-        public static AuthenticationType AuthenticationType { get; set; }
+        public AuthenticationType AuthenticationType { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether to create a multiplayer room.
