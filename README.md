@@ -24,3 +24,5 @@ Rabbit is available on NuGet: [EE-Rabbit](http://www.nuget.org/packages/EE-Rabbi
 
 ###Credits
 Rabbit icon (on NuGet) courtesy of [https://flic.kr/p/cVkan9](https://flic.kr/p/cVkan9).
+
+[Yonom](https://github.com/Yonom), author of [Cupcake](https://github.com/Yonom/CupCake) significantly helped!
