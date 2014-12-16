@@ -41,14 +41,6 @@ namespace Rabbit
         public const string GameId = "everybody-edits-su9rn58o40itdbnw69plyw";
 
         /// <summary>
-        /// Gets or sets a value indicating whether the network is unstable.
-        /// By default it is false. If true, multiple tries will be used to
-        /// try to check if the network is available. This will increase the
-        /// connection setup time.
-        /// </summary>
-        public bool UnstableNetwork { get; set; }
-
-        /// <summary>
         /// Gets or sets the authentication type.
         /// </summary>
         public static AuthenticationType AuthenticationType { get; set; }
@@ -158,24 +150,6 @@ namespace Rabbit
         /// </exception>
         public Connection LogOn(string email, string worldId, string password = null)
         {
-            if (UnstableNetwork)
-            {
-                var internetCheckIterations = 0;
-                while (!InternetStabilityTester.IsNetworkAvailable())
-                {
-                    System.Diagnostics.Debug.Write(
-                        "There isn't a suitable internet connection. Retrying in 2 seconds...");
-                    internetCheckIterations++;
-                    Thread.Sleep(2000);
-
-                    if (internetCheckIterations > 4)
-                    {
-                        // Error code is ERROR_INTERNET_CANNOT_CONNECT
-                        throw new NetworkInformationException(12029);
-                    }
-                }
-            }
-
             // Clean the email (or token) from whitespace
             email = Regex.Replace(email, @"\s+", string.Empty);
 
