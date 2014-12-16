@@ -33,15 +33,13 @@ namespace Rabbit
         /// 9 and 14 characters or contains non-alphanumeric symbols.
         /// </exception>
         public static string Parse(string id)
-        {
+        {            
             // This method is based on TakoMan02's Skylight parse url method
             // available on GitHub.
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException("id", "The room ID cannot be null.");
-            }
-
             id = id.Trim();
+
+            if (string.IsNullOrEmpty(id))
+                throw new ArgumentNullException("id", "The room ID cannot be null.");
 
             if (IsValidStrictRoomId(id))
             {
@@ -62,7 +60,7 @@ namespace Rabbit
                     throw new UriFormatException();
                 }
 
-                var urlId = Convert.ToString(parsedUrl.Segments.Last(), CultureInfo.CurrentCulture);
+                var urlId = Convert.ToString(parsedUrl.Segments.Last(), CultureInfo.InvariantCulture);
 
                 if (IsValidStrictRoomId(urlId))
                 {
