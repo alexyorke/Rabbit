@@ -30,7 +30,6 @@ namespace Rabbit
         /// </summary>
         public RabbitAuth()
         {
-            UnstableNetwork = false;
             AuthenticationType = AuthenticationType.Unknown;
             CreateRoom = true;
         }
@@ -55,12 +54,6 @@ namespace Rabbit
         /// </summary>
         /// <value>The client.</value>
         private Client Client { get; set; }
-
-        /// <summary>
-        /// Gets or sets the PlayerIO connection to the server.
-        /// </summary>
-        /// <value>The everybody edits connection.</value>
-        private Connection EeConn { get; set; }
 
         /// <summary>
         /// Gets the type of the authentication.
@@ -208,7 +201,7 @@ namespace Rabbit
                     : "Everybodyedits";
 
                 var serverVersion = Client.BigDB.Load("config", "config")["version"];
-                EeConn = Client.Multiplayer.CreateJoinRoom(
+                this.EEConn = Client.Multiplayer.CreateJoinRoom(
                     worldId,
                     roomPrefix + serverVersion,
                     true,
@@ -217,13 +210,12 @@ namespace Rabbit
             }
             else
             {
-                EeConn = Client.Multiplayer.JoinRoom(
+                this.EEConn = Client.Multiplayer.JoinRoom(
                     worldId,
                     null);
             }
 
-            EeConn.OnMessage += this.OnMessageHandler;
-            return EeConn;
+            return this.EEConn;
         }
 
         /// <summary>
@@ -241,10 +233,6 @@ namespace Rabbit
         public Connection LogOn(string token, string worldId)
         {
             return this.LogOn(token, worldId, null);
-        }
-
-        public void OnMessageHandler(object theEvent, Message message)
-        {
         }
 
         /// <summary>
