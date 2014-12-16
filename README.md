@@ -6,8 +6,9 @@ Rabbit allows [Everybody Edits](http://everybodyedits.com) developers to seamles
 Want to use Rabbit in your project? It's simple!
 
 ```csharp
-Connection conn = new RabbitAuth().LogOn(EmailOrTokenOrUserName, RoomID, PasswordIfApplicable);
+Connection conn = new RabbitAuth().LogOn(EmailOrTokenOrUserName, RoomID, Password);
 ```
+Note: the password is not required for some authentication types and can be ommitted.
 
 Initialize the connection with `conn.Send("init")` and `conn.Send("init2")` (as normal).
 
