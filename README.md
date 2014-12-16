@@ -6,13 +6,14 @@ Rabbit allows [Everybody Edits](http://everybodyedits.com) developers to seamles
 Want to use Rabbit in your project? It's simple!
 
 ```csharp
-Connection conn = new RabbitAuth().LogOn(EmailOrTokenOrUserName, RoomID, Password);
+Connection conn = new RabbitAuth().LogOn(EmailOrTokenOrUserName, RoomID, PasswordIfApplicable);
 ```
 
 Initialize the connection with `conn.Send("init")` and `conn.Send("init2")` (as normal).
 
 The [PlayerIOClient (v3.0.10)](https://gamesnet.yahoo.com/download/) is a dependency. 
 
+###Bugs
 
 Rabbit is still in beta and has some, well, issues: https://github.com/Decagon/Rabbit/issues/23
 
