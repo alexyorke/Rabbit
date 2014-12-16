@@ -50,12 +50,6 @@ namespace Rabbit
         public bool CreateRoom { get; set; }
 
         /// <summary>
-        /// Gets or sets the Client for the main authentication system.
-        /// </summary>
-        /// <value>The client.</value>
-        private Client Client { get; set; }
-
-        /// <summary>
         /// Gets the type of the authentication.
         /// </summary>
         /// <param name="email">The email.</param>
@@ -155,41 +149,42 @@ namespace Rabbit
                 AuthenticationType = GetAuthType(email, password);
             }
 
+            Client client;
             switch (AuthenticationType)
             {
                 case AuthenticationType.Facebook:
                 {
-                    Client = Facebook.Authenticate(password);
+                    client = Facebook.Authenticate(password);
                     break;
                 }
 
                 case AuthenticationType.Kongregate:
                 {
-                    Client = Kongregate.Authenticate(email, password);
+                    client = Kongregate.Authenticate(email, password);
                     break;
                 }
 
                 case AuthenticationType.ArmorGames:
                 {
-                    Client = ArmorGames.Authenticate(email, password);
+                    client = ArmorGames.Authenticate(email, password);
                     break;
                 }
 
                 case AuthenticationType.MouseBreaker:
                 {
-                    Client = MouseBreaker.Authenticate(email, password);
+                    client = MouseBreaker.Authenticate(email, password);
                     break;
                 }
 
                 case AuthenticationType.UserName:
                 {
-                    Client = UserName.Authenticate(email, password);
+                    client = UserName.Authenticate(email, password);
                     break;
                 }
 
                 default:
                 {
-                     Client = Simple.Authenticate(email, password);
+                     client = Simple.Authenticate(email, password);
                      break;
                 }
             }
@@ -201,8 +196,8 @@ namespace Rabbit
                     ? "Beta"
                     : "Everybodyedits";
 
-                var serverVersion = Client.BigDB.Load("config", "config")["version"];
-                eeConn = Client.Multiplayer.CreateJoinRoom(
+                var serverVersion = client.BigDB.Load("config", "config")["version"];
+                eeConn = client.Multiplayer.CreateJoinRoom(
                     worldId,
                     roomPrefix + serverVersion,
                     true,
@@ -211,9 +206,7 @@ namespace Rabbit
             }
             else
             {
-                eeConn = Client.Multiplayer.JoinRoom(
-                    worldId,
-                    null);
+                eeConn = client.Multiplayer.JoinRoom(worldId, null);
             }
 
             return eeConn;
