@@ -60,7 +60,7 @@ namespace Rabbit
                     throw new UriFormatException();
                 }
 
-                var urlId = Convert.ToString(parsedUrl.Segments.Last(), CultureInfo.InvariantCulture);
+                var urlId = parsedUrl.Segments.Last();
 
                 if (IsValidStrictRoomId(urlId))
                 {
