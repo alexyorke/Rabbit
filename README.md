@@ -1,7 +1,7 @@
 Rabbit [![Build status](https://ci.appveyor.com/api/projects/status/6fxlb8bkqp18cg3c/branch/master)](https://ci.appveyor.com/project/Decagon/rabbit/branch/master)
 ======
 
-Rabbit allows [Everybody Edits](http://everybodyedits.com) developers to seamlessly integrate ArmorGames*, Kongregate, MouseBreaker, Facebook, and standard authentication into one login interface. 
+Rabbit allows [Everybody Edits](http://everybodyedits.com) developers to seamlessly integrate Armor Games, Kongregate, Mousebreaker, Facebook, and standard authentication into one login interface. 
 
 Want to use Rabbit in your project? It's simple!
 
