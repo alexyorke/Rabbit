@@ -17,9 +17,9 @@ namespace Rabbit.Auth
         /// <param name="email">The email.</param>
         /// <param name="password">The password.</param>
         /// <returns></returns>
-        public static Client Authenticate(string email, string password)
+        public static Client Authenticate(string gameId, string email, string password)
         {
-            return PlayerIO.QuickConnect.SimpleConnect(RabbitAuth.GameId, email, password);
+            return PlayerIO.QuickConnect.SimpleConnect(gameId, email, password);
         }
     }
 }

@@ -31,12 +31,12 @@ namespace Rabbit.Auth
         /// <returns>
         /// A valid PlayerIOClient instance.
         /// </returns>
-        public static Client Authenticate(string username, string password)
+        public static Client Authenticate(string gameId, string username, string password)
         {
             string userId;
             try
             {
-                var c = PlayerIO.QuickConnect.SimpleConnect(RabbitAuth.GameId, "guest", "guest");
+                var c = PlayerIO.QuickConnect.SimpleConnect(gameId, "guest", "guest");
                 userId = c.BigDB.Load("usernames", username).GetString("owner");
             }
             catch

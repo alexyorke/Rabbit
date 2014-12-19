@@ -135,32 +135,32 @@ namespace Rabbit
             {
                 case AuthenticationType.Facebook:
                 {
-                    return Facebook.Authenticate(password);
+                    return Facebook.Authenticate(gameId, password);
                 }
 
                 case AuthenticationType.Kongregate:
                 {
-                    return Kongregate.Authenticate(email, password);
+                    return Kongregate.Authenticate(gameId, email, password);
                 }
 
                 case AuthenticationType.ArmorGames:
                 {
-                    return ArmorGames.Authenticate(email, password);
+                    return ArmorGames.Authenticate(gameId, email, password);
                 }
 
                 case AuthenticationType.MouseBreaker:
                 {
-                    return MouseBreaker.Authenticate(email, password);
+                    return MouseBreaker.Authenticate(gameId, email, password);
                 }
 
                 case AuthenticationType.Username:
                 {
-                    return Username.Authenticate(email, password);
+                    return Username.Authenticate(gameId, email, password);
                 }
 
                 default:
                 {
-                     return Simple.Authenticate(email, password);
+                    return Simple.Authenticate(gameId, email, password);
                 }
             }
         }

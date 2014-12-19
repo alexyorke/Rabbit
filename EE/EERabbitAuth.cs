@@ -26,11 +26,14 @@ namespace Rabbit.EE
         }
 
         /// <summary>
-        /// Ees the login.
+        /// Logs in and connects to the specified room.
         /// </summary>
-        /// <param name="client">
-        /// The client.
-        /// </param>        
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        /// <param name="password">
+        /// The password.
+        /// </param>
         /// <param name="worldId">
         /// The room id of the world to join
         /// </param>
@@ -65,6 +68,16 @@ namespace Rabbit.EE
             return eeConn;
         }
 
+        /// <summary>
+        /// Logs on.
+        /// </summary>
+        /// <param name="token">
+        /// The token.
+        /// </param>
+        /// <param name="worldId">
+        /// The world identifier.
+        /// </param>
+        /// <returns></returns>
         public new Connection LogOn(string token, string worldId)
         {
             return this.LogOn(token, null, worldId);
