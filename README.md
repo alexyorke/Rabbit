@@ -9,7 +9,7 @@ Want to use Rabbit in your project? It's simple!
 Connection conn = new RabbitAuth().LogOn(EmailOrTokenOrUserName, RoomID, Password);
 ```
 
-Initialize the connection with `conn.Send("init")` and `conn.Send("init2")` (as normal).
+
 
 The [PlayerIOClient (v3.0.14)](https://gamesnet.yahoo.com/download/) is a dependency. 
 
