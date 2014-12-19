@@ -16,12 +16,12 @@ The [PlayerIOClient (v3.0.14)](https://gamesnet.yahoo.com/download/) is a depend
 
 ###Wiki
 
-Have more questions? Feel free to consult the [Wiki](https://github.com/Decagon/Rabbit/wiki)
+Have more questions? Feel free to consult the [Wiki](https://github.com/Decagon/Rabbit/wiki).
 
 
 ###Bugs
 
-If you find a bug in Rabbit, feel free to let me know in the GitHub issue tracker or, if you don't have an account, by decagongithub@gmail.com
+If you find a bug in Rabbit, feel free to let me know in the GitHub issue tracker or, if you don't have an account, by decagongithub@gmail.com.
 
 ###NuGet
 Rabbit is available on NuGet: [EE-Rabbit](http://www.nuget.org/packages/EE-Rabbit/).
