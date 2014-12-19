@@ -14,10 +14,6 @@ Initialize the connection with `conn.Send("init")` and `conn.Send("init2")` (as 
 
 The [PlayerIOClient (v3.0.14)](https://gamesnet.yahoo.com/download/) is a dependency. 
 
-###How does Rabbit work?
-
-Rabbit works by identifying common patterns in the ids and passwords, which are commonly associated with authenticating with a specific service. These patterns can be made into rules, which then can be easily followed and therefore, automatically redirects the request to the service. Finally, the user is authenticated using a unified connection handler.
-
 ###Bugs
 
 If you find a bug in Rabbit, feel free to let me know in the GitHub issue tracker or, if you don't have an account, by decagongithub@gmail.com
