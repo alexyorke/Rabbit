@@ -8,6 +8,10 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
+using System.Diagnostics;
+using Rabbit.EE;
+
 namespace Rabbit.Auth
 {
     using System;
@@ -36,6 +40,9 @@ namespace Rabbit.Auth
         /// </returns>
         public static Client Authenticate(string gameId, string username, string password)
         {
+            if (gameId != EERabbitAuth.GameId)
+                throw new NotSupportedException("Username login is not supported for the specified game.");
+
             string userId;
             try
             {

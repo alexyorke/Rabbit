@@ -7,9 +7,11 @@ using Rabbit.Auth;
 
 namespace Rabbit.EE
 {
-    class EERabbitAuth : RabbitAuth
+    /// <summary>
+    /// Class EERabbitAuth.
+    /// </summary>
+    public class EERabbitAuth : RabbitAuth
     {
-
         /// <summary>
         /// The game identifier
         /// </summary>
@@ -20,6 +22,9 @@ namespace Rabbit.EE
         /// </summary>
         public bool CreateRoom { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EERabbitAuth"/> class.
+        /// </summary>
         public EERabbitAuth()
         {
             CreateRoom = true;

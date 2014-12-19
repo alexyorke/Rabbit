@@ -10,6 +10,7 @@
 
 using System.Runtime.InteropServices;
 using System.Threading;
+using Rabbit.EE;
 
 namespace Rabbit.Auth
 {
@@ -34,6 +35,9 @@ namespace Rabbit.Auth
         /// <returns>A valid client object.</returns>
         public static Client Authenticate(string gameId, string email, string password)
         {
+            if (gameId != EERabbitAuth.GameId)
+                throw new NotSupportedException("ArmorGames login is not supported for the specified game.");
+
             var resetEvent = new ManualResetEvent(false);
             var guestClient = PlayerIO.QuickConnect.SimpleConnect(gameId, "guest", "guest");
             var guestConn = guestClient.Multiplayer.JoinRoom(String.Empty, null);
