@@ -8,6 +8,10 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
+using System.Diagnostics;
+using Rabbit.EE;
+
 namespace Rabbit.Auth
 {
     using System;
@@ -22,6 +26,9 @@ namespace Rabbit.Auth
         /// <summary>
         /// Authenticates using the specified email.
         /// </summary>
+        /// <param name="gameId">
+        /// The game id.
+        /// </param>
         /// <param name="username">
         /// The user Name.
         /// </param>
@@ -31,12 +38,15 @@ namespace Rabbit.Auth
         /// <returns>
         /// A valid PlayerIOClient instance.
         /// </returns>
-        public static Client Authenticate(string username, string password)
+        public static Client Authenticate(string gameId, string username, string password)
         {
+            if (gameId != EERabbitAuth.GameId)
+                throw new NotSupportedException("Username login is not supported for the specified game.");
+
             string userId;
             try
             {
-                var c = PlayerIO.QuickConnect.SimpleConnect(RabbitAuth.GameId, "guest", "guest");
+                var c = PlayerIO.QuickConnect.SimpleConnect(gameId, "guest", "guest");
                 userId = c.BigDB.Load("usernames", username).GetString("owner");
             }
             catch
@@ -46,7 +56,7 @@ namespace Rabbit.Auth
 
             if (userId.StartsWith("simple", StringComparison.CurrentCulture))
             {
-                return Simple.Authenticate(userId.Substring(5),password);
+                return Simple.Authenticate(gameId, userId.Substring(5),password);
             }
 
             throw new AuthenticationException("Username login currently only supports everybodyedits.com users.");

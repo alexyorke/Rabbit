@@ -4,6 +4,9 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
+using Rabbit.EE;
+
 namespace Rabbit.Auth
 {
     using System;
@@ -18,7 +21,10 @@ namespace Rabbit.Auth
     {
         /// <summary>
         /// Authenticates using the specified email.
-        /// </summary>
+        /// </summary>        
+        /// <param name="gameId">
+        /// The game id.
+        /// </param>
         /// <param name="userName">
         /// The username.
         /// </param>
@@ -28,15 +34,18 @@ namespace Rabbit.Auth
         /// <returns>
         /// A valid PlayerIOClient instance.
         /// </returns>
-        public static Client Authenticate(string userName, string password)
+        public static Client Authenticate(string gameId, string userName, string password)
         {
-            var c = PlayerIO.QuickConnect.SimpleConnect(RabbitAuth.GameId, "guest", "guest");
+            if (gameId != EERabbitAuth.GameId)
+                throw new NotSupportedException("Mousebreaker login is not supported for the specified game.");
+
+            var c = PlayerIO.QuickConnect.SimpleConnect(gameId, "guest", "guest");
 
             var userId = c.BigDB.Load("usernames", userName)["owner"].ToString();
 
             if (userId.StartsWith("mouse", StringComparison.CurrentCulture))
             {
-                return PlayerIO.QuickConnect.SimpleConnect(RabbitAuth.GameId, userId.Substring(5, userId.Length - 5), password);
+                return PlayerIO.QuickConnect.SimpleConnect(gameId, userId.Substring(5), password);
             }
 
             throw new AuthenticationException("Invalid credentials for mousebreaker authentication.");

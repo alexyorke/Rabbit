@@ -23,13 +23,16 @@ namespace Rabbit.Auth
     {
         /// <summary>
         /// Authenticates using the specified email.
-        /// </summary>
+        /// </summary>        
+        /// <param name="gameId">
+        /// The game id.
+        /// </param>
         /// <param name="email">The email.</param>
         /// <param name="password">The password.</param>
         /// <returns>A valid PlayerIOClient instance.</returns>
-        public static Client Authenticate(string email, string password)
+        public static Client Authenticate(string gameId, string email, string password)
         {
-            return PlayerIO.QuickConnect.KongregateConnect(RabbitAuth.GameId, email, password);
+            return PlayerIO.QuickConnect.KongregateConnect(gameId, email, password);
         }
     }
 }

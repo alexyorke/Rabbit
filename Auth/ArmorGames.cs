@@ -10,6 +10,7 @@
 
 using System.Runtime.InteropServices;
 using System.Threading;
+using Rabbit.EE;
 
 namespace Rabbit.Auth
 {
@@ -26,13 +27,19 @@ namespace Rabbit.Auth
         /// <summary>
         /// Authenticates the user using ArmorGames authentication.
         /// </summary>
+        /// <param name="gameId">
+        /// The game id.
+        /// </param>
         /// <param name="email">The user id of the user.</param>
         /// <param name="password">The user token.</param>
         /// <returns>A valid client object.</returns>
-        public static Client Authenticate(string email, string password)
+        public static Client Authenticate(string gameId, string email, string password)
         {
+            if (gameId != EERabbitAuth.GameId)
+                throw new NotSupportedException("ArmorGames login is not supported for the specified game.");
+
             var resetEvent = new ManualResetEvent(false);
-            var guestClient = PlayerIO.QuickConnect.SimpleConnect(RabbitAuth.GameId, "guest", "guest");
+            var guestClient = PlayerIO.QuickConnect.SimpleConnect(gameId, "guest", "guest");
             var guestConn = guestClient.Multiplayer.JoinRoom(String.Empty, null);
             Client client = null;
             Exception exception = null;
@@ -45,7 +52,7 @@ namespace Rabbit.Auth
                         throw new AuthenticationException("Could not log into Armor Games.");
 
                     client = PlayerIO.Connect(
-                        RabbitAuth.GameId,
+                        gameId,
                         "secure",
                         message.GetString(0),
                         message.GetString(1),
