@@ -28,23 +28,12 @@ namespace Rabbit
         public RabbitAuth()
         {
             AuthenticationType = AuthenticationType.Unknown;
-            CreateRoom = true;
         }
-
-        /// <summary>
-        /// The game identifier
-        /// </summary>
-        public const string GameId = "everybody-edits-su9rn58o40itdbnw69plyw";
 
         /// <summary>
         /// Gets or sets the authentication type.
         /// </summary>
         public AuthenticationType AuthenticationType { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether to create a multiplayer room.
-        /// </summary>
-        public bool CreateRoom { get; set; }
 
         /// <summary>
         /// Gets the type of the authentication.
@@ -117,113 +106,80 @@ namespace Rabbit
         /// <summary>
         /// Connects to the PlayerIO service using the provided credentials.
         /// </summary>
-        /// <param name="email">
-        /// Email address
+        /// <param name="gameId">
+        /// The game id.
         /// </param>
-        /// <param name="worldId">
-        /// The room id of the world to join
+        /// <param name="email">
+        /// Email address.
         /// </param>
         /// <param name="password">
-        /// Password or token
+        /// Password or token.
         /// </param>
         /// <returns>
-        /// A valid connection object.
+        /// A client object.
         /// </returns>
         /// <exception cref="System.InvalidOperationException">
         /// Invalid authentication type.
         /// </exception>
-        public Connection LogOn(string email, string password, string worldId)
+        public Client LogOn(string gameId, string email, string password)
         {
             // Clean the email (or token) from whitespace
             email = Regex.Replace(email, @"\s+", string.Empty);
 
-            // Parse the world id (if it exists in another format)
-            worldId = IdParser.Parse(worldId);
-
-            // backwards compatibility
             if (AuthenticationType == AuthenticationType.Unknown)
             {
                 AuthenticationType = GetAuthType(email, password);
             }
 
-            Client client;
             switch (AuthenticationType)
             {
                 case AuthenticationType.Facebook:
                 {
-                    client = Facebook.Authenticate(password);
-                    break;
+                    return Facebook.Authenticate(password);
                 }
 
                 case AuthenticationType.Kongregate:
                 {
-                    client = Kongregate.Authenticate(email, password);
-                    break;
+                    return Kongregate.Authenticate(email, password);
                 }
 
                 case AuthenticationType.ArmorGames:
                 {
-                    client = ArmorGames.Authenticate(email, password);
-                    break;
+                    return ArmorGames.Authenticate(email, password);
                 }
 
                 case AuthenticationType.MouseBreaker:
                 {
-                    client = MouseBreaker.Authenticate(email, password);
-                    break;
+                    return MouseBreaker.Authenticate(email, password);
                 }
 
                 case AuthenticationType.Username:
                 {
-                    client = Username.Authenticate(email, password);
-                    break;
+                    return Username.Authenticate(email, password);
                 }
 
                 default:
                 {
-                     client = Simple.Authenticate(email, password);
-                     break;
+                     return Simple.Authenticate(email, password);
                 }
             }
-
-            Connection eeConn;
-            if (CreateRoom)
-            {
-                var roomPrefix = worldId.StartsWith("BW", StringComparison.InvariantCulture) 
-                    ? "Beta"
-                    : "Everybodyedits";
-
-                var serverVersion = client.BigDB.Load("config", "config")["version"];
-                eeConn = client.Multiplayer.CreateJoinRoom(
-                    worldId,
-                    roomPrefix + serverVersion,
-                    true,
-                    null,
-                    null);
-            }
-            else
-            {
-                eeConn = client.Multiplayer.JoinRoom(worldId, null);
-            }
-
-            return eeConn;
         }
 
         /// <summary>
         /// The log in function.
         /// </summary>
+        /// <param name="gameId">
+        /// The game id.
+        /// </param>
         /// <param name="token">
         /// The token.
         /// </param>
-        /// <param name="worldId">
-        /// The world id.
-        /// </param>
         /// <returns>
-        /// The <see cref="Connection"/>.
+        /// The <see cref="Client"/>.
         /// </returns>
-        public Connection LogOn(string token, string worldId)
+        public Client LogOn(string gameId, string token)
         {
-            return this.LogOn(token, worldId, null);
+            return this.LogOn(gameId, token, null);
         }
 
         /// <summary>

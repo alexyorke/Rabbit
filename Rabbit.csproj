@@ -64,7 +64,8 @@
     <Compile Include="Auth\Mousebreaker.cs" />
     <Compile Include="Auth\Simple.cs" />
     <Compile Include="Auth\Username.cs" />
-    <Compile Include="IdParser.cs" />
+    <Compile Include="EE\EERabbitAuth.cs" />
+    <Compile Include="EE\IdParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RabbitAuth.cs" />
   </ItemGroup>
