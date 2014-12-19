@@ -6,7 +6,7 @@ Rabbit allows PlayerIO developers to seamlessly integrate all supported types (A
 Want to use Rabbit in your project? It's simple!
 
 ```csharp
-Connection conn = new RabbitAuth().LogOn(EmailOrTokenOrUserName, RoomID, Password);
+Connection conn = new RabbitAuth().LogOn(UserName, RoomID, Password);
 ```
 
 
@@ -30,3 +30,12 @@ Rabbit is available on NuGet: [EE-Rabbit](http://www.nuget.org/packages/EE-Rabbi
 NuGet package icon courtesy of [jcapaldi on Flickr](https://flic.kr/p/cVkan9).
 
 [Yonom](https://github.com/Yonom), author of [Cupcake](https://github.com/Yonom/CupCake), significantly [helped](https://github.com/Decagon/Rabbit/commits/master?author=Yonom)!
+
+###Everybody Edits
+
+Since Rabbit was originally created for Everybody Edits, it has a pre-built method:
+
+
+```csharp
+Connection conn = new EERabbitAuth().LogOn(EmailOrTokenOrUserName, RoomID, Password);
+```
