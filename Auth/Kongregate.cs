@@ -23,7 +23,10 @@ namespace Rabbit.Auth
     {
         /// <summary>
         /// Authenticates using the specified email.
-        /// </summary>
+        /// </summary>        
+        /// <param name="gameId">
+        /// The game id.
+        /// </param>
         /// <param name="email">The email.</param>
         /// <param name="password">The password.</param>
         /// <returns>A valid PlayerIOClient instance.</returns>

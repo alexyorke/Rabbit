@@ -26,6 +26,9 @@ namespace Rabbit.Auth
         /// <summary>
         /// Authenticates the user using ArmorGames authentication.
         /// </summary>
+        /// <param name="gameId">
+        /// The game id.
+        /// </param>
         /// <param name="email">The user id of the user.</param>
         /// <param name="password">The user token.</param>
         /// <returns>A valid client object.</returns>

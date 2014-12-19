@@ -22,6 +22,9 @@ namespace Rabbit.Auth
         /// <summary>
         /// Authenticates using the specified email.
         /// </summary>
+        /// <param name="gameId">
+        /// The game id.
+        /// </param>
         /// <param name="username">
         /// The user Name.
         /// </param>
@@ -46,7 +49,7 @@ namespace Rabbit.Auth
 
             if (userId.StartsWith("simple", StringComparison.CurrentCulture))
             {
-                return Simple.Authenticate(userId.Substring(5),password);
+                return Simple.Authenticate(gameId, userId.Substring(5),password);
             }
 
             throw new AuthenticationException("Username login currently only supports everybodyedits.com users.");

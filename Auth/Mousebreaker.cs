@@ -18,7 +18,10 @@ namespace Rabbit.Auth
     {
         /// <summary>
         /// Authenticates using the specified email.
-        /// </summary>
+        /// </summary>        
+        /// <param name="gameId">
+        /// The game id.
+        /// </param>
         /// <param name="userName">
         /// The username.
         /// </param>

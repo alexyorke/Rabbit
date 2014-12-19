@@ -20,7 +20,10 @@ namespace Rabbit.Auth
     {
         /// <summary>
         /// Authenticates the specified token.
-        /// </summary>
+        /// </summary>        
+        /// <param name="gameId">
+        /// The game id.
+        /// </param>
         /// <param name="token">The token.</param>
         /// <returns>A valid PlayerIOClient instance.</returns>
         public static Client Authenticate(string gameId, string token)
