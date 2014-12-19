@@ -1,4 +1,4 @@
-Rabbit [![Build status](https://ci.appveyor.com/api/projects/status/6fxlb8bkqp18cg3c/branch/master)](https://ci.appveyor.com/project/Decagon/rabbit/branch/master)
+Rabbit [![Build status](https://ci.appveyor.com/api/projects/status/6fxlb8bkqp18cg3c/branch/master)](https://ci.appveyor.com/project/Decagon/rabbit/branch/master) [![Issue Stats](http://www.issuestats.com/github/decagon/rabbit/badge/pr)](http://www.issuestats.com/github/decagon/rabbit) [![Issue Stats](http://www.issuestats.com/github/decagon/rabbit/badge/issue)](http://www.issuestats.com/github/decagon/rabbit)
 ======
 
 Rabbit allows [Everybody Edits](http://everybodyedits.com) developers to seamlessly integrate all supported types (Armor Games, Kongregate, Mousebreaker, Facebook, email, and standard authentication) into one login interface. 
