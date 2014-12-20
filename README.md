@@ -40,4 +40,4 @@ Use `EERabbitAuth()` to specifically authenticate with Everybody Edits:
 Connection conn = new EERabbitAuth().LogOn(EmailOrTokenOrUserName, RoomID, Password);
 ```
 
-Using this method allows for the room to be joined (or created if one does not exist), has built-in room id verification, and is able to extract the id from url's. However, you may use `RabbitAuth()` insteead.
+Using this method allows for the room to be joined (or created if one does not exist), has built-in room id verification, and is able to extract the id from url's. However, you may use `RabbitAuth()` instead.
