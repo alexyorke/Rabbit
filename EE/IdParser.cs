@@ -7,13 +7,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using System.Linq;
+using System.Text.RegularExpressions;
+
 namespace Rabbit
 {
-    using System;
-    using System.Globalization;
-    using System.Linq;
-    using System.Text.RegularExpressions;
-
     /// <summary>
     /// The id parser.
     /// </summary>

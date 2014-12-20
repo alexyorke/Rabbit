@@ -9,14 +9,13 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System;
+using System.Text.RegularExpressions;
+using PlayerIOClient;
+using Rabbit.Auth;
+
 namespace Rabbit
 {
-    using System;
-    using System.Text.RegularExpressions;
-    using PlayerIOClient;
-
-    using Auth;
-
     /// <summary>
     /// Authentication core.
     /// </summary>

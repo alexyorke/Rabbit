@@ -9,10 +9,10 @@
 // <summary></summary>
 // ***********************************************************************
 
+using PlayerIOClient;
+
 namespace Rabbit.Auth
 {
-    using PlayerIOClient;
-
     /// <summary>
     /// Class Facebook.
     /// </summary>

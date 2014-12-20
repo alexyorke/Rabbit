@@ -9,15 +9,13 @@
 // <summary></summary>
 // ***********************************************************************
 
-using System.Diagnostics;
+using System;
+using System.Security.Authentication;
+using PlayerIOClient;
 using Rabbit.EE;
 
 namespace Rabbit.Auth
 {
-    using System;
-    using System.Security.Authentication;
-    using PlayerIOClient;
-
     /// <summary>
     /// Class Username.
     /// </summary>

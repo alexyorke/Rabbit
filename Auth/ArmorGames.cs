@@ -8,17 +8,14 @@
 // </copyright>
 // <summary>Armor Games authentication. </summary>
 
-using System.Runtime.InteropServices;
+using System;
+using System.Security.Authentication;
 using System.Threading;
+using PlayerIOClient;
 using Rabbit.EE;
 
 namespace Rabbit.Auth
 {
-    using System;
-    using System.Security.Authentication;
-
-    using PlayerIOClient;
-
     /// <summary>
     /// Armor Games authentication class.
     /// </summary>

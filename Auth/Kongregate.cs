@@ -9,12 +9,11 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System.Diagnostics.CodeAnalysis;
+using PlayerIOClient;
+
 namespace Rabbit.Auth
 {
-    using System.Diagnostics.CodeAnalysis;
-
-    using PlayerIOClient;
-
     /// <summary>
     /// Class Kongregate.
     /// </summary>

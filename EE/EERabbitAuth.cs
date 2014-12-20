@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using PlayerIOClient;
-using Rabbit.Auth;
 
 namespace Rabbit.EE
 {

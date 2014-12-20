@@ -9,10 +9,10 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace Rabbit.Auth
 {
-    using System.Diagnostics.CodeAnalysis;
-
     /// <summary>
     /// Authentication Types
     /// </summary>

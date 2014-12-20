@@ -7,16 +7,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using System.Diagnostics.CodeAnalysis;
+using NUnit.Framework;
+using Rabbit.Auth;
+
 namespace Rabbit.Tests
 {
-    using System;
-    using System.Diagnostics.CodeAnalysis;
-
-    using NUnit.Framework;
-
-    using Rabbit;
-    using Auth;
-
     /// <summary>
     /// The rabbit tests.
     /// </summary>
