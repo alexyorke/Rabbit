@@ -50,8 +50,8 @@ namespace Rabbit
 
             // ArmorGames: Both UserID and password are 32 char hexadecimal lowercase strings
             if (!string.IsNullOrEmpty(email) &&
-                Regex.IsMatch(password, @"^[0-9a-f]{32}$") &&
-                Regex.IsMatch(email, @"^[0-9a-f]{32}$"))
+                IsHexadecimal(password) &&
+                IsHexadecimal(email))
             {
                 return AuthenticationType.ArmorGames;
             }
@@ -100,6 +100,11 @@ namespace Rabbit
             // Guess what possible authentication type they might be trying to
             // use and tell them that there is a proper way to format it.
             throw new InvalidOperationException(GenerateErrorMessage(email, password));
+        }
+
+        private static bool IsHexadecimal(string password)
+        {
+            return Regex.IsMatch(password, @"^[0-9a-f]{32}$");
         }
 
         /// <summary>
@@ -227,7 +232,7 @@ namespace Rabbit
             }
             else
             {
-                if (Regex.IsMatch(password, @"^[0-9a-f]$") && Regex.IsMatch(email, @"^[0-9a-f]$"))
+                if (IsHexadecimal(password) && IsHexadecimal(email))
                 {
                     msg = msg + "Since a token was provided for the username and password " +
                         "it was assumed that the authentication type was ArmorGames. ";
