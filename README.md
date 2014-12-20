@@ -33,7 +33,7 @@ NuGet package icon courtesy of [jcapaldi on Flickr](https://flic.kr/p/cVkan9).
 
 ###Everybody Edits
 
-Since Rabbit was originally created for Everybody Edits, the `EERabbitAuth` is designed specifically for EE:
+Since Rabbit was originally created for Everybody Edits, the `EERabbitAuth` is designed for EE:
 
 
 ```csharp
