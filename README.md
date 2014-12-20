@@ -22,9 +22,10 @@ Have more questions? Feel free to consult the [Wiki](https://github.com/Decagon/
 If you find a bug in Rabbit, feel free to let me know in the GitHub issue tracker or, if you don't have an account, by decagongithub@gmail.com.
 
 ###NuGet
-Rabbit is available on NuGet: [EE-Rabbit](http://www.nuget.org/packages/EE-Rabbit/).
 
-Just type `Install-Package EE-Rabbit` at the NuGet prompt to install.
+RabbitIO is going to be released soon, and it'll be on NuGet too.
+
+To continue recieving updates for Rabbit, upgrade to `RabbitIO` and delete `EE-Rabbit`.
 
 ###Credits
 NuGet package icon courtesy of [jcapaldi on Flickr](https://flic.kr/p/cVkan9).
