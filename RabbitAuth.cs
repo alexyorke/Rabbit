@@ -22,8 +22,8 @@ namespace Rabbit
     public class RabbitAuth
     {
         // Localizable strings
-        const string EmailPasswordNullError = "The email/token and password fields cannot be both blank.";
-        const string AssumeFacebookAuth = "Since an email, username or token was not provided, Facebook authentication is the only option. ";
+        private const string EmailPasswordNullError = "The email/token and password fields cannot be both blank.";
+        private const string AssumeFacebookAuth = "Since an email, username or token was not provided, Facebook authentication is the only option. ";
         private const string TokenLessThan100Chars = "The token should not be less than 100 characters. ";
         private const string TokenMustBeAlphamumeric = "The token should only contain alphanumeric characters.";
 
