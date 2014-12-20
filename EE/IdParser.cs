@@ -21,16 +21,17 @@ namespace Rabbit
         /// <summary>
         /// The parser.
         /// </summary>
-        /// <param name="id">
-        /// The room id.
-        /// </param>
-        /// <returns>
-        /// The <see cref="string"/>.
-        /// </returns>
-        /// <exception cref="FormatException">
-        /// Occurs when the room id is not formatted in a proper url or is not between
-        /// 9 and 14 characters or contains non-alphanumeric symbols.
+        /// <param name="id">The room id.</param>
+        /// <returns>The <see cref="string" />.</returns>
+        /// <exception cref="System.ArgumentNullException">id;The room ID cannot be null.</exception>
+        /// <exception cref="System.UriFormatException">
+        /// Unknown url!
+        /// or
+        /// The url was correct, but the room id was invalid.
         /// </exception>
+        /// <exception cref="System.FormatException">The room id url was not recognized. Make sure that the url is valid.</exception>
+        /// <exception cref="FormatException">Occurs when the room id is not formatted in a proper url or is not between
+        /// 9 and 14 characters or contains non-alphanumeric symbols.</exception>
         public static string Parse(string id)
         {            
             // This method is based on TakoMan02's Skylight parse url method
@@ -67,12 +68,8 @@ namespace Rabbit
         /// <summary>
         /// Check if the string is a valid room id.
         /// </summary>
-        /// <param name="id">
-        /// The id.
-        /// </param>
-        /// <returns>
-        /// The <see cref="bool"/>.
-        /// </returns>
+        /// <param name="id">The id.</param>
+        /// <returns>The <see cref="bool" />.</returns>
         public static bool IsValidStrictRoomId(string id)
         {
             return Regex.IsMatch(id, @"^([P|B|O]W[a-zA-Z0-9_-]+)|\$service-room\$$");

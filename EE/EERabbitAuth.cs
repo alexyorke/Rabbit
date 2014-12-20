@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : Rabbit
+// Author           : Decagon
+// Created          : 12-19-2014
+//
+// Last Modified By : Decagon
+// Last Modified On : 12-19-2014
+// ***********************************************************************
+// <copyright file="EERabbitAuth.cs" company="">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using PlayerIOClient;
 
 namespace Rabbit.EE
@@ -16,10 +29,11 @@ namespace Rabbit.EE
         /// <summary>
         /// Gets or sets a value indicating whether to create a multiplayer room.
         /// </summary>
+        /// <value><c>true</c> if [create room]; otherwise, <c>false</c>.</value>
         public bool CreateRoom { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EERabbitAuth"/> class.
+        /// Initializes a new instance of the <see cref="EERabbitAuth" /> class.
         /// </summary>
         public EERabbitAuth()
         {
@@ -29,16 +43,10 @@ namespace Rabbit.EE
         /// <summary>
         /// Logs in and connects to the specified room.
         /// </summary>
-        /// <param name="email">
-        /// The email.
-        /// </param>
-        /// <param name="password">
-        /// The password.
-        /// </param>
-        /// <param name="worldId">
-        /// The room id of the world to join
-        /// </param>
-        /// <returns></returns>
+        /// <param name="email">The email.</param>
+        /// <param name="password">The password.</param>
+        /// <param name="worldId">The room id of the world to join</param>
+        /// <returns>Connection.</returns>
         public new Connection LogOn(string email, string password, string worldId)
         {
             var client = base.LogOn(GameId, email, password);
@@ -72,13 +80,9 @@ namespace Rabbit.EE
         /// <summary>
         /// Logs on.
         /// </summary>
-        /// <param name="token">
-        /// The token.
-        /// </param>
-        /// <param name="worldId">
-        /// The world identifier.
-        /// </param>
-        /// <returns></returns>
+        /// <param name="token">The token.</param>
+        /// <param name="worldId">The world identifier.</param>
+        /// <returns>Connection.</returns>
         public new Connection LogOn(string token, string worldId)
         {
             return LogOn(token, null, worldId);

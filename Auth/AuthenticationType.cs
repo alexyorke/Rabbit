@@ -46,7 +46,7 @@ namespace Rabbit.Auth
         Unknown,
 
         /// <summary>
-        /// The username authentication type. This means that the user supplied a username
+        /// The user name authentication type. This means that the user supplied a user name
         /// which must be converted into a user id, then parsed.
         /// </summary>
         Username,

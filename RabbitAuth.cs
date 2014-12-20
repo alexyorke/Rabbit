@@ -22,23 +22,50 @@ namespace Rabbit
     public class RabbitAuth
     {
         // Localizable strings
+        /// <summary>
+        /// The email password null error
+        /// </summary>
         private const string EmailPasswordNullError = "The email/token, and password fields cannot be blank.";
+        /// <summary>
+        /// The assume facebook authentication
+        /// </summary>
         private const string AssumeFacebookAuth = "Facebook authentication was chosen because a username was not supplied.";
+        /// <summary>
+        /// The token less than100 chars
+        /// </summary>
         private const string TokenLessThan100Chars = "The token must be longer than 100 characters.";
+        /// <summary>
+        /// The token must be alphamumeric
+        /// </summary>
         private const string TokenMustBeAlphamumeric = "The token must be alphanumeric.";
 
+        /// <summary>
+        /// The assume armor games authentication
+        /// </summary>
         private const string AssumeArmorGamesAuth = "Armor Games authentication was chosen because tokens were supplied for the username and password.";
 
+        /// <summary>
+        /// The username too long
+        /// </summary>
         private const string UsernameTooLong = "The first token must be 32 characters.";
+        /// <summary>
+        /// The username too short
+        /// </summary>
         private const string UsernameTooShort = "The first token must be 32 characters.";
 
+        /// <summary>
+        /// The password too long
+        /// </summary>
         private const string PasswordTooLong = "The second token must be 32 characters.";
+        /// <summary>
+        /// The password too short
+        /// </summary>
         private const string PasswordTooShort = "The second token must be 32 characters.";
         // End localizable strings
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RabbitAuth"/> class.
+        /// Initializes a new instance of the <see cref="RabbitAuth" /> class.
         /// </summary>
         public RabbitAuth()
         {
@@ -48,6 +75,7 @@ namespace Rabbit
         /// <summary>
         /// Gets or sets the authentication type.
         /// </summary>
+        /// <value>The type of the authentication.</value>
         public AuthenticationType AuthenticationType { get; set; }
 
         /// <summary>
@@ -123,6 +151,12 @@ namespace Rabbit
             throw new InvalidOperationException(GenerateErrorMessage(email, password));
         }
 
+        /// <summary>
+        /// Determines whether the specified password is hexadecimal.
+        /// </summary>
+        /// <param name="password">The password.</param>
+        /// <param name="length">The length.</param>
+        /// <returns><c>true</c> if the specified password is hexadecimal; otherwise, <c>false</c>.</returns>
         private static bool IsHexadecimal(string password, int length = 0)
         {
             return length != 0 ? Regex.IsMatch(password, @"^[0-9a-f]{" + length + "}$") : Regex.IsMatch(password, @"^[0-9a-f]$");
@@ -131,21 +165,11 @@ namespace Rabbit
         /// <summary>
         /// Connects to the PlayerIO service using the provided credentials.
         /// </summary>
-        /// <param name="gameId">
-        /// The game id.
-        /// </param>
-        /// <param name="email">
-        /// Email address.
-        /// </param>
-        /// <param name="password">
-        /// Password or token.
-        /// </param>
-        /// <returns>
-        /// A client object.
-        /// </returns>
-        /// <exception cref="System.InvalidOperationException">
-        /// Invalid authentication type.
-        /// </exception>
+        /// <param name="gameId">The game id.</param>
+        /// <param name="email">Email address.</param>
+        /// <param name="password">Password or token.</param>
+        /// <returns>A client object.</returns>
+        /// <exception cref="System.InvalidOperationException">Invalid authentication type.</exception>
         public Client LogOn(string gameId, string email, string password)
         {
             // Clean the email (or token) from whitespace
@@ -193,15 +217,9 @@ namespace Rabbit
         /// <summary>
         /// The log in function.
         /// </summary>
-        /// <param name="gameId">
-        /// The game id.
-        /// </param>
-        /// <param name="token">
-        /// The token.
-        /// </param>
-        /// <returns>
-        /// The <see cref="Client"/>.
-        /// </returns>
+        /// <param name="gameId">The game id.</param>
+        /// <param name="token">The token.</param>
+        /// <returns>The <see cref="Client" />.</returns>
         public Client LogOn(string gameId, string token)
         {
             return LogOn(gameId, token, null);
@@ -210,30 +228,20 @@ namespace Rabbit
         /// <summary>
         /// Check if the email is valid.
         /// </summary>
-        /// <param name="strIn">
-        /// The string (email).
-        /// </param>
-        /// <returns>
-        /// Whether or not the email is valid.
-        /// </returns>
+        /// <param name="strIn">The string (email).</param>
+        /// <returns>Whether or not the email is valid.</returns>
         private static bool IsValidEmail(string strIn) // http://stackoverflow.com/questions/5342375/
         {
             // Return true if strIn is in valid e-mail format.
             return Regex.IsMatch(strIn, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
         }
-        
+
         /// <summary>
         /// The generate error message.
         /// </summary>
-        /// <param name="email">
-        /// The email.
-        /// </param>
-        /// <param name="password">
-        /// The password.
-        /// </param>
-        /// <returns>
-        /// The <see cref="string"/>.
-        /// </returns>
+        /// <param name="email">The email.</param>
+        /// <param name="password">The password.</param>
+        /// <returns>The <see cref="string" />.</returns>
         private static string GenerateErrorMessage(string email, string password)
         {
             var msg = string.Empty;

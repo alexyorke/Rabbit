@@ -19,19 +19,13 @@ namespace Rabbit.Auth
     {
         /// <summary>
         /// Authenticates using the specified email.
-        /// </summary>        
-        /// <param name="gameId">
-        /// The game id.
-        /// </param>
-        /// <param name="userName">
-        /// The username.
-        /// </param>
-        /// <param name="password">
-        /// The password.
-        /// </param>
-        /// <returns>
-        /// A valid PlayerIOClient instance.
-        /// </returns>
+        /// </summary>
+        /// <param name="gameId">The game id.</param>
+        /// <param name="userName">The username.</param>
+        /// <param name="password">The password.</param>
+        /// <returns>A valid PlayerIOClient instance.</returns>
+        /// <exception cref="System.NotSupportedException">Mousebreaker login is not supported for the specified game.</exception>
+        /// <exception cref="System.Security.Authentication.AuthenticationException">Invalid credentials for Mousebreaker authentication.</exception>
         public static Client Authenticate(string gameId, string userName, string password)
         {
             if (gameId != EERabbitAuth.GameId)
