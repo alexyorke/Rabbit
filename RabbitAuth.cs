@@ -48,7 +48,8 @@ namespace Rabbit
                 throw new InvalidOperationException("The email/token and password fields cannot be both blank.");
             }
 
-            // ArmorGames: Both UserID and password are 32 char hexadecimal lowercase strings
+            // ArmorGames:
+            // Both UserID and password are 32 char hexadecimal lowercase strings
             if (!string.IsNullOrEmpty(email) &&
                 IsHexadecimal(password) &&
                 IsHexadecimal(email))
@@ -66,7 +67,8 @@ namespace Rabbit
                 return AuthenticationType.Kongregate;
             }
 
-            // Facebook: password is a 100 char alphanumerical string
+            // Facebook:
+            // password is a 100 char alphanumerical string
             // there is no UserID supplied
             if (string.IsNullOrEmpty(email) &&
                 Regex.IsMatch(password, @"^[0-9a-z]{100,}$", RegexOptions.IgnoreCase))
@@ -74,7 +76,8 @@ namespace Rabbit
                 return AuthenticationType.Facebook;
             }
 
-            // 88 character base 64 string for MouseBreaker authentication.
+            // MouseBreaker:
+            // 88 character base 64 string for authentication.
             // Only one token.
             if (!string.IsNullOrEmpty(email) && email.Length == 88 && !string.IsNullOrEmpty(password))
             {
