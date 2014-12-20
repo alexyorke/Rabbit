@@ -85,7 +85,7 @@ namespace Rabbit.EE
         /// <returns></returns>
         public new Connection LogOn(string token, string worldId)
         {
-            return this.LogOn(token, null, worldId);
+            return LogOn(token, null, worldId);
         }
     }
 }

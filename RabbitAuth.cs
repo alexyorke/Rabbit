@@ -179,7 +179,7 @@ namespace Rabbit
         /// </returns>
         public Client LogOn(string gameId, string token)
         {
-            return this.LogOn(gameId, token, null);
+            return LogOn(gameId, token, null);
         }
 
         /// <summary>
