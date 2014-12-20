@@ -223,7 +223,7 @@ namespace Rabbit
 
                 if (!Regex.IsMatch(password, @"^[0-9a-z]$", RegexOptions.IgnoreCase))
                 {
-                    msg = msg + "The token should not contain non-alphanumeric characters.";
+                    msg = msg + "The token should only contain alphanumeric characters.";
                 }
             }
             else
