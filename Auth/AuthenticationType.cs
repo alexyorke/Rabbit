@@ -9,8 +9,6 @@
 // <summary></summary>
 // ***********************************************************************
 
-using System.Diagnostics.CodeAnalysis;
-
 namespace Rabbit.Auth
 {
     /// <summary>

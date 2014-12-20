@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using PlayerIOClient;
 
 namespace Rabbit.Auth

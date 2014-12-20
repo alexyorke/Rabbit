@@ -37,7 +37,7 @@ namespace Rabbit
             // This method is based on TakoMan02's Skylight parse url method
             // available on GitHub.
             if (string.IsNullOrEmpty(id))
-                throw new ArgumentNullException("id", (string) strings.The_room_ID_cannot_be_null);
+                throw new ArgumentNullException("id", strings.The_room_ID_cannot_be_null);
 
             if (IsValidStrictRoomId(id))
                 return id;

@@ -9,7 +9,6 @@
 // <summary></summary>
 // ***********************************************************************
 
-using System.Diagnostics.CodeAnalysis;
 using PlayerIOClient;
 
 namespace Rabbit.Auth
