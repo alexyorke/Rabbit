@@ -31,7 +31,6 @@ namespace Rabbit.Auth
         /// <summary>
         /// The Kongregate authentication token
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here because it is a name of a company.")]
         Kongregate,
 
         /// <summary>
