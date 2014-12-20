@@ -240,7 +240,7 @@ namespace Rabbit
                 if (IsHexadecimal(password) && IsHexadecimal(email))
                 {
                     msg = msg + "Since a token was provided for the username and password " +
-                        "it was assumed that the authentication type was ArmorGames. ";
+                        "it was assumed that the authentication type was Armor Games. ";
                     if (email.Length > 32)
                     {
                         msg = msg + "The username token was greater than 32 characters. ";
