@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AssumeArmorGamesAuth" xml:space="preserve">
     <value>Armor Games authentication was chosen because tokens were supplied for the username and password.</value>
@@ -170,5 +170,17 @@
   </data>
   <data name="UsernameNotSupported" xml:space="preserve">
     <value>Username login is not supported for the specified game.</value>
+  </data>
+  <data name="AssumeKongregateAuth" xml:space="preserve">
+    <value>Kongregate authentication was chosen because the tokens were in hexadecimal.</value>
+  </data>
+  <data name="KongregateUsernameMustBeInteger" xml:space="preserve">
+    <value>The username must be an integer.</value>
+  </data>
+  <data name="KongregatePasswordTooLong" xml:space="preserve">
+    <value>The password must be exactly 64 characters.</value>
+  </data>
+  <data name="KongregatePasswordTooShort" xml:space="preserve">
+    <value>The password must be exactly 64 characters.</value>
   </data>
 </root>

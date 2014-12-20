@@ -20,10 +20,32 @@ internal static class Errors
         }
         else
         {
-            if (RabbitAuth.IsHexadecimal(password) && RabbitAuth.IsHexadecimal(email))
+            if (RabbitAuth.IsHexadecimal(password))
             {
-                msg = ResolveArmorGamesErrors(email, password, msg);
+                msg = RabbitAuth.IsHexadecimal(email) ? ResolveArmorGamesErrors(email, password, msg) : ResolveKongregateErrors(email, password, msg);
             }
+        }
+
+        return msg;
+    }
+
+    private static string ResolveKongregateErrors(string email, string password, string msg)
+    {
+        msg = msg + strings.AssumeKongregateAuth;
+
+        if (!Regex.IsMatch(email, @"^\d+$"))
+        {
+            msg = msg + "- " + strings.KongregateUsernameMustBeInteger;
+        }
+
+        if (password.Length > 64)
+        {
+            msg = msg + "- " + strings.KongregatePasswordTooLong;
+        }
+
+        if (password.Length < 64)
+        {
+            msg = msg + "- " + strings.KongregatePasswordTooShort;
         }
 
         return msg;

@@ -97,6 +97,15 @@ namespace Rabbit.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kongregate authentication was chosen because the tokens were in hexadecimal..
+        /// </summary>
+        internal static string AssumeKongregateAuth {
+            get {
+                return ResourceManager.GetString("AssumeKongregateAuth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The email/token, and password fields cannot be blank..
         /// </summary>
         internal static string EmailPasswordNullError {
@@ -111,6 +120,33 @@ namespace Rabbit.Localizations {
         internal static string InvalidRoomUrl {
             get {
                 return ResourceManager.GetString("InvalidRoomUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password must be exactly 64 characters..
+        /// </summary>
+        internal static string KongregatePasswordTooLong {
+            get {
+                return ResourceManager.GetString("KongregatePasswordTooLong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password must be exactly 64 characters..
+        /// </summary>
+        internal static string KongregatePasswordTooShort {
+            get {
+                return ResourceManager.GetString("KongregatePasswordTooShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The username must be an integer..
+        /// </summary>
+        internal static string KongregateUsernameMustBeInteger {
+            get {
+                return ResourceManager.GetString("KongregateUsernameMustBeInteger", resourceCulture);
             }
         }
         
