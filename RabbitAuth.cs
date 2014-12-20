@@ -48,23 +48,25 @@ namespace Rabbit
                 throw new InvalidOperationException("The email/token and password fields cannot be both blank.");
             }
 
-            // ArmorGames:
-            // Both UserID and password are 32 char hexadecimal lowercase strings
-            if (!string.IsNullOrEmpty(email) &&
-                IsHexadecimal(password) &&
-                IsHexadecimal(email))
+            // Armor Games and Kongregate require that the email field is not blank.
+            if (!string.IsNullOrEmpty(email))
             {
-                return AuthenticationType.ArmorGames;
-            }
+                // Armor Games:
+                // Both UserID and password are 32 char hexadecimal lowercase strings
+                if (IsHexadecimal(password) &&
+                    IsHexadecimal(email))
+                {
+                    return AuthenticationType.ArmorGames;
+                }
 
-            // Kongregate: 
-            // UserID is a number
-            // Password is a 64 char hexadecimal lowercase string
-            if (!string.IsNullOrEmpty(email) &&
-                Regex.IsMatch(email, @"^\d+$") &&
-                Regex.IsMatch(password, @"^[0-9a-f]{64}$"))
-            {
-                return AuthenticationType.Kongregate;
+                // Kongregate: 
+                // UserID is a number
+                // Password is a 64 char hexadecimal lowercase string
+                if (Regex.IsMatch(email, @"^\d+$") &&
+                    Regex.IsMatch(password, @"^[0-9a-f]{64}$"))
+                {
+                    return AuthenticationType.Kongregate;
+                }
             }
 
             // Facebook:
