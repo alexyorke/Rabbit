@@ -83,22 +83,22 @@ namespace Rabbit
             // Only one token.
             if (!string.IsNullOrEmpty(email) && email.Length == 88 && !string.IsNullOrEmpty(password))
             {
-                try
+                if (email.Length == 88)
                 {
-                    Convert.FromBase64String(email);
-                    return AuthenticationType.MouseBreaker;
+                    try
+                    {
+                        Convert.FromBase64String(email);
+                        return AuthenticationType.MouseBreaker;
+                    }
+                    catch (FormatException)
+                    {
+                        // safe to ignore the exception because it is not a valid
+                        // base 64 array. Keep going.
+                    }
                 }
-                catch (FormatException)
-                {
-                    // safe to ignore the exception because it is not a valid
-                    // base 64 array. Keep going.
-                }
-            }
-
-            if (!string.IsNullOrEmpty(email) &&
-                !string.IsNullOrEmpty(password))
-            {
+                // otherwise, let's hope it's regular authentication.
                 return IsValidEmail(email) ? AuthenticationType.Regular : AuthenticationType.Username;
+
             }
 
             // Try to help the user if they entered in invalid data.
