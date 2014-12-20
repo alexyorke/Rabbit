@@ -21,6 +21,23 @@ namespace Rabbit
     /// </summary>
     public class RabbitAuth
     {
+        // Localizable strings
+        const string EmailPasswordNullError = "The email/token and password fields cannot be both blank.";
+        const string AssumeFacebookAuth = "Since an email, username or token was not provided, Facebook authentication is the only option. ";
+        private const string TokenLessThan100Chars = "The token should not be less than 100 characters. ";
+        private const string TokenMustBeAlphamumeric = "The token should only contain alphanumeric characters.";
+
+        private const string AssumeArmorGamesAuth = "Since a token was provided for the username and password " +
+                        "it was assumed that the authentication type was Armor Games. ";
+
+        private const string UsernameTooLong = "The username token was greater than 32 characters. ";
+        private const string UsernameTooShort = "The username token was shorter than 32 characters. ";
+
+        private const string PasswordTooLong = "The password/token was greater than 32 characters.";
+        private const string PasswordTooShort = "The password/token was less than 32 characters.";
+        // End localizable strings
+
+
         /// <summary>
         /// Initializes a new instance of the <see cref="RabbitAuth"/> class.
         /// </summary>
@@ -45,7 +62,7 @@ namespace Rabbit
         {
             if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(password))
             {
-                throw new InvalidOperationException("The email/token and password fields cannot be both blank.");
+                throw new InvalidOperationException(EmailPasswordNullError);
             }
 
             // Armor Games and Kongregate require that the email field is not blank.
@@ -223,55 +240,44 @@ namespace Rabbit
             var msg = string.Empty;
             if (string.IsNullOrEmpty(email))
             {
-                msg = msg + "Since an email, username or token was not provided, Facebook authentication " +
-                    " is the only option. ";
+                msg = msg + AssumeFacebookAuth;
                 if (password.Length < 100)
                 {
-                    msg = msg + "The token should not be less than 100 characters. ";
+                    msg = msg + TokenLessThan100Chars;
                 }
 
                 if (!Regex.IsMatch(password, @"^[0-9a-z]$", RegexOptions.IgnoreCase))
                 {
-                    msg = msg + "The token should only contain alphanumeric characters.";
+                    msg = msg + TokenMustBeAlphamumeric;
                 }
             }
             else
             {
                 if (IsHexadecimal(password) && IsHexadecimal(email))
                 {
-                    msg = msg + "Since a token was provided for the username and password " +
-                        "it was assumed that the authentication type was Armor Games. ";
+                    msg = msg + AssumeArmorGamesAuth;
+
                     if (email.Length > 32)
                     {
-                        msg = msg + "The username token was greater than 32 characters. ";
+                        msg = msg + UsernameTooLong;
                     }
 
                     if (email.Length < 32)
                     {
-                        msg = msg + "The username token was shorter than 32 characters. ";
+                        msg = msg + UsernameTooShort;
                     }
 
                     if (password.Length > 32)
                     {
-                        msg = msg + "The password token was greater than 32 characters.";
+                        msg = msg + PasswordTooLong;
                     }
 
                     if (password.Length < 32)
                     {
-                        msg = msg + "The password token was less than 32 characters.";
+                        msg = msg + PasswordTooShort;
                     }
                 }
 
-                    msg = msg + "Since a username was provided, the regular authentication was used. ";
-                    if (email.Length > 21)
-                    {
-                        msg = msg + "The username was longer than 20 characters.";
-                    }
-
-                    if (email.Length <= 3)
-                    {
-                        msg = msg + "The username was shorter than 3 characters.";
-                    }
                 }
             
             return msg;
