@@ -53,8 +53,8 @@ namespace Rabbit
             {
                 // Armor Games:
                 // Both UserID and password are 32 char hexadecimal lowercase strings
-                if (IsHexadecimal(password) &&
-                    IsHexadecimal(email))
+                if (IsHexadecimal(password,32) &&
+                    IsHexadecimal(email,32))
                 {
                     return AuthenticationType.ArmorGames;
                 }
@@ -107,9 +107,9 @@ namespace Rabbit
             throw new InvalidOperationException(GenerateErrorMessage(email, password));
         }
 
-        private static bool IsHexadecimal(string password)
+        private static bool IsHexadecimal(string password, int length = 0)
         {
-            return Regex.IsMatch(password, @"^[0-9a-f]{32}$");
+            return length != 0 ? Regex.IsMatch(password, @"^[0-9a-f]{" + length + "}$") : Regex.IsMatch(password, @"^[0-9a-f]$");
         }
 
         /// <summary>
