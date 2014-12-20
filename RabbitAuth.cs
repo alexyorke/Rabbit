@@ -21,51 +21,8 @@ namespace Rabbit
     /// </summary>
     public class RabbitAuth
     {
-        // Localizable strings
         /// <summary>
-        /// The email password null error
-        /// </summary>
-        private const string EmailPasswordNullError = "The email/token, and password fields cannot be blank.";
-        /// <summary>
-        /// The assume facebook authentication
-        /// </summary>
-        private const string AssumeFacebookAuth = "Facebook authentication was chosen because a username was not supplied.";
-        /// <summary>
-        /// The token less than100 chars
-        /// </summary>
-        private const string TokenLessThan100Chars = "The token must be longer than 100 characters.";
-        /// <summary>
-        /// The token must be alphamumeric
-        /// </summary>
-        private const string TokenMustBeAlphamumeric = "The token must be alphanumeric.";
-
-        /// <summary>
-        /// The assume armor games authentication
-        /// </summary>
-        private const string AssumeArmorGamesAuth = "Armor Games authentication was chosen because tokens were supplied for the username and password.";
-
-        /// <summary>
-        /// The username too long
-        /// </summary>
-        private const string UsernameTooLong = "The first token must be 32 characters.";
-        /// <summary>
-        /// The username too short
-        /// </summary>
-        private const string UsernameTooShort = "The first token must be 32 characters.";
-
-        /// <summary>
-        /// The password too long
-        /// </summary>
-        private const string PasswordTooLong = "The second token must be 32 characters.";
-        /// <summary>
-        /// The password too short
-        /// </summary>
-        private const string PasswordTooShort = "The second token must be 32 characters.";
-        // End localizable strings
-
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RabbitAuth" /> class.
+        /// Initializes a new instance of the <see cref="RabbitAuth"/> class.
         /// </summary>
         public RabbitAuth()
         {
@@ -89,7 +46,7 @@ namespace Rabbit
         {
             if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(password))
             {
-                throw new InvalidOperationException(EmailPasswordNullError);
+                throw new InvalidOperationException(strings.EmailPasswordNullError);
             }
 
             // Armor Games and Kongregate require that the email field is not blank.
@@ -247,41 +204,41 @@ namespace Rabbit
             var msg = string.Empty;
             if (string.IsNullOrEmpty(email))
             {
-                msg = msg + AssumeFacebookAuth;
+                msg = msg + strings.AssumeFacebookAuth;
                 if (password.Length < 100)
                 {
-                    msg = msg + TokenLessThan100Chars;
+                    msg = msg + strings.TokenLessThan100Chars;
                 }
 
                 if (!Regex.IsMatch(password, @"^[0-9a-z]$", RegexOptions.IgnoreCase))
                 {
-                    msg = msg + TokenMustBeAlphamumeric;
+                    msg = msg + strings.TokenMustBeAlphamumeric;
                 }
             }
             else
             {
                 if (IsHexadecimal(password) && IsHexadecimal(email))
                 {
-                    msg = msg + AssumeArmorGamesAuth;
+                    msg = msg + strings.AssumeArmorGamesAuth;
 
                     if (email.Length > 32)
                     {
-                        msg = msg + UsernameTooLong;
+                        msg = msg + strings.UsernameTooLong;
                     }
 
                     if (email.Length < 32)
                     {
-                        msg = msg + UsernameTooShort;
+                        msg = msg + strings.UsernameTooShort;
                     }
 
                     if (password.Length > 32)
                     {
-                        msg = msg + PasswordTooLong;
+                        msg = msg + strings.PasswordTooLong;
                     }
 
                     if (password.Length < 32)
                     {
-                        msg = msg + PasswordTooShort;
+                        msg = msg + strings.PasswordTooShort;
                     }
                 }
 
