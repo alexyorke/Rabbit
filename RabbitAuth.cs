@@ -63,7 +63,7 @@ namespace Rabbit
                 // UserID is a number
                 // Password is a 64 char hexadecimal lowercase string
                 if (Regex.IsMatch(email, @"^\d+$") &&
-                    Regex.IsMatch(password, @"^[0-9a-f]{64}$"))
+                    IsHexadecimal(password,64))
                 {
                     return AuthenticationType.Kongregate;
                 }
