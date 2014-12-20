@@ -17,7 +17,7 @@ namespace Rabbit.Auth
     /// <summary>
     /// Class Kongregate.
     /// </summary>
-    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here because it is a name of a company.")]
+
     public static class Kongregate
     {
         /// <summary>
