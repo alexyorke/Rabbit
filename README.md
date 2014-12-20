@@ -24,6 +24,7 @@ If you find a bug in Rabbit, feel free to let me know in the GitHub issue tracke
 ###NuGet
 Rabbit is available on NuGet: [EE-Rabbit](http://www.nuget.org/packages/EE-Rabbit/).
 
+Just type `Install-Package EE-Rabbit` at the NuGet prompt to install.
 
 ###Credits
 NuGet package icon courtesy of [jcapaldi on Flickr](https://flic.kr/p/cVkan9).
