@@ -22,19 +22,18 @@ namespace Rabbit
     public class RabbitAuth
     {
         // Localizable strings
-        private const string EmailPasswordNullError = "The email/token and password fields cannot be both blank.";
-        private const string AssumeFacebookAuth = "Since an email, username or token was not provided, Facebook authentication is the only option. ";
-        private const string TokenLessThan100Chars = "The token should not be less than 100 characters. ";
-        private const string TokenMustBeAlphamumeric = "The token should only contain alphanumeric characters.";
+        private const string EmailPasswordNullError = "The email/token, and password fields cannot be blank.";
+        private const string AssumeFacebookAuth = "Facebook authentication was chosen because a username was not supplied.";
+        private const string TokenLessThan100Chars = "The token must be longer than 100 characters.";
+        private const string TokenMustBeAlphamumeric = "The token must be alphanumeric.";
 
-        private const string AssumeArmorGamesAuth = "Since a token was provided for the username and password " +
-                        "it was assumed that the authentication type was Armor Games. ";
+        private const string AssumeArmorGamesAuth = "Armor Games authentication was chosen because tokens were supplied for the username and password.";
 
-        private const string UsernameTooLong = "The username token was greater than 32 characters. ";
-        private const string UsernameTooShort = "The username token was shorter than 32 characters. ";
+        private const string UsernameTooLong = "The first token must be 32 characters.";
+        private const string UsernameTooShort = "The first token must be 32 characters.";
 
-        private const string PasswordTooLong = "The password/token was greater than 32 characters.";
-        private const string PasswordTooShort = "The password/token was less than 32 characters.";
+        private const string PasswordTooLong = "The second token must be 32 characters.";
+        private const string PasswordTooShort = "The second token must be 32 characters.";
         // End localizable strings
 
 
