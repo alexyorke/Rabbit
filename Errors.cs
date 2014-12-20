@@ -12,18 +12,18 @@ static internal class Errors
     /// <returns>The <see cref="string" />.</returns>
     internal static string GenerateErrorMessage(string email, string password)
     {
-        var msg = String.Empty;
+        var msg = "The following errors caused authentication to fail:" + Environment.NewLine;
         if (String.IsNullOrEmpty(email))
         {
             msg = msg + strings.AssumeFacebookAuth;
             if (password.Length < 100)
             {
-                msg = msg + strings.TokenLessThan100Chars;
+                msg = msg + "- " + strings.TokenLessThan100Chars + Environment.NewLine;
             }
 
             if (!Regex.IsMatch(password, @"^[0-9a-z]$", RegexOptions.IgnoreCase))
             {
-                msg = msg + strings.TokenMustBeAlphamumeric;
+                msg = msg + "- " + strings.TokenMustBeAlphamumeric + Environment.NewLine;
             }
         }
         else
@@ -34,22 +34,22 @@ static internal class Errors
 
                 if (email.Length > 32)
                 {
-                    msg = msg + strings.UsernameTooLong;
+                    msg = msg + "- " + strings.UsernameTooLong + Environment.NewLine;
                 }
 
                 if (email.Length < 32)
                 {
-                    msg = msg + strings.UsernameTooShort;
+                    msg = msg + "- " + strings.UsernameTooShort + Environment.NewLine;
                 }
 
                 if (password.Length > 32)
                 {
-                    msg = msg + strings.PasswordTooLong;
+                    msg = msg + "- " + strings.PasswordTooLong + Environment.NewLine;
                 }
 
                 if (password.Length < 32)
                 {
-                    msg = msg + strings.PasswordTooShort;
+                    msg = msg + "- " + strings.PasswordTooShort + Environment.NewLine;
                 }
             }
 
