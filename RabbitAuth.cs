@@ -221,11 +221,6 @@ namespace Rabbit
                     msg = msg + "The token should not be less than 100 characters. ";
                 }
 
-                if (password.Length > 200)
-                {
-                    msg = msg + "The token should not be greater than 200 characters. ";
-                }
-
                 if (!Regex.IsMatch(password, @"^[0-9a-z]$", RegexOptions.IgnoreCase))
                 {
                     msg = msg + "The token should not contain non-alphanumeric characters.";
