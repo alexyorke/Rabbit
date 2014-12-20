@@ -46,7 +46,7 @@ namespace Rabbit.Auth
                 return PlayerIO.QuickConnect.SimpleConnect(gameId, userId.Substring(5), password);
             }
 
-            throw new AuthenticationException("Invalid credentials for mousebreaker authentication.");
+            throw new AuthenticationException("Invalid credentials for Mousebreaker authentication.");
         }
     }
 }

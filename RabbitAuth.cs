@@ -78,7 +78,7 @@ namespace Rabbit
                 return AuthenticationType.Facebook;
             }
 
-            // MouseBreaker:
+            // Mousebreaker:
             // 88 character base 64 string for authentication.
             // Only one token.
             if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
@@ -88,7 +88,7 @@ namespace Rabbit
                     try
                     {
                         Convert.FromBase64String(email);
-                        return AuthenticationType.MouseBreaker;
+                        return AuthenticationType.Mousebreaker;
                     }
                     catch (FormatException)
                     {
@@ -157,7 +157,7 @@ namespace Rabbit
                     return ArmorGames.Authenticate(gameId, email, password);
                 }
 
-                case AuthenticationType.MouseBreaker:
+                case AuthenticationType.Mousebreaker:
                 {
                     return MouseBreaker.Authenticate(gameId, email, password);
                 }

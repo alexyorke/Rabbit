@@ -53,8 +53,8 @@ namespace Rabbit.Auth
         Username,
 
         /// <summary>
-        /// The mousebreaker authentication.
+        /// The Mousebreaker authentication.
         /// </summary>
-        MouseBreaker
+        Mousebreaker
     }
 }
