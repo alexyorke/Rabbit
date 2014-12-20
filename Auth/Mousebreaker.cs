@@ -35,7 +35,7 @@ namespace Rabbit.Auth
         public static Client Authenticate(string gameId, string userName, string password)
         {
             if (gameId != EERabbitAuth.GameId)
-                throw new NotSupportedException("Mousebreaker login is not supported for the specified game.");
+                throw new NotSupportedException(strings.MousebreakerNotSupported);
 
             var c = PlayerIO.QuickConnect.SimpleConnect(gameId, "guest", "guest");
 
@@ -46,7 +46,7 @@ namespace Rabbit.Auth
                 return PlayerIO.QuickConnect.SimpleConnect(gameId, userId.Substring(5), password);
             }
 
-            throw new AuthenticationException("Invalid credentials for Mousebreaker authentication.");
+            throw new AuthenticationException(strings.MouseBreakerAuthFailure);
         }
     }
 }

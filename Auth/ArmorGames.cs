@@ -33,7 +33,7 @@ namespace Rabbit.Auth
         public static Client Authenticate(string gameId, string email, string password)
         {
             if (gameId != EERabbitAuth.GameId)
-                throw new NotSupportedException("Armor Games login is not supported for the specified game.");
+                throw new NotSupportedException(strings.ArmorGamesNotSupported);
 
             var resetEvent = new ManualResetEvent(false);
             var guestClient = PlayerIO.QuickConnect.SimpleConnect(gameId, "guest", "guest");
@@ -46,7 +46,7 @@ namespace Rabbit.Auth
                 try
                 {
                     if (message.Type != "auth" || message.Count < 2)
-                        throw new AuthenticationException("Could not log into Armor Games.");
+                        throw new AuthenticationException(strings.ArmorGamesLogOnFailure);
 
                     client = PlayerIO.Connect(
                         gameId,

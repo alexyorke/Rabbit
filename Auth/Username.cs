@@ -39,7 +39,7 @@ namespace Rabbit.Auth
         public static Client Authenticate(string gameId, string username, string password)
         {
             if (gameId != EERabbitAuth.GameId)
-                throw new NotSupportedException("Username login is not supported for the specified game.");
+                throw new NotSupportedException(strings.UsernameNotSupported);
 
             string userId;
             try
@@ -57,7 +57,7 @@ namespace Rabbit.Auth
                 return Simple.Authenticate(gameId, userId.Substring(5),password);
             }
 
-            throw new AuthenticationException("Username login currently only supports everybodyedits.com users.");
+            throw new AuthenticationException(strings.UsernameNotSupported);
         }
     }
 }

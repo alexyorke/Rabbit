@@ -21,22 +21,6 @@ namespace Rabbit
     /// </summary>
     public class RabbitAuth
     {
-        // Localizable strings
-        private const string EmailPasswordNullError = "The email/token, and password fields cannot be blank.";
-        private const string AssumeFacebookAuth = "Facebook authentication was chosen because a username was not supplied.";
-        private const string TokenLessThan100Chars = "The token must be longer than 100 characters.";
-        private const string TokenMustBeAlphamumeric = "The token must be alphanumeric.";
-
-        private const string AssumeArmorGamesAuth = "Armor Games authentication was chosen because tokens were supplied for the username and password.";
-
-        private const string UsernameTooLong = "The first token must be 32 characters.";
-        private const string UsernameTooShort = "The first token must be 32 characters.";
-
-        private const string PasswordTooLong = "The second token must be 32 characters.";
-        private const string PasswordTooShort = "The second token must be 32 characters.";
-        // End localizable strings
-
-
         /// <summary>
         /// Initializes a new instance of the <see cref="RabbitAuth"/> class.
         /// </summary>
@@ -61,7 +45,7 @@ namespace Rabbit
         {
             if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(password))
             {
-                throw new InvalidOperationException(EmailPasswordNullError);
+                throw new InvalidOperationException(strings.EmailPasswordNullError);
             }
 
             // Armor Games and Kongregate require that the email field is not blank.
@@ -239,41 +223,41 @@ namespace Rabbit
             var msg = string.Empty;
             if (string.IsNullOrEmpty(email))
             {
-                msg = msg + AssumeFacebookAuth;
+                msg = msg + strings.AssumeFacebookAuth;
                 if (password.Length < 100)
                 {
-                    msg = msg + TokenLessThan100Chars;
+                    msg = msg + strings.TokenLessThan100Chars;
                 }
 
                 if (!Regex.IsMatch(password, @"^[0-9a-z]$", RegexOptions.IgnoreCase))
                 {
-                    msg = msg + TokenMustBeAlphamumeric;
+                    msg = msg + strings.TokenMustBeAlphamumeric;
                 }
             }
             else
             {
                 if (IsHexadecimal(password) && IsHexadecimal(email))
                 {
-                    msg = msg + AssumeArmorGamesAuth;
+                    msg = msg + strings.AssumeArmorGamesAuth;
 
                     if (email.Length > 32)
                     {
-                        msg = msg + UsernameTooLong;
+                        msg = msg + strings.UsernameTooLong;
                     }
 
                     if (email.Length < 32)
                     {
-                        msg = msg + UsernameTooShort;
+                        msg = msg + strings.UsernameTooShort;
                     }
 
                     if (password.Length > 32)
                     {
-                        msg = msg + PasswordTooLong;
+                        msg = msg + strings.PasswordTooLong;
                     }
 
                     if (password.Length < 32)
                     {
-                        msg = msg + PasswordTooShort;
+                        msg = msg + strings.PasswordTooShort;
                     }
                 }
 
