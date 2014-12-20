@@ -9,6 +9,7 @@ using System;
 using System.Security.Authentication;
 using PlayerIOClient;
 using Rabbit.EE;
+using Rabbit.Localizations;
 
 namespace Rabbit.Auth
 {

@@ -1,6 +1,7 @@
 using System;
 using System.Text.RegularExpressions;
 using Rabbit;
+using Rabbit.Localizations;
 
 static internal class Errors
 {
