@@ -105,7 +105,7 @@ namespace Rabbit
             // Try to help the user if they entered in invalid data.
             // Guess what possible authentication type they might be trying to
             // use and tell them that there is a proper way to format it.
-            throw new InvalidOperationException(GenerateErrorMessage(email, password));
+            throw new InvalidOperationException(Errors.GenerateErrorMessage(email, password));
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Rabbit
         /// <param name="password">The password.</param>
         /// <param name="length">The length.</param>
         /// <returns><c>true</c> if the specified password is hexadecimal; otherwise, <c>false</c>.</returns>
-        private static bool IsHexadecimal(string password, int length = 0)
+        internal static bool IsHexadecimal(string password, int length = 0)
         {
             return length != 0 ? Regex.IsMatch(password, @"^[0-9a-f]{" + length + "}$") : Regex.IsMatch(password, @"^[0-9a-f]$");
         }
@@ -191,60 +191,6 @@ namespace Rabbit
         {
             // Return true if strIn is in valid e-mail format.
             return Regex.IsMatch(strIn, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
-        }
-
-        /// <summary>
-        /// The generate error message.
-        /// </summary>
-        /// <param name="email">The email.</param>
-        /// <param name="password">The password.</param>
-        /// <returns>The <see cref="string" />.</returns>
-        private static string GenerateErrorMessage(string email, string password)
-        {
-            var msg = string.Empty;
-            if (string.IsNullOrEmpty(email))
-            {
-                msg = msg + strings.AssumeFacebookAuth;
-                if (password.Length < 100)
-                {
-                    msg = msg + strings.TokenLessThan100Chars;
-                }
-
-                if (!Regex.IsMatch(password, @"^[0-9a-z]$", RegexOptions.IgnoreCase))
-                {
-                    msg = msg + strings.TokenMustBeAlphamumeric;
-                }
-            }
-            else
-            {
-                if (IsHexadecimal(password) && IsHexadecimal(email))
-                {
-                    msg = msg + strings.AssumeArmorGamesAuth;
-
-                    if (email.Length > 32)
-                    {
-                        msg = msg + strings.UsernameTooLong;
-                    }
-
-                    if (email.Length < 32)
-                    {
-                        msg = msg + strings.UsernameTooShort;
-                    }
-
-                    if (password.Length > 32)
-                    {
-                        msg = msg + strings.PasswordTooLong;
-                    }
-
-                    if (password.Length < 32)
-                    {
-                        msg = msg + strings.PasswordTooShort;
-                    }
-                }
-
-                }
-            
-            return msg;
         }
     }
 }
