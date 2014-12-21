@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|AnyCPU">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|AnyCPU">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>22cb856a-adf0-4333-9890-8e9e106a7714</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NuProjPath Condition=" '$(NuProjPath)' == '' ">$(MSBuildExtensionsPath)\NuProj\</NuProjPath>
+  </PropertyGroup>
+  <Import Project="$(NuProjPath)\NuProj.props" Condition="Exists('$(NuProjPath)\NuProj.props')" />
+  <PropertyGroup Label="Configuration">
+    <Id>RabbitIO</Id>
+    <Version>0.9</Version>
+    <Title>RabbitIO</Title>
+    <Authors>Hexagon,Processor</Authors>
+    <Owners>Hexagon</Owners>
+    <ReleaseNotes>- Added support for multiple languages, including French, German, Spanish, and many more
+- Now supports general PlayerIO authentication, making Rabbit much more applicable.
+- To authenticate with everybody edits, use EERabbitAuth. No other changes are necessary.
+- Made auth properties instance members. The public api has changed, and you can read more about it here.
+- Better exceptions thrown when a value is invalid
+- Fixed issue in documentation where Armor Games would be misspelled or had an extra space
+- Removed internetstabilitytester because it did not work
+- Fixed bugs with username login (some instances would not login or would misclassify it)
+- More consistent terms in documentation
+- Fixed Armor Games authentication
+- Added support for $service-room$
+- Reduced strictness of room id parsing
+- Supported open worlds
+- More comprehensive error messages
+- Added email authentication
+- Removed invalid FB token code restriction. Codes do not have a maximum length now and could have prevented some users from authenticating</ReleaseNotes>
+    <ProjectUrl>
+    </ProjectUrl>
+    <LicenseUrl>
+    </LicenseUrl>
+    <Tags>everybody edits, playerio, authentication, rabbit,hexagon,multiple authentication</Tags>
+    <RequireLicenseAcceptance>False</RequireLicenseAcceptance>
+    <GenerateSymbolPackage>false</GenerateSymbolPackage>
+    <Description>A library that unifies multiple forms of PlayerIO authentication.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Rabbit.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Dependency Include="PlayerIOClient-Signed">
+      <Version>0.0</Version>
+    </Dependency>
+  </ItemGroup>
+  <Import Project="$(NuProjPath)\NuProj.targets" />
+</Project>
