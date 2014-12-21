@@ -6,9 +6,10 @@ Rabbit allows PlayerIO developers to seamlessly integrate all supported types (A
 Want to use Rabbit in your project? It's simple!
 
 ```csharp
-Connection conn = new RabbitAuth().LogOn(gameId, email, passwordOrToken);
+Connection conn = new RabbitAuth().LogOn(gameId, email, passwordOrToken, useSecureApiRequests);
 ```
 
+The overload `(bool)useSecureApiRequests` option by default is `false`.
 
 ###Wiki
 
