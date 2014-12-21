@@ -23,9 +23,9 @@ If you find a bug in Rabbit, feel free to let me know in the GitHub issue tracke
 
 ###NuGet
 
-RabbitIO is going to be released soon, and it'll be on NuGet too.
+To get Rabbit on NuGet, simply type `Install-Package RabbitIO` or go to http://www.nuget.org/packages/RabbitIO/
 
-To continue recieving updates for Rabbit, upgrade to `RabbitIO` and delete `EE-Rabbit`.
+**To continue recieving updates for Rabbit, upgrade to `RabbitIO` and delete `EE-Rabbit`.**
 
 ###Credits
 NuGet package icon courtesy of [jcapaldi on Flickr](https://flic.kr/p/cVkan9).
