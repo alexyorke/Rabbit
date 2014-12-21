@@ -22,10 +22,28 @@ internal static class Errors
         {
             if (RabbitAuth.IsHexadecimal(password))
             {
-                msg = RabbitAuth.IsHexadecimal(email) ? ResolveArmorGamesErrors(email, password, msg) : ResolveKongregateErrors(email, password, msg);
+                msg = RabbitAuth.IsHexadecimal(email)
+                    ? ResolveArmorGamesErrors(email, password, msg)
+                    : ResolveKongregateErrors(email, password, msg);
+            }
+            else
+            {
+                // must be regular authentication
+                msg = ResolveRegularError(email, password, msg);
             }
         }
 
+        return msg;
+    }
+
+    private static string ResolveRegularError(string email, string password, string msg)
+    {
+        if (!RabbitAuth.IsValidEmail(email))
+        {
+            msg = msg + "- The email you entered was invalid.";
+        }
+
+        // I do not know of any global restrictions on passwords, unfortunately.
         return msg;
     }
 
