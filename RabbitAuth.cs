@@ -82,8 +82,8 @@ namespace Rabbit
 
             // Mousebreaker:
             // 88 character base 64 string for authentication.
-            // Only one token.
-            if (string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
+            // An email IS REQUIRED and a token is REQUIRED for mousebreaker authentication.
+            if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
             {
                 if (email.Length == 88)
                 {
