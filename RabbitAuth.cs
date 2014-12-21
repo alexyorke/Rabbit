@@ -138,9 +138,9 @@ namespace Rabbit
             gameId = Regex.Replace(gameId, @"\s+", string.Empty);
 
 
-            if (!Regex.IsMatch(gameId, @"^[0-9a-zA-Z-]$"))
+            if (!Regex.IsMatch(gameId, @"^[0-9a-zA-Z\-]+$"))
             {
-                throw new InvalidOperationException("The game ID contains an invalid character.");
+                throw new ArgumentException("The game ID contains an invalid character.", "gameId");
             }
 
 
