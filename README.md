@@ -1,35 +1,55 @@
-Rabbit [![Build status](https://ci.appveyor.com/api/projects/status/6fxlb8bkqp18cg3c/branch/master)](https://ci.appveyor.com/project/Decagon/rabbit/branch/master) [![Issue Stats](http://www.issuestats.com/github/decagon/rabbit/badge/pr)](http://www.issuestats.com/github/decagon/rabbit) [![Issue Stats](http://www.issuestats.com/github/decagon/rabbit/badge/issue)](http://www.issuestats.com/github/decagon/rabbit)
-======
+# Rabbit, a unified authentication for PlayerIO
 
-Rabbit allows PlayerIO developers to seamlessly integrate all supported types (Armor Games, Kongregate, Mousebreaker, Facebook, email, Yahoo*, and standard authentication) into one login interface. 
+Rabbit is a library written in C#, and allows PlayerIO integration of Armor Games, Kongregate, Mousebreaker, Facebook, email, Yahoo, and standard authentication into one login interface. Give one username and password UI to your users, and Rabbit will know what service to authenticate them into.
 
-Want to use Rabbit in your project? It's simple!
+## Usage
+
+After you have installed `RabbitIO` from NuGet, including Rabbit is easy:
 
 ```csharp
 Connection conn = new RabbitAuth().LogOn(gameId, email, passwordOrToken, useSecureApiRequests);
 ```
 
-The overload `(bool)useSecureApiRequests` option by default is `false`.
 
-Rabbit requires .NET framework v3.5 or later.
+## Project Goals
 
-###Wiki
+ * Be well maintained
+ * Be well documented
+ * Be well tested
+ * Try to maintain backwards compatibility
 
-Have more questions? Feel free to consult the [Wiki](https://github.com/Decagon/Rabbit/wiki).
+
+## Project Maturity
+
+Rabbit is a new library, and is currently used in CupCake, Terra, and Skylight, which together power the majority of the bots on Everybody Edits.
+
+### Supported Features
+
+ * Support for Armor Games, Kongregate, Mousebreaker, Facebook, and standard authentication types
+ * Support for PlayerIO `useSecureApiRequests`
+ * Smart error detection and recovery
+ * Very fast: queries are categorized in milliseconds
+ * Many localizations
+ * Compatibility with Terra
 
 
-###Bugs
+## Getting Started
 
-If you find a bug in Rabbit, feel free to let me know in the GitHub issue tracker or, if you don't have an account, by decagongithub@gmail.com.
+Over on the wiki, have a look at our [Getting Started](https://github.com/Decagon/Rabbit/wiki/Getting-Started) guide. Feel free to send questions to decagongithub@gmail.com, and report any issues to the [GitHub Issue Tracker](https://github.com/Decagon/Rabbit/issues)
 
-###NuGet
 
-To get Rabbit on NuGet, simply type `Install-Package RabbitIO` or go to http://www.nuget.org/packages/RabbitIO/
+## Documentation & Examples
 
-**To continue recieving updates for Rabbit, upgrade to `RabbitIO` and delete `EE-Rabbit`.**
+Rabbit has [documentation](https://github.com/Decagon/Rabbit/wiki/) available on GitHub.
 
-###Credits
-NuGet package icon courtesy of [jcapaldi on Flickr](https://flic.kr/p/cVkan9).
+For more samples, have a look at [Rabbit.Tests](https://github.com/Decagon/Rabbit/tree/master/Rabbit.Tests)
+
+## Requirements
+
+Rabbit requires .NET framework 3.5 or later.
+
+
+## Credits
 
 [Yonom](https://github.com/Yonom), author of [Cupcake](https://github.com/Yonom/CupCake), significantly [helped](https://github.com/Decagon/Rabbit/commits/master?author=Yonom)!
 
@@ -42,4 +62,13 @@ Use `EERabbitAuth()` to specifically authenticate with Everybody Edits:
 Connection conn = new EERabbitAuth().LogOn(EmailOrTokenOrUserName, RoomID, Password);
 ```
 
-Using this method allows for the room to be joined (or created if one does not exist), has built-in room id verification, and is able to extract the id from url's. However, you may use `RabbitAuth()` instead.
+
+## Continuous Integration
+
+[![Build status](https://ci.appveyor.com/api/projects/status/6fxlb8bkqp18cg3c/branch/master)](https://ci.appveyor.com/project/Decagon/rabbit/branch/master)
+
+
+## License
+
+Copyright (C) 2014-2015 under the MIT license.
+
