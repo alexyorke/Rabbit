@@ -126,16 +126,19 @@ namespace Rabbit
         /// <param name="gameId">The game id.</param>
         /// <param name="email">Email address.</param>
         /// <param name="password">Password or token.</param>
+        /// <param name="shouldUseSecureApiRequests"></param>
         /// <returns>A client object.</returns>
         /// <exception cref="System.InvalidOperationException">Invalid authentication type.</exception>
-        public Client LogOn(string gameId, string email, string password)
+        public Client LogOn(string gameId, string email, string password, bool shouldUseSecureApiRequests = false)
         {
+            PlayerIO.UseSecureApiRequests = shouldUseSecureApiRequests;
+
             // Clean the email (or token), and gameId from whitespace
             email = Regex.Replace(email, @"\s+", string.Empty);
             gameId = Regex.Replace(gameId, @"\s+", string.Empty);
 
 
-            if (!Regex.IsMatch(password, @"^[0-9a-zA-Z-]$"))
+            if (!Regex.IsMatch(gameId, @"^[0-9a-zA-Z-]$"))
             {
                 throw new InvalidOperationException("The game ID contains an invalid character.");
             }
