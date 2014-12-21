@@ -130,8 +130,9 @@ namespace Rabbit
         /// <exception cref="System.InvalidOperationException">Invalid authentication type.</exception>
         public Client LogOn(string gameId, string email, string password)
         {
-            // Clean the email (or token) from whitespace
+            // Clean the email (or token), and gameId from whitespace
             email = Regex.Replace(email, @"\s+", string.Empty);
+            gameId = Regex.Replace(gameId, @"\s+", string.Empty);
 
             if (AuthenticationType == AuthenticationType.Unknown)
             {
