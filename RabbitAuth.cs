@@ -82,14 +82,14 @@ namespace Rabbit
 
             // Mousebreaker:
             // 88 character base 64 string for authentication.
-            // Only one token.
-            if (string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
+            // An email IS REQUIRED and a token is REQUIRED for mousebreaker authentication.
+            if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
             {
-                if (email.Length == 88)
+                if (password.Length == 88)
                 {
                     try
                     {
-                        Convert.FromBase64String(email);
+                        Convert.FromBase64String(password);
                         return AuthenticationType.Mousebreaker;
                     }
                     catch (FormatException)
@@ -126,7 +126,7 @@ namespace Rabbit
         /// <param name="gameId">The game id.</param>
         /// <param name="email">Email address.</param>
         /// <param name="password">Password or token.</param>
-        /// <param name="shouldUseSecureApiRequests"></param>
+        /// <param name="shouldUseSecureApiRequests">if set to <c>true</c> secure API requests will be used.</param>
         /// <returns>A client object.</returns>
         /// <exception cref="System.InvalidOperationException">Invalid authentication type.</exception>
         public Client LogOn(string gameId, string email, string password, bool shouldUseSecureApiRequests = false)
@@ -188,10 +188,13 @@ namespace Rabbit
         /// </summary>
         /// <param name="gameId">The game id.</param>
         /// <param name="token">The token.</param>
-        /// <returns>The <see cref="Client" />.</returns>
-        public Client LogOn(string gameId, string token)
+        /// <param name="shouldUseSecureApiRequests">if set to <c>true</c> secure API requests will be used.</param>
+        /// <returns>
+        /// The <see cref="Client" />.
+        /// </returns>
+        public Client LogOn(string gameId, string token, bool shouldUseSecureApiRequests = false)
         {
-            return LogOn(gameId, token, null);
+            return LogOn(gameId, token, null, shouldUseSecureApiRequests);
         }
 
         /// <summary>

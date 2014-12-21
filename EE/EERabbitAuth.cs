@@ -47,10 +47,13 @@ namespace Rabbit.EE
         /// <param name="email">The email.</param>
         /// <param name="password">The password.</param>
         /// <param name="worldId">The room id of the world to join</param>
-        /// <returns>Connection.</returns>
-        public Connection LogOn(string email, string password, string worldId)
+        /// <param name="shouldUseSecureApiRequests">if set to <c>true</c> secure API requests will be used.</param>
+        /// <returns>
+        /// Connection.
+        /// </returns>
+        public new Connection LogOn(string email, string password, string worldId, bool shouldUseSecureApiRequests = false)
         {
-            var client = base.LogOn(GameId, email, password);
+            var client = base.LogOn(GameId, email, password, shouldUseSecureApiRequests);
 
             // Parse the world id (if it exists in another format)
             worldId = IdParser.Parse(worldId);
@@ -83,10 +86,13 @@ namespace Rabbit.EE
         /// </summary>
         /// <param name="token">The token.</param>
         /// <param name="worldId">The world identifier.</param>
-        /// <returns>Connection.</returns>
-        public new Connection LogOn(string token, string worldId)
+        /// <param name="shouldUseSecureApiRequests">if set to <c>true</c> secure API requests will be used.</param>
+        /// <returns>
+        /// Connection.
+        /// </returns>
+        public new Connection LogOn(string token, string worldId, bool shouldUseSecureApiRequests = false)
         {
-            return LogOn(token, null, worldId);
+            return LogOn(token, null, worldId, shouldUseSecureApiRequests);
         }
     }
 }
