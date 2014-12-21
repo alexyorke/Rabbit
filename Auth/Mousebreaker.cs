@@ -32,13 +32,13 @@ namespace Rabbit.Auth
             if (gameId != EERabbitAuth.GameId)
                 throw new NotSupportedException(strings.MousebreakerNotSupported);
 
-            var c = PlayerIO.QuickConnect.SimpleConnect(gameId, "guest", "guest");
+            var c = Simple.Authenticate(gameId, "guest", "guest");
 
             var userId = c.BigDB.Load("usernames", userName)["owner"].ToString();
 
             if (userId.StartsWith("mouse", StringComparison.CurrentCulture))
             {
-                return PlayerIO.QuickConnect.SimpleConnect(gameId, userId.Substring(5), password);
+                return Simple.Authenticate(gameId, userId.Substring(5), password);
             }
 
             throw new AuthenticationException(strings.MouseBreakerAuthFailure);

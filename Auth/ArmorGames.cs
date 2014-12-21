@@ -36,7 +36,7 @@ namespace Rabbit.Auth
                 throw new NotSupportedException(strings.ArmorGamesNotSupported);
 
             var resetEvent = new ManualResetEvent(false);
-            var guestClient = PlayerIO.QuickConnect.SimpleConnect(gameId, "guest", "guest");
+            var guestClient = Simple.Authenticate(gameId, "guest", "guest");
             var guestConn = guestClient.Multiplayer.JoinRoom(String.Empty, null);
             Client client = null;
             Exception exception = null;

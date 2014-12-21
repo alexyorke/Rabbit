@@ -39,7 +39,7 @@ namespace Rabbit.Auth
             string userId;
             try
             {
-                var c = PlayerIO.QuickConnect.SimpleConnect(gameId, "guest", "guest");
+                var c = Simple.Authenticate(gameId, "guest", "guest");
                 userId = c.BigDB.Load("usernames", username).GetString("owner");
             }
             catch

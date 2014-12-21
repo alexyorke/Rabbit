@@ -28,7 +28,7 @@ namespace Rabbit.Auth
         /// <returns>A valid PlayerIOClient instance.</returns>
         public static Client Authenticate(string gameId, string email, string password)
         {
-            return PlayerIO.QuickConnect.KongregateConnect(gameId, email, password);
+            return PlayerIO.QuickConnect.KongregateConnect(gameId, email, password, null);
         }
     }
 }

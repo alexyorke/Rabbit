@@ -26,7 +26,7 @@ namespace Rabbit.Auth
         /// <returns>A valid PlayerIOClient instance.</returns>
         public static Client Authenticate(string gameId, string token)
         {
-            return PlayerIO.QuickConnect.FacebookOAuthConnect(gameId, token, null);
+            return PlayerIO.QuickConnect.FacebookOAuthConnect(gameId, token, null, null);
         }
     }
 }

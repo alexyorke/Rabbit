@@ -30,7 +30,7 @@ namespace Rabbit.Auth
         /// <returns>Client.</returns>
         public static Client Authenticate(string gameId, string email, string password)
         {
-            return PlayerIO.QuickConnect.SimpleConnect(gameId, email, password);
+            return PlayerIO.QuickConnect.SimpleConnect(gameId, email, password, null);
         }
     }
 }
