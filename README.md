@@ -10,8 +10,6 @@ Connection conn = new RabbitAuth().LogOn(gameId, email, passwordOrToken);
 ```
 
 
-The [PlayerIOClient (v3.0.14)](https://gamesnet.yahoo.com/download/) is a dependency, automatically resolved if you are using the NuGet version.
-
 ###Wiki
 
 Have more questions? Feel free to consult the [Wiki](https://github.com/Decagon/Rabbit/wiki).
