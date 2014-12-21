@@ -19,7 +19,7 @@
   <Import Project="$(NuProjPath)\NuProj.props" Condition="Exists('$(NuProjPath)\NuProj.props')" />
   <PropertyGroup Label="Configuration">
     <Id>RabbitIO</Id>
-    <Version>0.9</Version>
+    <Version>0.9.3</Version>
     <Title>RabbitIO</Title>
     <Authors>Hexagon,Processor</Authors>
     <Owners>Hexagon</Owners>
