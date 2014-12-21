@@ -112,63 +112,63 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AssumeArmorGamesAuth" xml:space="preserve">
-    <value>Armor Games authentication was chosen because tokens were supplied for the username and password.</value>
+    <value>Autenticació Armor Games va ser triat perquè fitxes van ser subministrats pel nom d'usuari i contrasenya.</value>
   </data>
   <data name="AssumeFacebookAuth" xml:space="preserve">
-    <value>Facebook authentication was chosen because a username was not supplied.</value>
+    <value>Autenticació de Facebook va ser triat pel fet que un nom d'usuari no va ser subministrada .</value>
   </data>
   <data name="EmailPasswordNullError" xml:space="preserve">
-    <value>The email/token, and password fields cannot be blank.</value>
+    <value>Els camps de correu electrònic / token i contrasenya no pot estar en blanc .</value>
   </data>
   <data name="PasswordTooLong" xml:space="preserve">
-    <value>The second token must be 32 characters.</value>
+    <value>El segon símbol ha de ser de 32 caràcters .</value>
   </data>
   <data name="PasswordTooShort" xml:space="preserve">
-    <value>The second token must be 32 characters.</value>
+    <value>El segon símbol ha de ser de 32 caràcters .</value>
   </data>
   <data name="TokenLessThan100Chars" xml:space="preserve">
-    <value>The token must be longer than 100 characters.</value>
+    <value>El testimoni ha de ser més llarg de 100 caràcters .</value>
   </data>
   <data name="TokenMustBeAlphamumeric" xml:space="preserve">
-    <value>The token must be alphanumeric.</value>
+    <value>El testimoni ha de ser alfanumèric .</value>
   </data>
   <data name="UsernameTooLong" xml:space="preserve">
-    <value>The first token must be 32 characters.</value>
+    <value>El primer testimoni ha de ser de 32 caràcters .</value>
   </data>
   <data name="UsernameTooShort" xml:space="preserve">
-    <value>The first token must be 32 characters.</value>
+    <value>El primer testimoni ha de ser de 32 caràcters .</value>
   </data>
   <data name="The_room_ID_cannot_be_null" xml:space="preserve">
-    <value>The room ID cannot be null.</value>
+    <value>L'ID d'habitació no pot ser nul .</value>
   </data>
   <data name="ArmorGamesLogOnFailure" xml:space="preserve">
-    <value>Could not log into Armor Games.</value>
+    <value>No s'ha pogut iniciar la sessió a Armor Games .</value>
   </data>
   <data name="ArmorGamesNotSupported" xml:space="preserve">
-    <value>Armor Games login is not supported for the specified game.</value>
+    <value>Armor Games inici de sessió no és compatible amb el joc especificat .</value>
   </data>
   <data name="InvalidRoomUrl" xml:space="preserve">
-    <value>The room id url was not recognized. Make sure that the url is valid.</value>
+    <value>L' URL Identificació habitació no va ser reconegut. Assegureu-vos que l'URL és vàlida.</value>
   </data>
   <data name="MouseBreakerAuthFailure" xml:space="preserve">
-    <value>Invalid credentials for Mousebreaker authentication.</value>
+    <value>Credencials no vàlides per a l'autenticació Mousebreaker .</value>
   </data>
   <data name="MousebreakerNotSupported" xml:space="preserve">
-    <value>Mousebreaker login is not supported for the specified game.</value>
+    <value>Mousebreaker inici de sessió no és compatible amb el joc especificat .</value>
   </data>
   <data name="unknownUrl" xml:space="preserve">
-    <value>Unknown url.</value>
+    <value>URL desconeguda .</value>
   </data>
   <data name="UrlCorrectRoomIDNot" xml:space="preserve">
-    <value>The url was correct, but the room id was invalid.</value>
+    <value>La URL era correcta , però l'id habitació era vàlid.</value>
   </data>
   <data name="UsernameNotSupported" xml:space="preserve">
-    <value>Username login is not supported for the specified game.</value>
+    <value>Nom d'usuari d'inici de sessió no s'admet per al joc especificat .</value>
   </data>
 </root>

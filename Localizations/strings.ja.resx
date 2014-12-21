@@ -112,63 +112,63 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AssumeArmorGamesAuth" xml:space="preserve">
-    <value>Armor Games authentication was chosen because tokens were supplied for the username and password.</value>
+    <value>トークンは、ユーザー名とパスワードの入力を供給していたためアーマーゲーム認証が選ばれました。</value>
   </data>
   <data name="AssumeFacebookAuth" xml:space="preserve">
-    <value>Facebook authentication was chosen because a username was not supplied.</value>
+    <value>ユーザ名が指定されていなかったため、 Facebookの認証が選択されました。</value>
   </data>
   <data name="EmailPasswordNullError" xml:space="preserve">
-    <value>The email/token, and password fields cannot be blank.</value>
+    <value>電子メール/トークン、およびパスワードフィールドは空白にすることはできません。</value>
   </data>
   <data name="PasswordTooLong" xml:space="preserve">
-    <value>The second token must be 32 characters.</value>
+    <value>第二のトークンは32文字でなければなりません。</value>
   </data>
   <data name="PasswordTooShort" xml:space="preserve">
-    <value>The second token must be 32 characters.</value>
+    <value>第二のトークンは32文字でなければなりません。</value>
   </data>
   <data name="TokenLessThan100Chars" xml:space="preserve">
-    <value>The token must be longer than 100 characters.</value>
+    <value>トークンは、長い100文字以内でなければなりません。</value>
   </data>
   <data name="TokenMustBeAlphamumeric" xml:space="preserve">
-    <value>The token must be alphanumeric.</value>
+    <value>トークンは、英数字でなければなりません。</value>
   </data>
   <data name="UsernameTooLong" xml:space="preserve">
-    <value>The first token must be 32 characters.</value>
+    <value>最初のトークンは32文字でなければなりません。</value>
   </data>
   <data name="UsernameTooShort" xml:space="preserve">
-    <value>The first token must be 32 characters.</value>
+    <value>最初のトークンは32文字でなければなりません。</value>
   </data>
   <data name="The_room_ID_cannot_be_null" xml:space="preserve">
-    <value>The room ID cannot be null.</value>
+    <value>ルームIDはnullにすることはできません。</value>
   </data>
   <data name="ArmorGamesLogOnFailure" xml:space="preserve">
-    <value>Could not log into Armor Games.</value>
+    <value>アーマーゲームにログインできませんでした。</value>
   </data>
   <data name="ArmorGamesNotSupported" xml:space="preserve">
-    <value>Armor Games login is not supported for the specified game.</value>
+    <value>アーマーゲームログインが指定されたゲームのためにサポートされていません。</value>
   </data>
   <data name="InvalidRoomUrl" xml:space="preserve">
-    <value>The room id url was not recognized. Make sure that the url is valid.</value>
+    <value>ルームIDのURLが認識されませんでした。 URLが有効であることを確認してください。</value>
   </data>
   <data name="MouseBreakerAuthFailure" xml:space="preserve">
-    <value>Invalid credentials for Mousebreaker authentication.</value>
+    <value>Mousebreaker認証で無効な資格情報。</value>
   </data>
   <data name="MousebreakerNotSupported" xml:space="preserve">
-    <value>Mousebreaker login is not supported for the specified game.</value>
+    <value>Mousebreakerログインは指定されたゲームのためにサポートされていません。</value>
   </data>
   <data name="unknownUrl" xml:space="preserve">
-    <value>Unknown url.</value>
+    <value>不明なURL 。</value>
   </data>
   <data name="UrlCorrectRoomIDNot" xml:space="preserve">
-    <value>The url was correct, but the room id was invalid.</value>
+    <value>URLが正しいでしたが、部屋IDが無効でした。</value>
   </data>
   <data name="UsernameNotSupported" xml:space="preserve">
-    <value>Username login is not supported for the specified game.</value>
+    <value>ユーザー名のログインが指定されたゲームのためにサポートされていません。</value>
   </data>
 </root>

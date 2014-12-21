@@ -112,63 +112,63 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AssumeArmorGamesAuth" xml:space="preserve">
-    <value>Armor Games authentication was chosen because tokens were supplied for the username and password.</value>
+    <value>Autenticación Armor Games fue elegido porque fichas fueron suministrados por el nombre de usuario y contraseña.</value>
   </data>
   <data name="AssumeFacebookAuth" xml:space="preserve">
-    <value>Facebook authentication was chosen because a username was not supplied.</value>
+    <value>Autenticación de Facebook fue elegido debido a que un nombre de usuario no fue suministrada .</value>
   </data>
   <data name="EmailPasswordNullError" xml:space="preserve">
-    <value>The email/token, and password fields cannot be blank.</value>
+    <value>Los campos de correo electrónico / token y contraseña no puede estar en blanco.</value>
   </data>
   <data name="PasswordTooLong" xml:space="preserve">
-    <value>The second token must be 32 characters.</value>
+    <value>El segundo símbolo debe ser de 32 caracteres.</value>
   </data>
   <data name="PasswordTooShort" xml:space="preserve">
-    <value>The second token must be 32 characters.</value>
+    <value>El segundo símbolo debe ser de 32 caracteres.</value>
   </data>
   <data name="TokenLessThan100Chars" xml:space="preserve">
-    <value>The token must be longer than 100 characters.</value>
+    <value>El testigo debe ser más largo de 100 caracteres.</value>
   </data>
   <data name="TokenMustBeAlphamumeric" xml:space="preserve">
-    <value>The token must be alphanumeric.</value>
+    <value>El testigo debe ser alfanumérico .</value>
   </data>
   <data name="UsernameTooLong" xml:space="preserve">
-    <value>The first token must be 32 characters.</value>
+    <value>El primer testigo debe ser de 32 caracteres.</value>
   </data>
   <data name="UsernameTooShort" xml:space="preserve">
-    <value>The first token must be 32 characters.</value>
+    <value>El primer testigo debe ser de 32 caracteres.</value>
   </data>
   <data name="The_room_ID_cannot_be_null" xml:space="preserve">
-    <value>The room ID cannot be null.</value>
+    <value>El ID de habitación no puede ser nulo.</value>
   </data>
   <data name="ArmorGamesLogOnFailure" xml:space="preserve">
-    <value>Could not log into Armor Games.</value>
+    <value>No se pudo iniciar sesión en Armor Games .</value>
   </data>
   <data name="ArmorGamesNotSupported" xml:space="preserve">
-    <value>Armor Games login is not supported for the specified game.</value>
+    <value>Armor Games inicio de sesión no es compatible con el juego especificado.</value>
   </data>
   <data name="InvalidRoomUrl" xml:space="preserve">
-    <value>The room id url was not recognized. Make sure that the url is valid.</value>
+    <value>La url Identificación habitación no fue reconocido . Asegúrese de que la URL es válida.</value>
   </data>
   <data name="MouseBreakerAuthFailure" xml:space="preserve">
-    <value>Invalid credentials for Mousebreaker authentication.</value>
+    <value>Credenciales no válidas para la autenticación Mousebreaker .</value>
   </data>
   <data name="MousebreakerNotSupported" xml:space="preserve">
-    <value>Mousebreaker login is not supported for the specified game.</value>
+    <value>Mousebreaker inicio de sesión no es compatible con el juego especificado.</value>
   </data>
   <data name="unknownUrl" xml:space="preserve">
-    <value>Unknown url.</value>
+    <value>URL desconocida .</value>
   </data>
   <data name="UrlCorrectRoomIDNot" xml:space="preserve">
-    <value>The url was correct, but the room id was invalid.</value>
+    <value>La url era correcta, pero el id habitación era válido.</value>
   </data>
   <data name="UsernameNotSupported" xml:space="preserve">
-    <value>Username login is not supported for the specified game.</value>
+    <value>Nombre de usuario de inicio de sesión no se admite para el juego especificado.</value>
   </data>
 </root>

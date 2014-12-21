@@ -112,63 +112,63 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AssumeArmorGamesAuth" xml:space="preserve">
-    <value>Armor Games authentication was chosen because tokens were supplied for the username and password.</value>
+    <value>토큰 은 사용자 이름과 암호를 제공 했기 때문에 갑옷 게임 인증이 선택되었다.</value>
   </data>
   <data name="AssumeFacebookAuth" xml:space="preserve">
-    <value>Facebook authentication was chosen because a username was not supplied.</value>
+    <value>사용자 이름 이 제공 되지 않았기 때문에 페이스 북 인증이 선택되었다.</value>
   </data>
   <data name="EmailPasswordNullError" xml:space="preserve">
-    <value>The email/token, and password fields cannot be blank.</value>
+    <value>이메일 / 토큰 및 암호 필드는 비워 둘 수 없습니다 .</value>
   </data>
   <data name="PasswordTooLong" xml:space="preserve">
-    <value>The second token must be 32 characters.</value>
+    <value>두 번째 토큰은 32 자 이어야합니다.</value>
   </data>
   <data name="PasswordTooShort" xml:space="preserve">
-    <value>The second token must be 32 characters.</value>
+    <value>두 번째 토큰은 32 자 이어야합니다.</value>
   </data>
   <data name="TokenLessThan100Chars" xml:space="preserve">
-    <value>The token must be longer than 100 characters.</value>
+    <value>토큰은 더 이상 100 자 이하 여야 합니다.</value>
   </data>
   <data name="TokenMustBeAlphamumeric" xml:space="preserve">
-    <value>The token must be alphanumeric.</value>
+    <value>토큰은 숫자 이어야합니다.</value>
   </data>
   <data name="UsernameTooLong" xml:space="preserve">
-    <value>The first token must be 32 characters.</value>
+    <value>첫 번째 토큰은 32 자 이어야합니다.</value>
   </data>
   <data name="UsernameTooShort" xml:space="preserve">
-    <value>The first token must be 32 characters.</value>
+    <value>첫 번째 토큰은 32 자 이어야합니다.</value>
   </data>
   <data name="The_room_ID_cannot_be_null" xml:space="preserve">
-    <value>The room ID cannot be null.</value>
+    <value>객실 ID 는 null 일 수 없습니다.</value>
   </data>
   <data name="ArmorGamesLogOnFailure" xml:space="preserve">
-    <value>Could not log into Armor Games.</value>
+    <value>갑옷 게임 에 로그인 할 수 없습니다.</value>
   </data>
   <data name="ArmorGamesNotSupported" xml:space="preserve">
-    <value>Armor Games login is not supported for the specified game.</value>
+    <value>갑옷 게임 로그인은 지정된 게임 이 지원되지 않습니다.</value>
   </data>
   <data name="InvalidRoomUrl" xml:space="preserve">
-    <value>The room id url was not recognized. Make sure that the url is valid.</value>
+    <value>방 아이디 URL을 인식 할 수 없습니다 . URL이 유효한지 확인합니다.</value>
   </data>
   <data name="MouseBreakerAuthFailure" xml:space="preserve">
-    <value>Invalid credentials for Mousebreaker authentication.</value>
+    <value>Mousebreaker 인증을위한 자격이 무효입니다 .</value>
   </data>
   <data name="MousebreakerNotSupported" xml:space="preserve">
-    <value>Mousebreaker login is not supported for the specified game.</value>
+    <value>Mousebreaker 로그인이 지정된 게임 이 지원되지 않습니다.</value>
   </data>
   <data name="unknownUrl" xml:space="preserve">
-    <value>Unknown url.</value>
+    <value>알 수없는 URL입니다.</value>
   </data>
   <data name="UrlCorrectRoomIDNot" xml:space="preserve">
-    <value>The url was correct, but the room id was invalid.</value>
+    <value>URL이 정확 하지만, 방 ID가 잘못되었습니다.</value>
   </data>
   <data name="UsernameNotSupported" xml:space="preserve">
-    <value>Username login is not supported for the specified game.</value>
+    <value>아이디 로그인은 지정된 게임 이 지원되지 않습니다.</value>
   </data>
 </root>

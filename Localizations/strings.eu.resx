@@ -112,63 +112,63 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AssumeArmorGamesAuth" xml:space="preserve">
-    <value>Armor Games authentication was chosen because tokens were supplied for the username and password.</value>
+    <value>Armor Games autentifikazioa aukeratu zen token -izen eta pasahitza hornitu zituzten delako.</value>
   </data>
   <data name="AssumeFacebookAuth" xml:space="preserve">
-    <value>Facebook authentication was chosen because a username was not supplied.</value>
+    <value>Facebook autentifikazioa aukeratu zen Erabiltzaile izen bat ez baitzen hornitu.</value>
   </data>
   <data name="EmailPasswordNullError" xml:space="preserve">
-    <value>The email/token, and password fields cannot be blank.</value>
+    <value>Email / token, eta pasahitza eremuak ezin du hutsik egon.</value>
   </data>
   <data name="PasswordTooLong" xml:space="preserve">
-    <value>The second token must be 32 characters.</value>
+    <value>Bigarren token 32 karaktere izan behar ditu .</value>
   </data>
   <data name="PasswordTooShort" xml:space="preserve">
-    <value>The second token must be 32 characters.</value>
+    <value>Bigarren token 32 karaktere izan behar ditu .</value>
   </data>
   <data name="TokenLessThan100Chars" xml:space="preserve">
-    <value>The token must be longer than 100 characters.</value>
+    <value>Tokena 100 karaktere baino gehiago izan behar du.</value>
   </data>
   <data name="TokenMustBeAlphamumeric" xml:space="preserve">
-    <value>The token must be alphanumeric.</value>
+    <value>Tokena alfanumeriko izan behar du.</value>
   </data>
   <data name="UsernameTooLong" xml:space="preserve">
-    <value>The first token must be 32 characters.</value>
+    <value>Lehenengo token 32 karaktere izan behar ditu .</value>
   </data>
   <data name="UsernameTooShort" xml:space="preserve">
-    <value>The first token must be 32 characters.</value>
+    <value>Lehenengo token 32 karaktere izan behar ditu .</value>
   </data>
   <data name="The_room_ID_cannot_be_null" xml:space="preserve">
-    <value>The room ID cannot be null.</value>
+    <value>Gela IDa ezin da nulua .</value>
   </data>
   <data name="ArmorGamesLogOnFailure" xml:space="preserve">
-    <value>Could not log into Armor Games.</value>
+    <value>Ezin Armor Games sartu.</value>
   </data>
   <data name="ArmorGamesNotSupported" xml:space="preserve">
-    <value>Armor Games login is not supported for the specified game.</value>
+    <value>Armor Games login Ez da zehaztutako jokoa onartzen.</value>
   </data>
   <data name="InvalidRoomUrl" xml:space="preserve">
-    <value>The room id url was not recognized. Make sure that the url is valid.</value>
+    <value>Ez zen giro- id url hauteman. Ziurtatu url izango da baliagarria.</value>
   </data>
   <data name="MouseBreakerAuthFailure" xml:space="preserve">
-    <value>Invalid credentials for Mousebreaker authentication.</value>
+    <value>Mousebreaker autentifikatzeko kredentzialak baliogabea.</value>
   </data>
   <data name="MousebreakerNotSupported" xml:space="preserve">
-    <value>Mousebreaker login is not supported for the specified game.</value>
+    <value>Mousebreaker login Ez da zehaztutako jokoa onartzen.</value>
   </data>
   <data name="unknownUrl" xml:space="preserve">
-    <value>Unknown url.</value>
+    <value>Url ezezaguna.</value>
   </data>
   <data name="UrlCorrectRoomIDNot" xml:space="preserve">
-    <value>The url was correct, but the room id was invalid.</value>
+    <value>URLa zuzena zen, baina gela id baliogabea da.</value>
   </data>
   <data name="UsernameNotSupported" xml:space="preserve">
-    <value>Username login is not supported for the specified game.</value>
+    <value>Erabiltzaile izena login Ez da zehaztutako jokoa onartzen.</value>
   </data>
 </root>
