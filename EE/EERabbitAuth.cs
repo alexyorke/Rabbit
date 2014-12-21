@@ -48,7 +48,7 @@ namespace Rabbit.EE
         /// <param name="password">The password.</param>
         /// <param name="worldId">The room id of the world to join</param>
         /// <returns>Connection.</returns>
-        public new Connection LogOn(string email, string password, string worldId)
+        public Connection LogOn(string email, string password, string worldId)
         {
             var client = base.LogOn(GameId, email, password);
 
