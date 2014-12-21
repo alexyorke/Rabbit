@@ -25,7 +25,7 @@ Rabbit is a new library, and is currently used in CupCake, Terra, and Skylight, 
 
 ### Supported Features
 
- * Support for Armor Games, Kongregate, Mousebreaker, Facebook, and standard authentication types
+ * Support for Armor Games, Kongregate, Mousebreaker, Facebook, and standard authentication
  * Support for PlayerIO `useSecureApiRequests`
  * Smart error detection and recovery
  * Very fast: queries are categorized in milliseconds
