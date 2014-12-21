@@ -11,6 +11,8 @@ Connection conn = new RabbitAuth().LogOn(gameId, email, passwordOrToken, useSecu
 
 The overload `(bool)useSecureApiRequests` option by default is `false`.
 
+Rabbit requires .NET framework v3.5 or later.
+
 ###Wiki
 
 Have more questions? Feel free to consult the [Wiki](https://github.com/Decagon/Rabbit/wiki).
