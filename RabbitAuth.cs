@@ -85,11 +85,11 @@ namespace Rabbit
             // An email IS REQUIRED and a token is REQUIRED for mousebreaker authentication.
             if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
             {
-                if (email.Length == 88)
+                if (password.Length == 88)
                 {
                     try
                     {
-                        Convert.FromBase64String(email);
+                        Convert.FromBase64String(password);
                         return AuthenticationType.Mousebreaker;
                     }
                     catch (FormatException)
