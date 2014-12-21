@@ -7,7 +7,7 @@ Rabbit is a library written in C#, and allows PlayerIO integration of Armor Game
 After you have installed `RabbitIO` from NuGet, including Rabbit is easy:
 
 ```csharp
-Connection conn = new RabbitAuth().LogOn(gameId, email, passwordOrToken, useSecureApiRequests);
+Connection conn = new RabbitAuth().LogOn(gameId, email, passwordOrToken);
 ```
 
 
