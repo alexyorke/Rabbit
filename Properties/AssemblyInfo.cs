@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 
 [assembly: AssemblyTitle("Rabbit")]
-[assembly: AssemblyDescription("An EE library that unifies multiple types of authentication into a simple interface")]
+[assembly: AssemblyDescription("A library that unifies multiple types of authentication into a simple interface")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Rabbit")]
@@ -39,5 +39,5 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("0.7.5.0")]
+[assembly: AssemblyFileVersion("0.9.0.0")]
 [assembly: NeutralResourcesLanguage("en")]
