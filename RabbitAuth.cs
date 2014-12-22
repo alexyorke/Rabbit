@@ -74,40 +74,36 @@ namespace Rabbit
                 // Mousebreaker:
                 // Username: a valid email address
                 // Password: 88 character base 64 string
-                if (!string.IsNullOrEmpty(password))
-                {
-                    if (password.Length == 88)
-                    {
-                        try
-                        {
-                            Convert.FromBase64String(password);
-                            return AuthenticationType.Mousebreaker;
-                        }
-                        catch (FormatException)
-                        {
-                            // safe to ignore the exception because it is not a valid
-                            // base 64 array.
-                        }
-                    }
-                    // otherwise, let's hope it's regular authentication.
-                    return IsValidEmail(email) ? AuthenticationType.Regular : AuthenticationType.Username;
-                }
-            }
-            else
-            {
-                // the email and password cannot both be blank
                 if (string.IsNullOrEmpty(password))
+                    throw new InvalidOperationException(Errors.GenerateErrorMessage(email, password));
+                if (password.Length != 88)
+                    return IsValidEmail(email) ? AuthenticationType.Regular : AuthenticationType.Username;
+                try
                 {
-                    throw new InvalidOperationException(strings.EmailPasswordNullError);
+                    Convert.FromBase64String(password);
+                    return AuthenticationType.Mousebreaker;
                 }
+                catch (FormatException)
+                {
+                    // safe to ignore the exception because it is not a valid
+                    // base 64 array.
+                }
+                // otherwise, let's hope it's regular authentication.
+                return IsValidEmail(email) ? AuthenticationType.Regular : AuthenticationType.Username;
+            }
+            
+            // the email and password cannot both be blank
+            if (string.IsNullOrEmpty(password))
+            {
+                throw new InvalidOperationException(strings.EmailPasswordNullError);
+            }
 
-                // Facebook:
-                // Username: N/A
-                // Password: 100 character (or greater) alphanumerical string
-                if (Regex.IsMatch(password, @"^[0-9a-z]{100,}$", RegexOptions.IgnoreCase))
-                {
-                    return AuthenticationType.Facebook;
-                }
+            // Facebook:
+            // Username: N/A
+            // Password: 100 character (or greater) alphanumerical string
+            if (Regex.IsMatch(password, @"^[0-9a-z]{100,}$", RegexOptions.IgnoreCase))
+            {
+                return AuthenticationType.Facebook;
             }
 
 
