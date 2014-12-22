@@ -77,7 +77,7 @@ namespace Rabbit
                 if (string.IsNullOrEmpty(password))
                     throw new InvalidOperationException(Errors.GenerateErrorMessage(email, password));
                 if (password.Length != 88)
-                    return IsValidEmail(email) ? AuthenticationType.Regular : AuthenticationType.Username;
+                    return Utilities.IsValidEmail(email) ? AuthenticationType.Regular : AuthenticationType.Username;
                 try
                 {
                     Convert.FromBase64String(password);
@@ -89,7 +89,7 @@ namespace Rabbit
                     // base 64 array.
                 }
                 // otherwise, let's hope it's regular authentication.
-                return IsValidEmail(email) ? AuthenticationType.Regular : AuthenticationType.Username;
+                return Utilities.IsValidEmail(email) ? AuthenticationType.Regular : AuthenticationType.Username;
             }
             
             // the email and password cannot both be blank
@@ -201,18 +201,6 @@ namespace Rabbit
         public Client LogOn(string gameId, string token, bool shouldUseSecureApiRequests = false)
         {
             return LogOn(gameId, token, null, shouldUseSecureApiRequests);
-        }
-
-        /// <summary>
-        ///     Check if the email is valid.
-        /// </summary>
-        /// <param name="strIn">The string (email).</param>
-        /// <returns>Whether or not the email is valid.</returns>
-        internal static bool IsValidEmail(string strIn) // http://stackoverflow.com/questions/5342375/
-        {
-            // Return true if strIn is in valid e-mail format.
-            return Regex.IsMatch(strIn,
-                @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
         }
     }
 }

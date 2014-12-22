@@ -38,7 +38,7 @@ internal static class Errors
 
     private static string ResolveRegularErrors(string email, string msg)
     {
-        if (!RabbitAuth.IsValidEmail(email))
+        if (!Utilities.IsValidEmail(email))
         {
             msg = msg + "- The email you entered was invalid.";
         }
