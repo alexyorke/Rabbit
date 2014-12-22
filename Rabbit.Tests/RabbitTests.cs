@@ -20,6 +20,23 @@ namespace Rabbit.Tests
     [TestFixture]
     public class RabbitTests
     {
+        [Test]
+        public void InvalidAuthenticationTest()
+        {
+            InvalidOperationException expectedException = null;
+
+            try
+            {
+                RabbitAuth.GetAuthType("47823", "notahexadecimalstringohno");
+            }
+            catch (InvalidOperationException ex)
+            {
+                expectedException = ex;
+            }
+
+            Assert.IsNull(expectedException);
+        }
+
         /// <summary>
         /// The null authentication test.
         /// </summary>
