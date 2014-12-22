@@ -11,19 +11,18 @@
 
 using System;
 using System.Text.RegularExpressions;
-using PlayerIOClient;
 using Rabbit.Auth;
 using Rabbit.Localizations;
 
 namespace Rabbit
 {
     /// <summary>
-    /// Authentication core.
+    ///     Authentication core.
     /// </summary>
     public class RabbitAuth
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RabbitAuth"/> class.
+        ///     Initializes a new instance of the <see cref="RabbitAuth" /> class.
         /// </summary>
         public RabbitAuth()
         {
@@ -31,13 +30,13 @@ namespace Rabbit
         }
 
         /// <summary>
-        /// Gets or sets the authentication type.
+        ///     Gets or sets the authentication type.
         /// </summary>
         /// <value>The type of the authentication.</value>
         public AuthenticationType AuthenticationType { get; set; }
 
         /// <summary>
-        /// Gets the type of the authentication.
+        ///     Gets the type of the authentication.
         /// </summary>
         /// <param name="email">The email.</param>
         /// <param name="password">The password.</param>
@@ -49,7 +48,8 @@ namespace Rabbit
             if (!string.IsNullOrEmpty(email))
             {
                 // Armor Games:
-                // Both UserID and password are 32 char hexadecimal lowercase strings
+                // Username: a 32 character lowercase hexadecimal string
+                // Password: a 32 character lowercase hexadecimal string
                 if (IsHexadecimal(password, 32) &&
                     IsHexadecimal(email, 32))
                 {
@@ -57,8 +57,8 @@ namespace Rabbit
                 }
 
                 // Kongregate: 
-                // UserID is a number
-                // Password is a 64 char hexadecimal lowercase string
+                // Username: a positive integer
+                // Password: a 64 character lowercase hexadecimal string
                 if (Regex.IsMatch(email, @"^\d+$") &&
                     IsHexadecimal(password, 64))
                 {
@@ -66,8 +66,8 @@ namespace Rabbit
                 }
 
                 // Mousebreaker:
-                // 88 character base 64 string for authentication.
-                // An email IS REQUIRED and a token is REQUIRED for mousebreaker authentication.
+                // Username: a valid email address
+                // Password: 88 character base 64 string
                 if (!string.IsNullOrEmpty(password))
                 {
                     if (password.Length == 88)
@@ -80,7 +80,7 @@ namespace Rabbit
                         catch (FormatException)
                         {
                             // safe to ignore the exception because it is not a valid
-                            // base 64 array. Keep going.
+                            // base 64 array.
                         }
                     }
                     // otherwise, let's hope it's regular authentication.
@@ -89,7 +89,6 @@ namespace Rabbit
             }
             else
             {
-
                 // the email and password cannot both be blank
                 if (string.IsNullOrEmpty(password))
                 {
@@ -97,12 +96,12 @@ namespace Rabbit
                 }
 
                 // Facebook:
-                // password is a 100 char alphanumerical string
-                // there is no UserID supplied
+                // Username: N/A
+                // Password: 100 character (or greater) alphanumerical string
                 if (Regex.IsMatch(password, @"^[0-9a-z]{100,}$", RegexOptions.IgnoreCase))
                 {
                     return AuthenticationType.Facebook;
-                }  
+                }
             }
 
 
@@ -113,7 +112,7 @@ namespace Rabbit
         }
 
         /// <summary>
-        /// Determines whether the specified password is hexadecimal.
+        ///     Determines whether the specified password is hexadecimal.
         /// </summary>
         /// <param name="password">The password.</param>
         /// <param name="length">The length.</param>
@@ -126,7 +125,7 @@ namespace Rabbit
         }
 
         /// <summary>
-        /// Connects to the PlayerIO service using the provided credentials.
+        ///     Connects to the PlayerIO service using the provided credentials.
         /// </summary>
         /// <param name="gameId">The game id.</param>
         /// <param name="email">Email address.</param>
@@ -189,13 +188,13 @@ namespace Rabbit
         }
 
         /// <summary>
-        /// The log in function.
+        ///     The log in function.
         /// </summary>
         /// <param name="gameId">The game id.</param>
         /// <param name="token">The token.</param>
         /// <param name="shouldUseSecureApiRequests">if set to <c>true</c> secure API requests will be used.</param>
         /// <returns>
-        /// The <see cref="Client" />.
+        ///     The <see cref="Client" />.
         /// </returns>
         public Client LogOn(string gameId, string token, bool shouldUseSecureApiRequests = false)
         {
@@ -203,7 +202,7 @@ namespace Rabbit
         }
 
         /// <summary>
-        /// Check if the email is valid.
+        ///     Check if the email is valid.
         /// </summary>
         /// <param name="strIn">The string (email).</param>
         /// <returns>Whether or not the email is valid.</returns>
