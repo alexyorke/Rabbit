@@ -29,14 +29,14 @@ internal static class Errors
             else
             {
                 // must be regular authentication
-                msg = ResolveRegularErrors(email, password, msg);
+                msg = ResolveRegularErrors(email, msg);
             }
         }
 
         return msg;
     }
 
-    private static string ResolveRegularErrors(string email, string password, string msg)
+    private static string ResolveRegularErrors(string email, string msg)
     {
         if (!RabbitAuth.IsValidEmail(email))
         {
