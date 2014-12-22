@@ -45,11 +45,6 @@ namespace Rabbit
         /// <exception cref="System.InvalidOperationException">Invalid authentication type.</exception>
         public static AuthenticationType GetAuthType(string email, string password)
         {
-            if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(password))
-            {
-                throw new InvalidOperationException(strings.EmailPasswordNullError);
-            }
-
             // Armor Games and Kongregate require that the email field is not blank.
             if (!string.IsNullOrEmpty(email))
             {
@@ -100,6 +95,12 @@ namespace Rabbit
                 if (Regex.IsMatch(password, @"^[0-9a-z]{100,}$", RegexOptions.IgnoreCase))
                 {
                     return AuthenticationType.Facebook;
+                }
+
+                // the email and password cannot both be blank
+                if (string.IsNullOrEmpty(password))
+                {
+                throw new InvalidOperationException(strings.EmailPasswordNullError);
                 }
             }
 
