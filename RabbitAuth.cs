@@ -89,19 +89,20 @@ namespace Rabbit
             }
             else
             {
+
+                // the email and password cannot both be blank
+                if (string.IsNullOrEmpty(password))
+                {
+                    throw new InvalidOperationException(strings.EmailPasswordNullError);
+                }
+
                 // Facebook:
                 // password is a 100 char alphanumerical string
                 // there is no UserID supplied
                 if (Regex.IsMatch(password, @"^[0-9a-z]{100,}$", RegexOptions.IgnoreCase))
                 {
                     return AuthenticationType.Facebook;
-                }
-
-                // the email and password cannot both be blank
-                if (string.IsNullOrEmpty(password))
-                {
-                throw new InvalidOperationException(strings.EmailPasswordNullError);
-                }
+                }  
             }
 
 
