@@ -51,7 +51,7 @@ namespace Rabbit.EE
         /// <returns>
         /// Connection.
         /// </returns>
-        public new Connection LogOn(string email, string password, string worldId, bool CreateRoom = true)
+        public Connection LogOn(string email, string password, string worldId, bool CreateRoom = true)
         {
             var client = base.LogOn(GameId, email, password);
 

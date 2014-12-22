@@ -46,69 +46,70 @@ namespace Rabbit
         public static AuthenticationType GetAuthType(string email, string password)
         {
             // Armor Games and Kongregate require that the email field is not blank.
-            if (!string.IsNullOrEmpty(email))
+            if (string.IsNullOrEmpty(email))
             {
-                // Armor Games and Kongregate require that the password is hexadecimal
-
-                if (Utilities.IsHexadecimal(password))
-                {
-                    // Armor Games:
-                    // Username: a 32 character lowercase hexadecimal string
-                    // Password: a 32 character lowercase hexadecimal string
-                    if (password.Length == 32 && Utilities.IsHexadecimal(email, 32))
-                    {
-                        return AuthenticationType.ArmorGames;
-                    }
-
-                    // Kongregate: 
-                    // Username: a positive integer
-                    // Password: a 64 character lowercase hexadecimal string
-                    if (Regex.IsMatch(email, @"^\d+$") &&
-                        password.Length == 64)
-                    {
-                        return AuthenticationType.Kongregate;
-                    }
-                }
-                // Mousebreaker:
-                // Username: a valid email address
-                // Password: 88 character base 64 string
+                // All methods of authentication require that the username nad password field are not empty
                 if (string.IsNullOrEmpty(password))
-                    throw new InvalidOperationException(Errors.GenerateErrorMessage(email, password));
-                if (password.Length != 88)
-                    return Utilities.IsValidEmail(email) ? AuthenticationType.Regular : AuthenticationType.Username;
-                try
                 {
-                    Convert.FromBase64String(password);
-                    return AuthenticationType.Mousebreaker;
+                    throw new InvalidOperationException(strings.EmailPasswordNullError);
                 }
-                catch (FormatException)
+
+                // Facebook:
+                // Username: N/A
+                // Password: 100 character (or greater) alphanumerical string
+                if (Regex.IsMatch(password, @"^[0-9a-z]{100,}$", RegexOptions.IgnoreCase))
                 {
-                    // safe to ignore the exception because it is not a valid
-                    // base 64 array.
+                    return AuthenticationType.Facebook;
                 }
-                // otherwise, let's hope it's regular authentication.
-                return Utilities.IsValidEmail(email) ? AuthenticationType.Regular : AuthenticationType.Username;
+
+
+                // Try to help the user if they entered in invalid data.
+                // Guess what possible authentication type they might be trying to
+                // use and tell them that there is a proper way to format it.
+                throw new InvalidOperationException(Errors.GenerateErrorMessage(email, password));
             }
 
-            // the email and password cannot both be blank
+
+            if (Utilities.IsHexadecimal(password))
+            {
+                // Armor Games:
+                // Username: a 32 character lowercase hexadecimal string
+                // Password: a 32 character lowercase hexadecimal string
+                if (password.Length == 32 && Utilities.IsHexadecimal(email, 32))
+                {
+                    return AuthenticationType.ArmorGames;
+                }
+
+                // Kongregate: 
+                // Username: a positive integer
+                // Password: a 64 character lowercase hexadecimal string
+                if (Regex.IsMatch(email, @"^\d+$") &&
+                    password.Length == 64)
+                {
+                    return AuthenticationType.Kongregate;
+                }
+            }
+
+
+            // Mousebreaker:
+            // Username: a valid email address
+            // Password: 88 character base 64 string
             if (string.IsNullOrEmpty(password))
+                throw new InvalidOperationException(Errors.GenerateErrorMessage(email, password));
+            if (password.Length != 88)
+                return Utilities.IsValidEmail(email) ? AuthenticationType.Regular : AuthenticationType.Username;
+            try
             {
-                throw new InvalidOperationException(strings.EmailPasswordNullError);
+                Convert.FromBase64String(password);
+                return AuthenticationType.Mousebreaker;
             }
-
-            // Facebook:
-            // Username: N/A
-            // Password: 100 character (or greater) alphanumerical string
-            if (Regex.IsMatch(password, @"^[0-9a-z]{100,}$", RegexOptions.IgnoreCase))
+            catch (FormatException)
             {
-                return AuthenticationType.Facebook;
+                // safe to ignore the exception because it is not a valid
+                // base 64 array.
             }
-
-
-            // Try to help the user if they entered in invalid data.
-            // Guess what possible authentication type they might be trying to
-            // use and tell them that there is a proper way to format it.
-            throw new InvalidOperationException(Errors.GenerateErrorMessage(email, password));
+            // otherwise, let's hope it's regular authentication.
+            return Utilities.IsValidEmail(email) ? AuthenticationType.Regular : AuthenticationType.Username;
         }
 
         /// <summary>
