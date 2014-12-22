@@ -127,7 +127,7 @@ namespace Rabbit
         {
             return length != 0
                 ? Regex.IsMatch(password, @"^[0-9a-f]{" + length + "}$")
-                : Regex.IsMatch(password, @"^[0-9a-f]$");
+                : Regex.IsMatch(password, @"^[0-9a-f]");
         }
 
         /// <summary>
