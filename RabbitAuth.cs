@@ -47,24 +47,29 @@ namespace Rabbit
             // Armor Games and Kongregate require that the email field is not blank.
             if (!string.IsNullOrEmpty(email))
             {
-                // Armor Games:
-                // Username: a 32 character lowercase hexadecimal string
-                // Password: a 32 character lowercase hexadecimal string
-                if (IsHexadecimal(password, 32) &&
-                    IsHexadecimal(email, 32))
-                {
-                    return AuthenticationType.ArmorGames;
-                }
 
-                // Kongregate: 
-                // Username: a positive integer
-                // Password: a 64 character lowercase hexadecimal string
-                if (Regex.IsMatch(email, @"^\d+$") &&
-                    IsHexadecimal(password, 64))
-                {
-                    return AuthenticationType.Kongregate;
-                }
+                // Armor Games and Kongregate require that the password is hexadecimal
 
+                if (IsHexadecimal(password))
+                {
+                    // Armor Games:
+                    // Username: a 32 character lowercase hexadecimal string
+                    // Password: a 32 character lowercase hexadecimal string
+                    if (password.Length == 32 &&
+                        IsHexadecimal(email, 32))
+                    {
+                        return AuthenticationType.ArmorGames;
+                    }
+
+                    // Kongregate: 
+                    // Username: a positive integer
+                    // Password: a 64 character lowercase hexadecimal string
+                    if (Regex.IsMatch(email, @"^\d+$") &&
+                        password.Length == 64)
+                    {
+                        return AuthenticationType.Kongregate;
+                    }
+                }
                 // Mousebreaker:
                 // Username: a valid email address
                 // Password: 88 character base 64 string
