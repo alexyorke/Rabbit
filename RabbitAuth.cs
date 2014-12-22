@@ -150,7 +150,7 @@ namespace Rabbit
 
             if (!Regex.IsMatch(gameId, @"^[0-9a-zA-Z\-]+$"))
             {
-                throw new ArgumentException("The game ID contains an invalid character.", "gameId");
+                throw new ArgumentException(strings.RabbitAuth_LogOn_The_game_ID_contains_an_invalid_character_, "gameId");
             }
 
 

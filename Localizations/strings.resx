@@ -183,4 +183,7 @@
   <data name="KongregatePasswordTooShort" xml:space="preserve">
     <value>The password must be exactly 64 characters.</value>
   </data>
+  <data name="RabbitAuth_LogOn_The_game_ID_contains_an_invalid_character_" xml:space="preserve">
+    <value>The game ID contains an invalid character.</value>
+  </data>
 </root>

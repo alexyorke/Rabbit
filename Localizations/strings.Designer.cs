@@ -187,6 +187,15 @@ namespace Rabbit.Localizations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The game ID contains an invalid character..
+        /// </summary>
+        internal static string RabbitAuth_LogOn_The_game_ID_contains_an_invalid_character_ {
+            get {
+                return ResourceManager.GetString("RabbitAuth_LogOn_The_game_ID_contains_an_invalid_character_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The room ID cannot be null..
         /// </summary>
         internal static string The_room_ID_cannot_be_null {
