@@ -11,6 +11,7 @@
 
 using System;
 using System.Text.RegularExpressions;
+using PlayerIOClient;
 using Rabbit.Auth;
 using Rabbit.Localizations;
 
