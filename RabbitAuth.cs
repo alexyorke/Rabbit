@@ -55,8 +55,8 @@ namespace Rabbit
             {
                 // Armor Games:
                 // Both UserID and password are 32 char hexadecimal lowercase strings
-                if (IsHexadecimal(password,32) &&
-                    IsHexadecimal(email,32))
+                if (IsHexadecimal(password, 32) &&
+                    IsHexadecimal(email, 32))
                 {
                     return AuthenticationType.ArmorGames;
                 }
@@ -65,43 +65,44 @@ namespace Rabbit
                 // UserID is a number
                 // Password is a 64 char hexadecimal lowercase string
                 if (Regex.IsMatch(email, @"^\d+$") &&
-                    IsHexadecimal(password,64))
+                    IsHexadecimal(password, 64))
                 {
                     return AuthenticationType.Kongregate;
                 }
-            }
 
-            // Facebook:
-            // password is a 100 char alphanumerical string
-            // there is no UserID supplied
-            if (string.IsNullOrEmpty(email) &&
-                Regex.IsMatch(password, @"^[0-9a-z]{100,}$", RegexOptions.IgnoreCase))
-            {
-                return AuthenticationType.Facebook;
-            }
-
-            // Mousebreaker:
-            // 88 character base 64 string for authentication.
-            // An email IS REQUIRED and a token is REQUIRED for mousebreaker authentication.
-            if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
-            {
-                if (password.Length == 88)
+                // Mousebreaker:
+                // 88 character base 64 string for authentication.
+                // An email IS REQUIRED and a token is REQUIRED for mousebreaker authentication.
+                if (!string.IsNullOrEmpty(password))
                 {
-                    try
+                    if (password.Length == 88)
                     {
-                        Convert.FromBase64String(password);
-                        return AuthenticationType.Mousebreaker;
+                        try
+                        {
+                            Convert.FromBase64String(password);
+                            return AuthenticationType.Mousebreaker;
+                        }
+                        catch (FormatException)
+                        {
+                            // safe to ignore the exception because it is not a valid
+                            // base 64 array. Keep going.
+                        }
                     }
-                    catch (FormatException)
-                    {
-                        // safe to ignore the exception because it is not a valid
-                        // base 64 array. Keep going.
-                    }
+                    // otherwise, let's hope it's regular authentication.
+                    return IsValidEmail(email) ? AuthenticationType.Regular : AuthenticationType.Username;
                 }
-                // otherwise, let's hope it's regular authentication.
-                return IsValidEmail(email) ? AuthenticationType.Regular : AuthenticationType.Username;
-
             }
+            else
+            {
+                // Facebook:
+                // password is a 100 char alphanumerical string
+                // there is no UserID supplied
+                if (Regex.IsMatch(password, @"^[0-9a-z]{100,}$", RegexOptions.IgnoreCase))
+                {
+                    return AuthenticationType.Facebook;
+                }
+            }
+
 
             // Try to help the user if they entered in invalid data.
             // Guess what possible authentication type they might be trying to
@@ -117,7 +118,9 @@ namespace Rabbit
         /// <returns><c>true</c> if the specified password is hexadecimal; otherwise, <c>false</c>.</returns>
         internal static bool IsHexadecimal(string password, int length = 0)
         {
-            return length != 0 ? Regex.IsMatch(password, @"^[0-9a-f]{" + length + "}$") : Regex.IsMatch(password, @"^[0-9a-f]$");
+            return length != 0
+                ? Regex.IsMatch(password, @"^[0-9a-f]{" + length + "}$")
+                : Regex.IsMatch(password, @"^[0-9a-f]$");
         }
 
         /// <summary>
@@ -205,7 +208,8 @@ namespace Rabbit
         internal static bool IsValidEmail(string strIn) // http://stackoverflow.com/questions/5342375/
         {
             // Return true if strIn is in valid e-mail format.
-            return Regex.IsMatch(strIn, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
+            return Regex.IsMatch(strIn,
+                @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
         }
     }
 }
