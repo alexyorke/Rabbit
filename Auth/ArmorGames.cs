@@ -66,10 +66,7 @@ namespace Rabbit.Auth
                 }
             };
 
-            guestConn.OnDisconnect += (sender, message) =>
-            {
-                resetEvent.Set();
-            };
+            guestConn.OnDisconnect += (sender, message) => resetEvent.Set();
 
             guestConn.Send("auth", email, password);
             resetEvent.WaitOne();
