@@ -51,13 +51,12 @@ namespace Rabbit
 
                 // Armor Games and Kongregate require that the password is hexadecimal
 
-                if (IsHexadecimal(password))
+                if (Utilities.IsHexadecimal(password))
                 {
                     // Armor Games:
                     // Username: a 32 character lowercase hexadecimal string
                     // Password: a 32 character lowercase hexadecimal string
-                    if (password.Length == 32 &&
-                        IsHexadecimal(email, 32))
+                    if (password.Length == 32 && Utilities.IsHexadecimal(email, 32))
                     {
                         return AuthenticationType.ArmorGames;
                     }
@@ -111,19 +110,6 @@ namespace Rabbit
             // Guess what possible authentication type they might be trying to
             // use and tell them that there is a proper way to format it.
             throw new InvalidOperationException(Errors.GenerateErrorMessage(email, password));
-        }
-
-        /// <summary>
-        ///     Determines whether the specified password is hexadecimal.
-        /// </summary>
-        /// <param name="password">The password.</param>
-        /// <param name="length">The length.</param>
-        /// <returns><c>true</c> if the specified password is hexadecimal; otherwise, <c>false</c>.</returns>
-        internal static bool IsHexadecimal(string password, int length = 0)
-        {
-            return length != 0
-                ? Regex.IsMatch(password, @"^[0-9a-f]{" + length + "}$")
-                : Regex.IsMatch(password, @"^[0-9a-f]");
         }
 
         /// <summary>

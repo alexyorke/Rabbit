@@ -20,9 +20,9 @@ internal static class Errors
         }
         else
         {
-            if (RabbitAuth.IsHexadecimal(password))
+            if (Utilities.IsHexadecimal(password))
             {
-                msg = RabbitAuth.IsHexadecimal(email)
+                msg = Utilities.IsHexadecimal(email)
                     ? ResolveArmorGamesErrors(email, password, msg)
                     : ResolveKongregateErrors(email, password, msg);
             }
