@@ -117,12 +117,10 @@ namespace Rabbit
         /// <param name="gameId">The game id.</param>
         /// <param name="email">Email address.</param>
         /// <param name="password">Password or token.</param>
-        /// <param name="createRoom">if set to <c>true</c> secure API requests will be used.</param>
         /// <returns>A client object.</returns>
         /// <exception cref="System.InvalidOperationException">Invalid authentication type.</exception>
-        public Client LogOn(string gameId, string email, string password, bool createRoom = true)
+        public Client LogOn(string gameId, string email, string password)
         {
-            PlayerIO.UseSecureApiRequests = createRoom;
 
             // Clean the email (or token), and gameId from whitespace
             email = Regex.Replace(email, @"\s+", string.Empty);
@@ -186,7 +184,7 @@ namespace Rabbit
         /// </returns>
         public Client LogOn(string gameId, string token, bool shouldUseSecureApiRequests = false)
         {
-            return LogOn(gameId, token, null, shouldUseSecureApiRequests);
+            return LogOn(gameId, token, null);
         }
     }
 }

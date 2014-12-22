@@ -53,7 +53,7 @@ namespace Rabbit.EE
         /// </returns>
         public new Connection LogOn(string email, string password, string worldId, bool CreateRoom = true)
         {
-            var client = base.LogOn(GameId, email, password, CreateRoom);
+            var client = base.LogOn(GameId, email, password);
 
             // Parse the world id (if it exists in another format)
             worldId = IdParser.Parse(worldId);
