@@ -48,7 +48,6 @@ namespace Rabbit
             // Armor Games and Kongregate require that the email field is not blank.
             if (!string.IsNullOrEmpty(email))
             {
-
                 // Armor Games and Kongregate require that the password is hexadecimal
 
                 if (Utilities.IsHexadecimal(password))
@@ -90,7 +89,7 @@ namespace Rabbit
                 // otherwise, let's hope it's regular authentication.
                 return Utilities.IsValidEmail(email) ? AuthenticationType.Regular : AuthenticationType.Username;
             }
-            
+
             // the email and password cannot both be blank
             if (string.IsNullOrEmpty(password))
             {
@@ -132,7 +131,8 @@ namespace Rabbit
 
             if (!Regex.IsMatch(gameId, @"^[0-9a-zA-Z\-]+$"))
             {
-                throw new ArgumentException(strings.RabbitAuth_LogOn_The_game_ID_contains_an_invalid_character_, "gameId");
+                throw new ArgumentException(strings.RabbitAuth_LogOn_The_game_ID_contains_an_invalid_character_,
+                    "gameId");
             }
 
 
