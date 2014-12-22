@@ -47,19 +47,19 @@ namespace Rabbit.EE
         /// <param name="email">The email.</param>
         /// <param name="password">The password.</param>
         /// <param name="worldId">The room id of the world to join</param>
-        /// <param name="shouldUseSecureApiRequests">if set to <c>true</c> secure API requests will be used.</param>
+        /// <param name="CreateRoom">if set to <c>true</c> secure API requests will be used.</param>
         /// <returns>
         /// Connection.
         /// </returns>
-        public new Connection LogOn(string email, string password, string worldId, bool shouldUseSecureApiRequests = false)
+        public new Connection LogOn(string email, string password, string worldId, bool CreateRoom = true)
         {
-            var client = base.LogOn(GameId, email, password, shouldUseSecureApiRequests);
+            var client = base.LogOn(GameId, email, password, CreateRoom);
 
             // Parse the world id (if it exists in another format)
             worldId = IdParser.Parse(worldId);
 
             Connection eeConn;
-            if (CreateRoom)
+            if (this.CreateRoom)
             {
                 var roomPrefix = worldId.StartsWith("BW", StringComparison.InvariantCulture)
                     ? "Beta"
