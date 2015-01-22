@@ -13,29 +13,29 @@ Connection conn = new RabbitAuth().LogOn(gameId, email, passwordOrToken);
 
 ## Project Goals
 
- * Be well maintained
- * Be well documented
- * Be well tested
- * Try to maintain backwards compatibility
+ * Well maintained
+ * Well documented
+ * Well tested
+ * Maintain backwards compatibility*
 
 
 ## Project Maturity
 
-Rabbit is a new library, and is currently used in CupCake, Terra, and Skylight, which together power the majority of the bots on Everybody Edits. If you would like to use Rabbit in your project, use the stable version 0.9.3.3 or wait until 1.0 is released. The public API will be frozen within 1.0.
+Rabbit is a new library, and is used in CupCake, Terra, and Skylight, which together power the majority of the bots on Everybody Edits. If you want to use Rabbit in your project, use the stable version 0.9.3.3 or wait until 1.0 is released. The public API will freeze within 1.0.
 
 ### Supported Features
 
  * Support for Armor Games, Kongregate, Mousebreaker, Facebook, and standard authentication
  * Support for PlayerIO `useSecureApiRequests`
  * Smart error detection and recovery
- * Very fast: queries are categorized in milliseconds
+ * Fast: queries are categorized in milliseconds
  * Many localizations
  * Compatibility with Terra
 
 
 ## Getting Started
 
-Over on the wiki, have a look at our [Getting Started](https://github.com/Decagon/Rabbit/wiki/Getting-Started) guide. Feel free to send questions to decagongithub@gmail.com, and report any issues to the [GitHub Issue Tracker](https://github.com/Decagon/Rabbit/issues)
+Over on the wiki, have a look at our [Getting Started](https://github.com/Decagon/Rabbit/wiki/Getting-Started) guide. Send questions to decagongithub@gmail.com, and report any issues to the [GitHub Issue Tracker](https://github.com/Decagon/Rabbit/issues)
 
 
 ## Documentation & Examples
@@ -55,7 +55,7 @@ Rabbit requires .NET framework 3.5 or later.
 
 ###Everybody Edits
 
-Use `EERabbitAuth()` to specifically authenticate with Everybody Edits:
+Use `EERabbitAuth()` to authenticate with Everybody Edits:
 
 
 ```csharp
