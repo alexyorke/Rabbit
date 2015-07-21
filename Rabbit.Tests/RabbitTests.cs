@@ -64,8 +64,10 @@ namespace Rabbit.Tests
         public void RegularAuthenticationTest()
         {
             var authResult = RabbitAuth.GetAuthType("test@email.com", "testpassword");
-
             Assert.AreEqual(AuthenticationType.Regular, authResult);
+
+            var authResultLongEmail = RabbitAuth.GetAuthType("thisisalongemailaddress+longaliasname@gmail.com","testpass");
+            Assert.AreEqual(AuthenticationType.Regular, authResultLongEmail);
         }
 
         /// <summary>
