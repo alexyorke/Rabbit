@@ -1,4 +1,4 @@
-# Rabbit, unified authentication for PlayerIO
+# RabbitIO: Smart PlayerIO authentication
 
 Rabbit is a library written in C#, and allows PlayerIO integration of Armor Games, Kongregate, Mousebreaker, Facebook, email, Yahoo, and standard authentication into one login interface. Give one username and password UI to your users, and Rabbit will know what service to authenticate them into.
 
