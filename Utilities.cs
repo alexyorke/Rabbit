@@ -16,7 +16,7 @@ namespace Rabbit
         /// <returns>
         /// Returns the email address, if it is valid. Otherwise, null.
         /// </returns>
-        public static bool IsValidEmail(string strIn)
+        internal static bool IsValidEmail(string strIn)
         {
             // Return true if strIn is in valid e-mail format.
             try
