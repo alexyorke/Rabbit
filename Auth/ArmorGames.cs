@@ -28,8 +28,10 @@ namespace Rabbit.Auth
         /// <param name="gameId">The game id.</param>
         /// <param name="email">The user id of the user.</param>
         /// <param name="password">The user token.</param>
-        /// <returns>A valid client object.</returns>
-        /// <exception cref="System.NotSupportedException">Armor Games login is not supported for the specified game.</exception>
+        /// <returns>
+        /// A valid client object.
+        /// </returns>
+        /// <exception cref="NotSupportedException">Armor Games login is not supported for the specified game.</exception>
         public static Client Authenticate(string gameId, string email, string password)
         {
             if (gameId != EERabbitAuth.GameId)
