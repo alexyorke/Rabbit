@@ -95,7 +95,7 @@ namespace Rabbit.EE
         /// <returns>
         /// Connection.
         /// </returns>
-        public new Connection LogOn(string token, string worldId, bool shouldUseSecureApiRequests = false)
+        public Connection LogOn(string token, string worldId, bool shouldUseSecureApiRequests = false)
         {
             return LogOn(token, null, worldId, shouldUseSecureApiRequests);
         }
