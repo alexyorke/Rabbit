@@ -4,6 +4,9 @@ using System.Text.RegularExpressions;
 
 namespace Rabbit
 {
+    /// <summary>
+    /// Utilities such as validating an email address and some types of usernames.
+    /// </summary>
     public class Utilities
     {
         /// <summary>
