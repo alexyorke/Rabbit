@@ -85,19 +85,5 @@ namespace Rabbit.EE
 
             return eeConn;
         }
-
-        /// <summary>
-        /// Logs on.
-        /// </summary>
-        /// <param name="token">The token.</param>
-        /// <param name="worldId">The world identifier.</param>
-        /// <param name="shouldUseSecureApiRequests">if set to <c>true</c> secure API requests will be used.</param>
-        /// <returns>
-        /// Connection.
-        /// </returns>
-        public Connection LogOn(string token, string worldId, bool shouldUseSecureApiRequests = false)
-        {
-            return LogOn(token, null, worldId, shouldUseSecureApiRequests);
-        }
     }
 }
