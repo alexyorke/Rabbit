@@ -37,7 +37,6 @@ namespace Rabbit.EE
             // Parse the world id (if it exists in another format)
             worldId = IdParser.Parse(worldId);
 
-            Connection eeConn;
             if (createRoom)
             {
                 string roomPrefix;
@@ -55,19 +54,15 @@ namespace Rabbit.EE
                 }
 
                 var serverVersion = client.BigDB.Load("config", "config")["version"];
-                eeConn = client.Multiplayer.CreateJoinRoom(
+                return client.Multiplayer.CreateJoinRoom(
                     worldId,
                     roomPrefix + serverVersion,
                     true,
                     null,
                     null);
             }
-            else
-            {
-                eeConn = client.Multiplayer.JoinRoom(worldId, null);
-            }
-
-            return eeConn;
+            
+            return client.Multiplayer.JoinRoom(worldId, null);
         }
     }
 }
