@@ -26,7 +26,7 @@ namespace Rabbit.Auth
         /// <param name="password">The password.</param>
         /// <returns>A valid PlayerIOClient instance.</returns>
         /// <exception cref="System.NotSupportedException">Mousebreaker login is not supported for the specified game.</exception>
-        /// <exception cref="System.Security.Authentication.AuthenticationException">Invalid credentials for Mousebreaker authentication.</exception>
+        /// <exception cref="AuthenticationException">Invalid credentials for Mousebreaker authentication.</exception>
         public static Client Authenticate(string gameId, string userName, string password)
         {
             if (gameId != EERabbitAuth.GameId)

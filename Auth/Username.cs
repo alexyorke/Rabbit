@@ -30,7 +30,7 @@ namespace Rabbit.Auth
         /// <param name="password">The password.</param>
         /// <returns>A valid PlayerIOClient instance.</returns>
         /// <exception cref="System.NotSupportedException">Username login is not supported for the specified game.</exception>
-        /// <exception cref="System.Security.Authentication.AuthenticationException">Username login currently only supports everybodyedits.com users.</exception>
+        /// <exception cref="AuthenticationException">Username login currently only supports everybodyedits.com users.</exception>
         public static Client Authenticate(string gameId, string UserName, string password)
         {
             if (gameId != EERabbitAuth.GameId)
