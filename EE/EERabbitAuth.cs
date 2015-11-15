@@ -25,7 +25,7 @@ namespace Rabbit.EE
         /// <summary>
         /// The game identifier
         /// </summary>
-        public static string GameId = "everybody-edits-su9rn58o40itdbnw69plyw";
+        internal static readonly string GameId = "everybody-edits-su9rn58o40itdbnw69plyw";
 
         /// <summary>
         /// Gets or sets a value indicating whether to create a multiplayer room.
