@@ -15,8 +15,6 @@ using PlayerIOClient;
 using Rabbit.Auth;
 using Rabbit.Localizations;
 
-[assembly: CLSCompliant(true)]
-
 namespace Rabbit
 {
     /// <summary>
@@ -176,20 +174,6 @@ namespace Rabbit
                     return Simple.Authenticate(gameId, email, password);
                 }
             }
-        }
-
-        /// <summary>
-        ///     The log in function.
-        /// </summary>
-        /// <param name="gameId">The game id.</param>
-        /// <param name="token">The token.</param>
-        /// <param name="shouldUseSecureApiRequests">if set to <c>true</c> secure API requests will be used.</param>
-        /// <returns>
-        ///     The <see cref="Client" />.
-        /// </returns>
-        public Client LogOn(string gameId, string token, bool shouldUseSecureApiRequests = false)
-        {
-            return LogOn(gameId, token, null);
         }
     }
 }
