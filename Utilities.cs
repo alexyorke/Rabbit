@@ -7,17 +7,19 @@ namespace Rabbit
     public class Utilities
     {
         /// <summary>
-        ///     Check if the email is valid.
+        /// Check if the email is valid.
         /// </summary>
         /// <param name="strIn">The string (email).</param>
-        /// <returns>Whether or not the email is valid.</returns>
+        /// <returns>
+        /// Returns the email address, if it is valid. Otherwise, null.
+        /// </returns>
         public static bool IsValidEmail(string strIn)
         {
             // Return true if strIn is in valid e-mail format.
             try
             {
                 MailAddress m = new MailAddress(strIn);
-                return true;
+                return (strIn == m.Address);
             }
             catch (FormatException)
             {
