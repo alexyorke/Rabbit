@@ -7,7 +7,7 @@ namespace Rabbit
     /// <summary>
     /// Utilities such as validating an email address and some types of usernames.
     /// </summary>
-    public class Utilities
+    static public class Utilities
     {
         /// <summary>
         /// Check if the email is valid.
