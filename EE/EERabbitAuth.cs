@@ -59,7 +59,7 @@ namespace Rabbit.EE
             worldId = IdParser.Parse(worldId);
 
             Connection eeConn;
-            if (this.CreateRoom)
+            if (createRoom)
             {
                 if (!(worldId.StartsWith("PW", StringComparison.Ordinal)
                         || worldId.StartsWith("BW", StringComparison.InvariantCulture))) {
