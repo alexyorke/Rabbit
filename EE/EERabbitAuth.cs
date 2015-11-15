@@ -40,15 +40,19 @@ namespace Rabbit.EE
             Connection eeConn;
             if (createRoom)
             {
-                if (!(worldId.StartsWith("PW", StringComparison.Ordinal)
-                        || worldId.StartsWith("BW", StringComparison.Ordinal)))
-                {
-                    throw new FormatException("World ID must start with PW or BW when creating a new room.");
-                }
+                string roomPrefix;
 
-                var roomPrefix = worldId.StartsWith("BW", StringComparison.Ordinal)
-                    ? "Beta"
-                    : "Everybodyedits";
+                switch (worldId.Substring(2))
+                {
+                    case "BW":
+                        roomPrefix = "Beta";
+                        break;
+                    case "PW":
+                        roomPrefix = "Everybodyedits";
+                        break;
+                    default:
+                        throw new FormatException("World ID must start with PW or BW when creating a new room.");
+                }
 
                 var serverVersion = client.BigDB.Load("config", "config")["version"];
                 eeConn = client.Multiplayer.CreateJoinRoom(
