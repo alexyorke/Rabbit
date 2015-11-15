@@ -20,7 +20,7 @@ namespace Rabbit.Auth
     /// <summary>
     /// Class Username.
     /// </summary>
-    public static class Username
+    public static class UserName
     {
         /// <summary>
         /// Authenticates using the specified email.

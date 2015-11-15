@@ -168,7 +168,7 @@ namespace Rabbit
 
                 case AuthenticationType.UserName:
                 {
-                    return Username.Authenticate(gameId, email, password);
+                    return UserName.Authenticate(gameId, email, password);
                 }
 
                 default:
