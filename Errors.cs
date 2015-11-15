@@ -14,7 +14,7 @@ internal static class Errors
     internal static string GenerateErrorMessage(string email, string password)
     {
         var msg = "The following errors caused authentication to fail:" + Environment.NewLine;
-        if (String.IsNullOrEmpty(email))
+        if (string.IsNullOrEmpty(email))
         {
             msg = ResolveFacebookErrors(password, msg);
         }

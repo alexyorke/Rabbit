@@ -37,7 +37,7 @@ namespace Rabbit.Auth
 
             var resetEvent = new ManualResetEvent(false);
             var guestClient = Simple.Authenticate(gameId, "guest", "guest");
-            var guestConn = guestClient.Multiplayer.JoinRoom(String.Empty, null);
+            var guestConn = guestClient.Multiplayer.JoinRoom(string.Empty, null);
             Client client = null;
             Exception exception = null;
 
