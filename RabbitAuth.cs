@@ -96,12 +96,12 @@ namespace Rabbit
             // Password: 88 character base 64 string
             if (string.IsNullOrEmpty(password))
                 throw new InvalidOperationException(Errors.GenerateErrorMessage(email, password));
-            if (password.Length != 88)
-                return Utilities.IsValidEmail(email) ? AuthenticationType.Regular : AuthenticationType.Username;
+
             try
             {
-                Convert.FromBase64String(password);
-                return AuthenticationType.Mousebreaker;
+                if (password.Length == 88)
+                    Convert.FromBase64String(password);
+                    return AuthenticationType.Mousebreaker;
             }
             catch (FormatException)
             {
