@@ -47,7 +47,7 @@ namespace Rabbit.Auth
         /// The user name authentication type. This means that the user supplied a user name
         /// which must be converted into a user id, then parsed.
         /// </summary>
-        Username,
+        UserName,
 
         /// <summary>
         /// The Mousebreaker authentication.

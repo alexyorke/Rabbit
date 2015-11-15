@@ -113,7 +113,7 @@ namespace Rabbit
                 // base 64 array.
             }
             // otherwise, let's hope it's regular authentication.
-            return Utilities.IsValidEmail(email) ? AuthenticationType.Regular : AuthenticationType.Username;
+            return Utilities.IsValidEmail(email) ? AuthenticationType.Regular : AuthenticationType.UserName;
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace Rabbit
                     return MouseBreaker.Authenticate(gameId, email, password);
                 }
 
-                case AuthenticationType.Username:
+                case AuthenticationType.UserName:
                 {
                     return Username.Authenticate(gameId, email, password);
                 }
