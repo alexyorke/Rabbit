@@ -61,6 +61,11 @@ namespace Rabbit.EE
             Connection eeConn;
             if (this.CreateRoom)
             {
+                if (!(worldId.StartsWith("PW", StringComparison.InvariantCulture)
+                        || worldId.StartsWith("BW", StringComparison.InvariantCulture))) {
+                    throw new FormatException("World ID must start with PW or BW when creating a new room.");
+                }
+
                 var roomPrefix = worldId.StartsWith("BW", StringComparison.InvariantCulture)
                     ? "Beta"
                     : "Everybodyedits";
