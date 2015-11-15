@@ -15,6 +15,8 @@ using PlayerIOClient;
 using Rabbit.Auth;
 using Rabbit.Localizations;
 
+[assembly: CLSCompliant(true)]
+
 namespace Rabbit
 {
     /// <summary>
