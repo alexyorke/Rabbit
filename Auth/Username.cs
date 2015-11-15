@@ -26,12 +26,12 @@ namespace Rabbit.Auth
         /// Authenticates using the specified email.
         /// </summary>
         /// <param name="gameId">The game id.</param>
-        /// <param name="username">The user Name.</param>
+        /// <param name="UserName">The user Name.</param>
         /// <param name="password">The password.</param>
         /// <returns>A valid PlayerIOClient instance.</returns>
         /// <exception cref="System.NotSupportedException">Username login is not supported for the specified game.</exception>
         /// <exception cref="System.Security.Authentication.AuthenticationException">Username login currently only supports everybodyedits.com users.</exception>
-        public static Client Authenticate(string gameId, string username, string password)
+        public static Client Authenticate(string gameId, string UserName, string password)
         {
             if (gameId != EERabbitAuth.GameId)
                 throw new NotSupportedException(strings.UsernameNotSupported);
@@ -40,11 +40,11 @@ namespace Rabbit.Auth
             try
             {
                 var c = Simple.Authenticate(gameId, "guest", "guest");
-                userId = c.BigDB.Load("usernames", username).GetString("owner");
+                userId = c.BigDB.Load("usernames", UserName).GetString("owner");
             }
             catch
             {
-                userId = username;
+                userId = UserName;
             }
 
             if (userId.StartsWith("simple", StringComparison.CurrentCulture))
