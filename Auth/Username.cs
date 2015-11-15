@@ -42,7 +42,7 @@ namespace Rabbit.Auth
                 var c = Simple.Authenticate(gameId, "guest", "guest");
                 userId = c.BigDB.Load("usernames", UserName).GetString("owner");
             }
-            catch
+            catch (PlayerIOError)
             {
                 userId = UserName;
             }
