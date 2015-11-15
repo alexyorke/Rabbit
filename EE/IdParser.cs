@@ -24,37 +24,43 @@ namespace Rabbit
         /// <exception cref="System.FormatException">The room id url was not recognized. Make sure that the url is valid.</exception>
         /// <exception cref="FormatException">Occurs when the room id is not formatted in a proper url or is not between
         /// 9 and 14 characters or contains non-alphanumeric symbols.</exception>
-        public static string Parse(string id)
+        public static bool TryParse(string id, out string validId)
         {
             // This method is based on TakoMan02's Skylight parse url method
             // available on GitHub.
             if (string.IsNullOrEmpty(id))
-                throw new ArgumentNullException("id", strings.The_room_ID_cannot_be_null);
+            {
+                validId = null;
+                return false;
+            }
 
             if (IsValidStrictRoomId(id))
-                return id;
-
-            try
             {
-                // From http://stackoverflow.com/questions/16473838/ (some parts were changed)
-                var parsedUrl = new Uri(id);
-                var hostParts = parsedUrl.Host.Split('.');
-                var domain = string.Join(".", hostParts.Skip(Math.Max(0, hostParts.Length - 2)).Take(2).ToArray());
-
-                if (domain != "everybodyedits.com")
-                    throw new UriFormatException(strings.unknownUrl);
-
-                var urlId = parsedUrl.Segments.Last();
-
-                if (IsValidStrictRoomId(urlId))
-                    return urlId;
-
-                throw new UriFormatException(strings.UrlCorrectRoomIDNot);
+                validId = id;
+                return true;
             }
-            catch (UriFormatException ex)
+
+            // From http://stackoverflow.com/questions/16473838/ (some parts were changed)
+            var parsedUrl = new Uri(id);
+            var hostParts = parsedUrl.Host.Split('.');
+            var domain = string.Join(".", hostParts.Skip(Math.Max(0, hostParts.Length - 2)).Take(2).ToArray());
+
+            if (domain != "everybodyedits.com")
             {
-                throw new FormatException(strings.InvalidRoomUrl, ex);
+                validId = null;
+                return false;
             }
+
+            var urlId = parsedUrl.Segments.Last();
+
+            if (IsValidStrictRoomId(urlId))
+            {
+                validId = urlId;
+                return true;
+            }
+
+            validId = null;
+            return false;
         }
 
         /// <summary>

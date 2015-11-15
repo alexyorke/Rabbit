@@ -30,12 +30,17 @@ namespace Rabbit.EE
         /// <returns>
         /// Connection.
         /// </returns>
-        public Connection LogOn(string email, string password, string worldId, bool createRoom = true)
+        public Connection LogOn(string email, string password, string inWorldId, bool createRoom = true)
         {
             var client = base.LogOn(GameId, email, password);
 
+            string worldId;
             // Parse the world id (if it exists in another format)
-            worldId = IdParser.Parse(worldId);
+
+            if (!IdParser.TryParse(inWorldId, out worldId))
+            {
+                throw new FormatException("The world id is invalid.");
+            }
 
             if (createRoom)
             {
@@ -61,7 +66,7 @@ namespace Rabbit.EE
                     null,
                     null);
             }
-            
+
             return client.Multiplayer.JoinRoom(worldId, null);
         }
     }

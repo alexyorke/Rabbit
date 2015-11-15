@@ -13,7 +13,7 @@ namespace Rabbit.Tests
 
             try
             {
-                IdParser.Parse("test");
+                IdParser.TryParse("test");
             }
 
             catch (FormatException ex)
@@ -32,7 +32,7 @@ namespace Rabbit.Tests
 
             try
             {
-                IdParser.Parse("PWthisroomnameiswaytoolongtoprocessefficientlyomgz12");
+                IdParser.TryParse("PWthisroomnameiswaytoolongtoprocessefficientlyomgz12");
             }
             catch (FormatException ex)
             {
@@ -46,9 +46,9 @@ namespace Rabbit.Tests
         public void ValidRoomIdTest()
         {
             Assert.AreEqual(IdParser.IsValidStrictRoomId("PWtest12345"), true);
-            Assert.AreEqual(IdParser.Parse("PWtest12345"), "PWtest12345");
-            Assert.AreEqual(IdParser.Parse("OWopenroom"), "OWopenroom");
-            Assert.AreEqual(IdParser.Parse("http://everybodyedits.com/games/PWsomething"), "PWsomething");
+            Assert.AreEqual(IdParser.TryParse("PWtest12345"), "PWtest12345");
+            Assert.AreEqual(IdParser.TryParse("OWopenroom"), "OWopenroom");
+            Assert.AreEqual(IdParser.TryParse("http://everybodyedits.com/games/PWsomething"), "PWsomething");
 
         }
     }
