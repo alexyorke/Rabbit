@@ -100,8 +100,10 @@ namespace Rabbit
             try
             {
                 if (password.Length == 88)
+                {
                     Convert.FromBase64String(password);
                     return AuthenticationType.Mousebreaker;
+                }
             }
             catch (FormatException)
             {
