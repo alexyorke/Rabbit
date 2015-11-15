@@ -62,7 +62,7 @@ namespace Rabbit.EE
             if (createRoom)
             {
                 if (!(worldId.StartsWith("PW", StringComparison.Ordinal)
-                        || worldId.StartsWith("BW", StringComparison.InvariantCulture))) {
+                        || worldId.StartsWith("BW", StringComparison.Ordinal))) {
                     throw new FormatException("World ID must start with PW or BW when creating a new room.");
                 }
 
