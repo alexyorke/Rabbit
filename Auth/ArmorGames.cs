@@ -55,7 +55,7 @@ namespace Rabbit.Auth
                         message.GetString(1),
                         "armorgames");
                 }
-                catch (Exception ex)
+                catch (AuthenticationException ex)
                 {
                     exception = ex;
                 }
