@@ -28,12 +28,6 @@ namespace Rabbit.EE
         internal const string GameId = "everybody-edits-su9rn58o40itdbnw69plyw";
 
         /// <summary>
-        /// Gets or sets a value indicating whether to create a multiplayer room.
-        /// </summary>
-        /// <value><c>true</c> if [create room]; otherwise, <c>false</c>.</value>
-        public bool CreateRoom { get; set; } = true;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="EERabbitAuth" /> class.
         /// </summary>
         public EERabbitAuth()
