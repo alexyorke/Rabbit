@@ -70,7 +70,7 @@ namespace Rabbit
             }
 
 
-            if (Utilities.IsHexadecimal(password))
+            if (Utilities.IsHexadecimal(password) && !string.IsNullOrEmpty(password))
             {
                 // Armor Games:
                 // Username: a 32 character lowercase hexadecimal string
