@@ -73,7 +73,7 @@ namespace Rabbit
         /// <returns>The <see cref="bool" />.</returns>
         public static bool IsValidStrictRoomId(string id)
         {
-            return Regex.IsMatch(id, @"^([P|B|O]W[a-zA-Z0-9_-]+)|\$service-room\$$");
+            return (Regex.IsMatch(id, @"^([P|B|O]W[a-zA-Z0-9_-]+)|\$service-room\$$") && (id.Length <= 50));
         }
     }
 }

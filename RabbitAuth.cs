@@ -122,7 +122,7 @@ namespace Rabbit
         /// <param name="password">Password or token.</param>
         /// <returns>A client object.</returns>
         /// <exception cref="System.InvalidOperationException">Invalid authentication type.</exception>
-        public Client LogOn(string gameId, string email, string password)
+        internal Client LogOn(string gameId, string email, string password)
         {
 
             // Clean the email (or token), and gameId from whitespace
