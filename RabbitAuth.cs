@@ -1,15 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : Rabbit
-// Author           : Decagon
-// Created          : 07-22-2014
-// ***********************************************************************
-// <copyright file="RabbitAuth.cs" company="None">
-//     Copyright 2014 (c) . All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System;
+﻿using System;
 using System.Text.RegularExpressions;
 using PlayerIOClient;
 using Rabbit.Auth;
@@ -62,10 +51,6 @@ namespace Rabbit
                     return AuthenticationType.Facebook;
                 }
 
-
-                // Try to help the user if they entered in invalid data.
-                // Guess what possible authentication type they might be trying to
-                // use and tell them that there is a proper way to format it.
                 throw new InvalidOperationException(Errors.GenerateErrorMessage(email, password));
             }
 
@@ -90,7 +75,6 @@ namespace Rabbit
                 }
             }
 
-
             // Mousebreaker:
             // Username: a valid email address
             // Password: 88 character base 64 string
@@ -110,7 +94,7 @@ namespace Rabbit
                 // safe to ignore the exception because it is not a valid
                 // base 64 array.
             }
-            // otherwise, let's hope it's regular authentication.
+
             return Utilities.IsValidEmail(email) ? AuthenticationType.Regular : AuthenticationType.UserName;
         }
 
@@ -124,18 +108,15 @@ namespace Rabbit
         /// <exception cref="System.InvalidOperationException">Invalid authentication type.</exception>
         internal Client LogOn(string gameId, string email, string password)
         {
-
             // Clean the email (or token), and gameId from whitespace
             email = Regex.Replace(email, @"\s+", string.Empty);
             gameId = Regex.Replace(gameId, @"\s+", string.Empty);
-
 
             if (!Regex.IsMatch(gameId, @"^[0-9a-z\-]+$", RegexOptions.IgnoreCase))
             {
                 throw new ArgumentException(strings.RabbitAuth_LogOn_The_game_ID_contains_an_invalid_character_,
                     "gameId");
             }
-
 
             if (AuthenticationType == AuthenticationType.Unknown)
             {
@@ -145,34 +126,34 @@ namespace Rabbit
             switch (AuthenticationType)
             {
                 case AuthenticationType.Facebook:
-                {
-                    return Facebook.Authenticate(gameId, password);
-                }
+                    {
+                        return Facebook.Authenticate(gameId, password);
+                    }
 
                 case AuthenticationType.Kongregate:
-                {
-                    return Kongregate.Authenticate(gameId, email, password);
-                }
+                    {
+                        return Kongregate.Authenticate(gameId, email, password);
+                    }
 
                 case AuthenticationType.ArmorGames:
-                {
-                    return ArmorGames.Authenticate(gameId, email, password);
-                }
+                    {
+                        return ArmorGames.Authenticate(gameId, email, password);
+                    }
 
                 case AuthenticationType.Mousebreaker:
-                {
-                    return MouseBreaker.Authenticate(gameId, email, password);
-                }
+                    {
+                        return MouseBreaker.Authenticate(gameId, email, password);
+                    }
 
                 case AuthenticationType.UserName:
-                {
-                    return UserName.Authenticate(gameId, email, password);
-                }
+                    {
+                        return UserName.Authenticate(gameId, email, password);
+                    }
 
                 default:
-                {
-                    return Simple.Authenticate(gameId, email, password);
-                }
+                    {
+                        return Simple.Authenticate(gameId, email, password);
+                    }
             }
         }
     }

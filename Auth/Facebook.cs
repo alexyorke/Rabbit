@@ -1,14 +1,3 @@
-// ***********************************************************************
-// Assembly         : Rabbit
-// Author           : Decagon
-// Created          : 07-22-2014
-// ***********************************************************************
-// <copyright file="Facebook.cs" company="">
-//     Copyright 2014 (c) . All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
 using PlayerIOClient;
 
 namespace Rabbit.Auth

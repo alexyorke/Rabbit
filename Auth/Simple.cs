@@ -1,18 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : Rabbit
-// Author           : Decagon
-// Created          : 12-19-2014
-//
-// Last Modified By : Decagon
-// Last Modified On : 12-19-2014
-// ***********************************************************************
-// <copyright file="Simple.cs" company="">
-//     Copyright (c) . All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using PlayerIOClient;
+﻿using PlayerIOClient;
 
 namespace Rabbit.Auth
 {

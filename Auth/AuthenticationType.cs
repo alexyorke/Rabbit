@@ -1,15 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : Rabbit
-// Author           : Decagon
-// Created          : 07-22-2014
-// ***********************************************************************
-// <copyright file="AuthType.cs" company="None">
-//     Copyright 2014 (c) . All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-namespace Rabbit.Auth
+﻿namespace Rabbit.Auth
 {
     /// <summary>
     /// Authentication Types

@@ -1,18 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : Rabbit
-// Author           : Decagon
-// Created          : 12-19-2014
-//
-// Last Modified By : Decagon
-// Last Modified On : 12-19-2014
-// ***********************************************************************
-// <copyright file="EERabbitAuth.cs" company="">
-//     Copyright (c) . All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System;
+﻿using System;
 using PlayerIOClient;
 
 namespace Rabbit.EE
@@ -55,7 +41,8 @@ namespace Rabbit.EE
             if (createRoom)
             {
                 if (!(worldId.StartsWith("PW", StringComparison.Ordinal)
-                        || worldId.StartsWith("BW", StringComparison.Ordinal))) {
+                        || worldId.StartsWith("BW", StringComparison.Ordinal)))
+                {
                     throw new FormatException("World ID must start with PW or BW when creating a new room.");
                 }
 

@@ -1,13 +1,3 @@
-// ***********************************************************************
-// Assembly         : Rabbit
-// Author           : Decagon
-// Created          : 07-22-2014
-// ***********************************************************************
-// <copyright file="ArmorGames.cs" company="None">
-//     Copyright 2014 (c) . All rights reserved.
-// </copyright>
-// <summary>Armor Games authentication. </summary>
-
 using System;
 using System.Security.Authentication;
 using System.Threading;
@@ -29,7 +19,7 @@ namespace Rabbit.Auth
         /// <param name="email">The user id of the user.</param>
         /// <param name="password">The user token.</param>
         /// <returns>
-        /// A valid client object.
+        /// PlayerIO client object.
         /// </returns>
         /// <exception cref="NotSupportedException">Armor Games login is not supported for the specified game.</exception>
         public static Client Authenticate(string gameId, string email, string password)
@@ -75,6 +65,7 @@ namespace Rabbit.Auth
 
             if (exception != null)
                 throw exception;
+
             return client;
         }
     }

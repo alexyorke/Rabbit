@@ -1,11 +1,4 @@
-﻿// ***********************************************************************
-// <copyright file="Mousebreaker.cs" company="None">
-//     Copyright 2014 (c) . All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System;
+﻿using System;
 using System.Security.Authentication;
 using PlayerIOClient;
 using Rabbit.EE;
@@ -33,7 +26,6 @@ namespace Rabbit.Auth
                 throw new NotSupportedException(strings.MousebreakerNotSupported);
 
             var c = Simple.Authenticate(gameId, "guest", "guest");
-
             var userId = c.BigDB.Load("usernames", userName)["owner"].ToString();
 
             if (userId.StartsWith("mouse", StringComparison.CurrentCulture))

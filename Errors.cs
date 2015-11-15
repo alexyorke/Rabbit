@@ -6,7 +6,7 @@ using Rabbit.Localizations;
 internal static class Errors
 {
     /// <summary>
-    /// The generate error message.
+    /// Generates an error message.
     /// </summary>
     /// <param name="email">The email.</param>
     /// <param name="password">The password.</param>

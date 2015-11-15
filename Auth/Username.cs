@@ -1,15 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : Rabbit
-// Author           : Decagon
-// Created          : 07-22-2014
-// ***********************************************************************
-// <copyright file="Username.cs" company="None">
-//     Copyright 2014 (c) . All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System;
+﻿using System;
 using System.Security.Authentication;
 using PlayerIOClient;
 using Rabbit.EE;
@@ -37,6 +26,7 @@ namespace Rabbit.Auth
                 throw new NotSupportedException(strings.UsernameNotSupported);
 
             string userId;
+
             try
             {
                 var c = Simple.Authenticate(gameId, "guest", "guest");
@@ -49,7 +39,7 @@ namespace Rabbit.Auth
 
             if (userId.StartsWith("simple", StringComparison.CurrentCulture))
             {
-                return Simple.Authenticate(gameId, userId.Substring(5),password);
+                return Simple.Authenticate(gameId, userId.Substring(5), password);
             }
 
             throw new AuthenticationException(strings.UsernameNotSupported);
