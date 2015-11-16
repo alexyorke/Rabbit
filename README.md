@@ -10,6 +10,14 @@ After you have installed [`RabbitIO` from NuGet](https://www.nuget.org/packages/
 Connection conn = new RabbitAuth().LogOn(gameId, email, passwordOrToken);
 ```
 
+###Everybody Edits
+
+Use `EERabbitAuth()` to authenticate with Everybody Edits:
+
+
+```csharp
+Connection conn = new EERabbitAuth().LogOn(EmailOrTokenOrUserName, RoomID, Password);
+```
 
 ## Project Goals
 
@@ -52,15 +60,6 @@ Rabbit requires .NET framework 3.5 or later.
 ## Credits
 
 [Yonom](https://github.com/Yonom), author of [Cupcake](https://github.com/Yonom/CupCake), significantly [helped](https://github.com/Decagon/Rabbit/commits/master?author=Yonom)!
-
-###Everybody Edits
-
-Use `EERabbitAuth()` to authenticate with Everybody Edits:
-
-
-```csharp
-Connection conn = new EERabbitAuth().LogOn(EmailOrTokenOrUserName, RoomID, Password);
-```
 
 
 ## Continuous Integration
