@@ -113,47 +113,20 @@ namespace Rabbit
             gameId = Regex.Replace(gameId, @"\s+", string.Empty);
 
             if (!Regex.IsMatch(gameId, @"^[0-9a-z\-]+$", RegexOptions.IgnoreCase))
-            {
                 throw new ArgumentException(strings.RabbitAuth_LogOn_The_game_ID_contains_an_invalid_character_,
                     "gameId");
-            }
 
             if (AuthenticationType == AuthenticationType.Unknown)
-            {
                 AuthenticationType = GetAuthType(email, password);
-            }
 
             switch (AuthenticationType)
             {
-                case AuthenticationType.Facebook:
-                    {
-                        return Facebook.Authenticate(gameId, password);
-                    }
-
-                case AuthenticationType.Kongregate:
-                    {
-                        return Kongregate.Authenticate(gameId, email, password);
-                    }
-
-                case AuthenticationType.ArmorGames:
-                    {
-                        return ArmorGames.Authenticate(gameId, email, password);
-                    }
-
-                case AuthenticationType.Mousebreaker:
-                    {
-                        return MouseBreaker.Authenticate(gameId, email, password);
-                    }
-
-                case AuthenticationType.UserName:
-                    {
-                        return UserName.Authenticate(gameId, email, password);
-                    }
-
-                default:
-                    {
-                        return Simple.Authenticate(gameId, email, password);
-                    }
+                case AuthenticationType.Facebook:     return Facebook.Authenticate(gameId, password);
+                case AuthenticationType.Kongregate:   return Kongregate.Authenticate(gameId, email, password);
+                case AuthenticationType.ArmorGames:   return ArmorGames.Authenticate(gameId, email, password);
+                case AuthenticationType.Mousebreaker: return MouseBreaker.Authenticate(gameId, email, password);
+                case AuthenticationType.UserName:     return UserName.Authenticate(gameId, email, password);
+                default:                              return Simple.Authenticate(gameId, email, password);
             }
         }
     }
