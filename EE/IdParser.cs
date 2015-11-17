@@ -38,13 +38,9 @@ namespace Rabbit
                 if ((uri.Segments.Length == 3) && (uri.Host == "everybodyedits.com")) id = uri.Segments[2];
             }
             
-            if (IsValidStrictRoomId(id))
-            {
-                validId = id;
-                return true;
-            }
+            if (IsValidStrictRoomId(id)) validId = id;
             
-            return false;
+            return (validId != null);
         }
 
         /// <summary>
