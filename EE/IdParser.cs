@@ -26,9 +26,6 @@ namespace Rabbit
         /// 9 and 14 characters or contains non-alphanumeric symbols.</exception>
         public static bool TryParse(string id, out string validId)
         {
-            // This method is based on TakoMan02's Skylight parse url method
-            // available on GitHub, and http://stackoverflow.com/questions/14211973/
-            
             validId = string.Empty;
             
             Uri uri;
