@@ -29,8 +29,7 @@ namespace Rabbit
             // This method is based on TakoMan02's Skylight parse url method
             // available on GitHub, and http://stackoverflow.com/questions/14211973/
             
-            validId = null;
-            if (string.IsNullOrEmpty(id)) return false;
+            validId = string.Empty;
             
             Uri uri;
             if (Uri.TryCreate(id, UriKind.Absolute, out uri))
@@ -40,14 +39,14 @@ namespace Rabbit
             
             if (IsValidStrictRoomId(id)) validId = id;
             
-            return (validId != null);
+            return (!string.IsNullOrEmpty(validId));
         }
 
         /// <summary>
         /// Check if the string is a valid room id.
         /// </summary>
         /// <param name="id">The id.</param>
-        /// <returns>The <see cref="bool" />.</returns>
+        /// <returns>Whether the id valid <see cref="bool" />.</returns>
         public static bool IsValidStrictRoomId(string id)
         {
             return (Regex.IsMatch(id, @"^([P|B|O]W[a-zA-Z0-9_-]+)|\$service-room\$$") && (id.Length <= 50));
