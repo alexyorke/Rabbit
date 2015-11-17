@@ -45,18 +45,14 @@ namespace Rabbit
             var hostParts = parsedUrl.Host.Split('.');
             var domain = string.Join(".", hostParts.Skip(Math.Max(0, hostParts.Length - 2)).Take(2).ToArray());
 
-            if (domain != "everybodyedits.com")
+            if (domain == "everybodyedits.com")
             {
-                validId = null;
-                return false;
-            }
-
-            var urlId = parsedUrl.Segments.Last();
-
-            if (IsValidStrictRoomId(urlId))
-            {
-                validId = urlId;
-                return true;
+                var urlId = parsedUrl.Segments.Last();
+                    if (IsValidStrictRoomId(urlId))
+                    {
+                        validId = urlId;
+                        return true;
+                    }
             }
 
             validId = null;
