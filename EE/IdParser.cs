@@ -34,19 +34,8 @@ namespace Rabbit
                 if ((uri.Segments.Length == 3) && (uri.Host == "everybodyedits.com")) id = uri.Segments[2];
             }
             
-            if (IsValidStrictRoomId(id)) validId = id;
-            
-            return (!string.IsNullOrEmpty(validId));
-        }
-
-        /// <summary>
-        /// Check if the string is a valid room id.
-        /// </summary>
-        /// <param name="id">The id.</param>
-        /// <returns>Whether the id valid <see cref="bool" />.</returns>
-        public static bool IsValidStrictRoomId(string id)
-        {
-            return (Regex.IsMatch(id, @"^([P|B|O]W[a-zA-Z0-9_-]+)|\$service-room\$$") && (id.Length <= 50));
+            validId = id;
+            return true;
         }
     }
 }
