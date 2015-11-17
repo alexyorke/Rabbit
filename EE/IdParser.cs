@@ -27,35 +27,23 @@ namespace Rabbit
         public static bool TryParse(string id, out string validId)
         {
             // This method is based on TakoMan02's Skylight parse url method
-            // available on GitHub.
-            if (string.IsNullOrEmpty(id))
+            // available on GitHub, and http://stackoverflow.com/questions/14211973/
+            
+            validId = null;
+            if (string.IsNullOrEmpty(id)) return false;
+            
+            Uri uri;
+            if (Uri.TryCreate(id, UriKind.Absolute, out uri))
             {
-                validId = null;
-                return false;
+                if ((uri.Segments.Length == 3) && (uri.Host == "everybodyedits.com")) id = uri.Segments[2];
             }
-
+            
             if (IsValidStrictRoomId(id))
             {
                 validId = id;
                 return true;
             }
-
-            // From http://stackoverflow.com/questions/16473838/ (some parts were changed)
-            var parsedUrl = new Uri(id);
-            var hostParts = parsedUrl.Host.Split('.');
-            var domain = string.Join(".", hostParts.Skip(Math.Max(0, hostParts.Length - 2)).Take(2).ToArray());
-
-            if (domain == "everybodyedits.com")
-            {
-                var urlId = parsedUrl.Segments.Last();
-                    if (IsValidStrictRoomId(urlId))
-                    {
-                        validId = urlId;
-                        return true;
-                    }
-            }
-
-            validId = null;
+            
             return false;
         }
 
