@@ -22,7 +22,7 @@ namespace Rabbit.Auth
         public static Client Authenticate(string gameId, string UserName, string password)
         {
             if (gameId != EERabbitAuth.GameId)
-                throw new NotSupportedException(strings.UsernameNotSupported);
+                throw new NotSupportedException();
 
             string userId;
 
@@ -41,7 +41,7 @@ namespace Rabbit.Auth
                 return Simple.Authenticate(gameId, userId.Substring(5), password);
             }
 
-            throw new AuthenticationException(strings.UsernameNotSupported);
+            throw new AuthenticationException();
         }
     }
 }

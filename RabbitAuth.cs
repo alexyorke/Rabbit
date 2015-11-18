@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using PlayerIOClient;
 using Rabbit.Auth;
+using System.Security.Authentication;
 
 namespace Rabbit
 {
@@ -39,7 +40,7 @@ namespace Rabbit
                 // All methods of authentication require that the username nad password field are not empty
                 if (string.IsNullOrEmpty(password))
                 {
-                    throw new InvalidOperationException(strings.EmailPasswordNullError);
+                    throw new AuthenticationException();
                 }
 
                 // Facebook:
@@ -112,8 +113,7 @@ namespace Rabbit
             gameId = Regex.Replace(gameId, @"\s+", string.Empty);
 
             if (!Regex.IsMatch(gameId, @"^[0-9a-z\-]+$", RegexOptions.IgnoreCase))
-                throw new ArgumentException(strings.RabbitAuth_LogOn_The_game_ID_contains_an_invalid_character_,
-                    "gameId");
+                throw new ArgumentException();
 
             if (AuthenticationType == AuthenticationType.Unknown)
                 AuthenticationType = GetAuthType(email, password);

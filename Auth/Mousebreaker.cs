@@ -22,7 +22,7 @@ namespace Rabbit.Auth
         public static Client Authenticate(string gameId, string userName, string password)
         {
             if (gameId != EERabbitAuth.GameId)
-                throw new NotSupportedException(strings.MousebreakerNotSupported);
+                throw new NotSupportedException();
 
             var c = Simple.Authenticate(gameId, "guest", "guest");
             var userId = c.BigDB.Load("usernames", userName)["owner"].ToString();
@@ -32,7 +32,7 @@ namespace Rabbit.Auth
                 return Simple.Authenticate(gameId, userId.Substring(5), password);
             }
 
-            throw new AuthenticationException(strings.MouseBreakerAuthFailure);
+            throw new AuthenticationException();
         }
     }
 }

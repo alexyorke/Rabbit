@@ -24,7 +24,7 @@ namespace Rabbit.Auth
         public static Client Authenticate(string gameId, string email, string password)
         {
             if (gameId != EERabbitAuth.GameId)
-                throw new NotSupportedException(strings.ArmorGamesNotSupported);
+                throw new NotSupportedException();
 
             var resetEvent = new ManualResetEvent(false);
             var guestClient = Simple.Authenticate(gameId, "guest", "guest");
@@ -37,7 +37,7 @@ namespace Rabbit.Auth
                 try
                 {
                     if (message.Type != "auth" || message.Count < 2)
-                        throw new AuthenticationException(strings.ArmorGamesLogOnFailure);
+                        throw new AuthenticationException();
 
                     client = PlayerIO.Connect(
                         gameId,
