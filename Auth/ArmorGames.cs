@@ -3,7 +3,6 @@ using System.Security.Authentication;
 using System.Threading;
 using PlayerIOClient;
 using Rabbit.EE;
-using Rabbit.Localizations;
 
 namespace Rabbit.Auth
 {
