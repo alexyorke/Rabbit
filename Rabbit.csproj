@@ -67,48 +67,11 @@
     <Compile Include="EE\IdParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RabbitAuth.cs" />
-    <Compile Include="Localizations\strings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>strings.resx</DependentUpon>
-    </Compile>
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Rabbit_key.snk" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Localizations\strings.af.resx" />
-    <EmbeddedResource Include="Localizations\strings.ar.resx" />
-    <EmbeddedResource Include="Localizations\strings.as.resx" />
-    <EmbeddedResource Include="Localizations\strings.az.resx" />
-    <EmbeddedResource Include="Localizations\strings.bg.resx" />
-    <EmbeddedResource Include="Localizations\strings.ca.resx" />
-    <EmbeddedResource Include="Localizations\strings.cs.resx" />
-    <EmbeddedResource Include="Localizations\strings.da.resx" />
-    <EmbeddedResource Include="Localizations\strings.de.resx" />
-    <EmbeddedResource Include="Localizations\strings.en.resx" />
-    <EmbeddedResource Include="Localizations\strings.es.resx" />
-    <EmbeddedResource Include="Localizations\strings.et.resx" />
-    <EmbeddedResource Include="Localizations\strings.eu.resx" />
-    <EmbeddedResource Include="Localizations\strings.fa.resx" />
-    <EmbeddedResource Include="Localizations\strings.fi.resx" />
-    <EmbeddedResource Include="Localizations\strings.fr.resx" />
-    <EmbeddedResource Include="Localizations\strings.gl.resx" />
-    <EmbeddedResource Include="Localizations\strings.hi.resx" />
-    <EmbeddedResource Include="Localizations\strings.hr.resx" />
-    <EmbeddedResource Include="Localizations\strings.hu.resx" />
-    <EmbeddedResource Include="Localizations\strings.is.resx" />
-    <EmbeddedResource Include="Localizations\strings.it.resx" />
-    <EmbeddedResource Include="Localizations\strings.ja.resx" />
-    <EmbeddedResource Include="Localizations\strings.ka.resx" />
-    <EmbeddedResource Include="Localizations\strings.ko.resx" />
-    <EmbeddedResource Include="Localizations\strings.sr.resx" />
-    <EmbeddedResource Include="Localizations\strings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>strings.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDictionary Include="CustomDictionary.xml" />
