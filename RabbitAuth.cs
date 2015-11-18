@@ -51,7 +51,7 @@ namespace Rabbit
                     return AuthenticationType.Facebook;
                 }
 
-                throw new InvalidOperationException(Errors.GenerateErrorMessage(email, password));
+                return AuthenticationType.Invalid;
             }
 
 
@@ -79,7 +79,7 @@ namespace Rabbit
             // Username: a valid email address
             // Password: 88 character base 64 string
             if (string.IsNullOrEmpty(password))
-                throw new InvalidOperationException(Errors.GenerateErrorMessage(email, password));
+                return AuthenticationType.Invalid;
 
             try
             {

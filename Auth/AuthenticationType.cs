@@ -33,6 +33,11 @@
         Unknown,
 
         /// <summary>
+        /// The invalid authentication type. Rabbit was unable to find the type of authentication used.
+        /// </summary>
+        Invalid,
+
+        /// <summary>
         /// The user name authentication type. This means that the user supplied a user name
         /// which must be converted into a user id, then parsed.
         /// </summary>
