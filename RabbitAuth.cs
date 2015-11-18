@@ -112,9 +112,6 @@ namespace Rabbit
             email = Regex.Replace(email, @"\s+", string.Empty);
             gameId = Regex.Replace(gameId, @"\s+", string.Empty);
 
-            if (!Regex.IsMatch(gameId, @"^[0-9a-z\-]+$", RegexOptions.IgnoreCase))
-                throw new ArgumentException();
-
             if (AuthenticationType == AuthenticationType.Unknown)
                 AuthenticationType = GetAuthType(email, password);
 
