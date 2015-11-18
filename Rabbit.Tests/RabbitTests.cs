@@ -10,6 +10,7 @@
 using System;
 using NUnit.Framework;
 using Rabbit.Auth;
+using System.Security.Authentication;
 
 namespace Rabbit.Tests
 {
@@ -42,13 +43,13 @@ namespace Rabbit.Tests
         [Test]
         public void NullAuthenticationTest()
         {
-            InvalidOperationException expectedException = null;
+            AuthenticationException expectedException = null;
 
             try
             {
                 RabbitAuth.GetAuthType(null, null);
             }
-            catch (InvalidOperationException ex)
+            catch (AuthenticationException ex)
             {
                 expectedException = ex;
             }

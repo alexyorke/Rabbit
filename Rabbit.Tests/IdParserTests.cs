@@ -22,7 +22,7 @@ namespace Rabbit.Tests
                 expectedException = ex;
             }
 
-            Assert.IsNotNull(expectedException);
+            Assert.IsNull(expectedException);
         }
     }
 }
