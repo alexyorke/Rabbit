@@ -3,6 +3,7 @@ using System.Security.Authentication;
 using System.Threading;
 using PlayerIOClient;
 using Rabbit.EE;
+using System.Collections.Generic;
 
 namespace Rabbit.Auth
 {
@@ -21,51 +22,21 @@ namespace Rabbit.Auth
         /// PlayerIO client object.
         /// </returns>
         /// <exception cref="NotSupportedException">Armor Games login is not supported for the specified game.</exception>
-        public static Client Authenticate(string gameId, string email, string password)
+        public static Client Authenticate(string gameId, string userid, string token)
         {
             if (gameId != EERabbitAuth.GameId)
                 throw new NotSupportedException();
 
-            var resetEvent = new ManualResetEvent(false);
-            var guestClient = Simple.Authenticate(gameId, "guest", "guest");
-            var guestConn = guestClient.Multiplayer.JoinRoom(string.Empty, null);
-            Client client = null;
-            Exception exception = null;
+            return PlayerIO.Authenticate(
+            gameId,
+            "public",
+            new Dictionary<string, string> {
+                {"userId", userid},
+                {"authToken", token},
+            },
+            null
+            );
 
-            guestConn.OnMessage += (sender, message) =>
-            {
-                try
-                {
-                    if (message.Type != "auth" || message.Count < 2)
-                        throw new AuthenticationException();
-
-                    client = PlayerIO.Connect(
-                        gameId,
-                        "secure",
-                        message.GetString(0),
-                        message.GetString(1),
-                        "armorgames");
-                }
-                catch (AuthenticationException ex)
-                {
-                    exception = ex;
-                }
-                finally
-                {
-                    resetEvent.Set();
-                    guestConn.Disconnect();
-                }
-            };
-
-            guestConn.OnDisconnect += (sender, message) => resetEvent.Set();
-
-            guestConn.Send("auth", email, password);
-            resetEvent.WaitOne();
-
-            if (exception != null)
-                throw exception;
-
-            return client;
         }
     }
 }
