@@ -24,9 +24,6 @@ namespace Rabbit.Auth
         /// <exception cref="NotSupportedException">Armor Games login is not supported for the specified game.</exception>
         public static Client Authenticate(string gameId, string userid, string token)
         {
-            if (gameId != EERabbitAuth.GameId)
-                throw new NotSupportedException();
-
             return PlayerIO.Authenticate(
             gameId,
             "public",
