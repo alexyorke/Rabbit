@@ -10,6 +10,12 @@ After you have installed [`RabbitIO` from NuGet](https://www.nuget.org/packages/
 Connection conn = new RabbitAuth().LogOn(gameId, email, passwordOrToken);
 ```
 
+If you prefer to skip the authentication check, you can pass in the AuthenticationType manually (for example Kongregate):
+
+```csharp
+Connection conn = new RabbitAuth(Rabbit.Auth.AuthenticationType = Rabbit.Auth.AuthenticationType.Kongregate).LogOn(gameId, email, token);
+```
+
 ###Everybody Edits
 
 Use `EERabbitAuth()` to authenticate with Everybody Edits:
