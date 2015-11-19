@@ -22,7 +22,7 @@ namespace Rabbit.Auth
         /// PlayerIO client object.
         /// </returns>
         /// <exception cref="NotSupportedException">Armor Games login is not supported for the specified game.</exception>
-        public static Client Authenticate(string gameId, string userid, string token)
+        public static Client Authenticate(string gameId, string userid, string token, string[] playerInsightSegments = null)
         {
             return PlayerIO.Authenticate(
             gameId,
@@ -31,7 +31,7 @@ namespace Rabbit.Auth
                 {"userId", userid},
                 {"authToken", token},
             },
-            null
+            playerInsightSegments
             );
 
         }

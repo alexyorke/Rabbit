@@ -19,7 +19,7 @@ namespace Rabbit.Auth
         /// <returns>A valid PlayerIOClient instance.</returns>
         /// <exception cref="System.NotSupportedException">Username login is not supported for the specified game.</exception>
         /// <exception cref="AuthenticationException">Username login currently only supports everybodyedits.com users.</exception>
-        public static Client Authenticate(string gameId, string UserName, string password)
+        public static Client Authenticate(string gameId, string UserName, string password, string[] playerInsightSegments = null)
         {
             if (gameId != EERabbitAuth.GameId)
                 throw new NotSupportedException();
@@ -38,7 +38,7 @@ namespace Rabbit.Auth
 
             if (userId.StartsWith("simple", StringComparison.CurrentCulture))
             {
-                return Simple.Authenticate(gameId, userId.Substring(5), password);
+                return Simple.Authenticate(gameId, userId.Substring(5), password, playerInsightSegments);
             }
 
             throw new AuthenticationException();
