@@ -46,7 +46,7 @@ namespace Rabbit
                 // Facebook:
                 // Username: N/A
                 // Password: 100 character (or greater) alphanumerical string
-                if (Regex.IsMatch(password, @"^[0-9a-z]$", RegexOptions.IgnoreCase) && password.Length > 100)
+                if (Regex.IsMatch(password, @"[0-9a-z]$", RegexOptions.IgnoreCase) && password.Length > 90)
                 {
                     return AuthenticationType.Facebook;
                 }
