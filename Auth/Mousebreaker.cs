@@ -34,12 +34,13 @@ namespace Rabbit.Auth
                 if (userId != null) {
                     // It's possible that a user chose a password that happened to be a base64 string
                     // that's 88 characters long and they do not use mousebreaker.
-                    
-                    // Force re-check of authentication type
-                    AuthenticationType = AuthenticationType.Unknown;
-                    
-                    // Authenticate with user id instead
-                    return RabbitAuth.LogOn(gameId, userId, password);
+
+                    // Reset authentication type and try again
+
+                    var rabbit = new RabbitAuth();
+                    rabbit.AuthenticationType = AuthenticationType.Unknown;
+
+                    return rabbit.LogOn(gameId, userId, password);
                 }
             }
 
