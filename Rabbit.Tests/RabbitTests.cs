@@ -85,8 +85,10 @@ namespace Rabbit.Tests
         public void MousebreakerAuthenticationTest()
         {
             var authResult = RabbitAuth.GetAuthType("test@example.com", "cHJvY2Vzc29yX3dpbGxfbmV2ZXJfZmluZF90aGlzX211YWhhaGFfd2VsbF9tYXliZV9oZV93aWxsX2J1dF9pXw==");
-
             Assert.AreEqual(AuthenticationType.Mousebreaker, authResult);
+
+            var invalidEmail = RabbitAuth.GetAuthType("testinvalidemailexample.com", "cHJvY2Vzc29yX3dpbGxfbmV2ZXJfZmluZF90aGlzX211YWhhaGFfd2VsbF9tYXliZV9oZV93aWxsX2J1dF9pXw==");
+            Assert.AreNotEqual(AuthenticationType.Mousebreaker, invalidEmail);
         }
         /// <summary>
         /// The kongregate authentication test.
