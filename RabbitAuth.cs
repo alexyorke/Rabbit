@@ -75,18 +75,18 @@ namespace Rabbit
             // Mousebreaker:
             // Username: a valid email address
             // Password: 88 character base 64 string
-            try
+            if (password.Length == 88)
             {
-                if (password.Length == 88)
+                try
                 {
                     Convert.FromBase64String(password);
                     return AuthenticationType.Mousebreaker;
                 }
-            }
-            catch (FormatException)
-            {
-                // safe to ignore the exception because it is not a valid
-                // base 64 array.
+                catch (FormatException)
+                {
+                    // safe to ignore the exception because it is not a valid
+                    // base 64 array.
+                }
             }
 
             return Utilities.IsValidEmail(email) ? AuthenticationType.Regular : AuthenticationType.UserName;
