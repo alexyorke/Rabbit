@@ -58,7 +58,7 @@ namespace Rabbit
                 // Armor Games:
                 // Username: a 32 character lowercase hexadecimal string
                 // Password: a 32 character lowercase hexadecimal string
-                if (password.Length == 32 && Utilities.IsHexadecimal(email, 32))
+                if (email.Length == 32 && password.Length == 32)
                 {
                     return AuthenticationType.ArmorGames;
                 }
