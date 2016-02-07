@@ -36,11 +36,11 @@ namespace Rabbit
         /// <param name="password">The password.</param>
         /// <param name="length">The length.</param>
         /// <returns><c>true</c> if the specified password is hexadecimal; otherwise, <c>false</c>.</returns>
-        internal static bool IsHexadecimal(string password, int length = 0)
+        internal static bool IsHexadecimal(string password)
         {
-            return length > 0
-                ? Regex.IsMatch(password, @"^[0-9a-f]{" + length + "}$")
-                : Regex.IsMatch(password, @"^[0-9a-f]");
+            // http://stackoverflow.com/questions/223832/
+            // This implementation only matches lowercase hex strings. 
+            return Regex.IsMatch(password, @"\A\b[0-9a-f]+\b\Z");
         }
     }
 }
