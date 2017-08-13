@@ -16,7 +16,7 @@ If you prefer to skip the authentication check, you can pass in the Authenticati
 Connection conn = new RabbitAuth(Rabbit.Auth.AuthenticationType = Rabbit.Auth.AuthenticationType.Kongregate).LogOn(gameId, email, token);
 ```
 
-###Everybody Edits
+### Everybody Edits
 
 Use `EERabbitAuth()` to authenticate with Everybody Edits:
 
@@ -30,12 +30,12 @@ Connection conn = new EERabbitAuth().LogOn(EmailOrTokenOrUserName, RoomID, Passw
  * Well maintained
  * Well documented
  * Well tested
- * Maintain backwards compatibility*
+ * Maintain backwards compatibility
 
 
 ## Project Maturity
 
-Rabbit is a new library, and is used in CupCake, Terra, and Skylight, which together power the majority of the bots on Everybody Edits. If you want to use Rabbit in your project, use the stable version 0.9.3.3 or wait until 1.0 is released. The public API will freeze within 1.0.
+Rabbit is a new library, and is used in CupCake, Terra, and Skylight, which together power the majority of the bots on Everybody Edits. If you want to use Rabbit in your project, use the stable version 0.9.3.3 or wait until 1.0 is released. The public API will freeze on the 1.0 release.
 
 ### Supported Features
 
@@ -44,8 +44,6 @@ Rabbit is a new library, and is used in CupCake, Terra, and Skylight, which toge
  * Smart error detection and recovery
  * Fast: queries are categorized in milliseconds
  * Many localizations
- * Compatibility with Terra
-
 
 ## Getting Started
 
@@ -75,5 +73,5 @@ Rabbit requires .NET framework 3.5 or later.
 
 ## License
 
-Copyright (C) 2014-2015 under the MIT license.
+Copyright (C) 2014-2017 under the MIT license.
 
