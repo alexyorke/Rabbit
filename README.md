@@ -35,7 +35,7 @@ Connection conn = new EERabbitAuth().LogOn(EmailOrTokenOrUserName, RoomID, Passw
 
 ## Project Maturity
 
-Rabbit is a new library, and is used in CupCake, Terra, and Skylight, which together power the majority of the bots on Everybody Edits. If you want to use Rabbit in your project, use the stable version 0.9.3.3 or wait until 1.0 is released. The public API will freeze on the 1.0 release.
+Rabbit is a new library, and is used in CupCake, Terra, and Skylight, which together power the majority of the bots on Everybody Edits. Rabbit has no new issues for around a year, and so is deemed stable and can be used in any of your projects.
 
 ### Supported Features
 
